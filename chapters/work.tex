@@ -1,19 +1,29 @@
 \chapter{Developed Peer-to-Peer Communication Prototype}
 \label{chapter:work}
 
-In this chapter the implementation of the developed peer-to-peer communication prototype will be analysed from the decisions 
+In this chapter the implementation of the developed peer-to-peer communication prototype will be analysed. This explanation will extend from the decisions of the technology and protocols to use to the architecture and workflow of the application.
 
 It will begin with a brief summary of the steps taken to reach the developed application's features, functionalities and architecture. Which obstacles led to this solution and which were the fundamental drivers to decide upon this development and architecture to solve the problems previously stated. After the overall application's objectives and high-level architecture is described, a section on the lower-level architecture and components of the application will be presented, also containing flowcharts and diagrams on its normal functioning. A summary on the limitations and future work of this application will be given, as well as some possible solutions to its current limitations, outside the scope of this work. Finally, a conclusion on the difficulties and drawbacks of the development process and overall project appreciation will be given, along with some final thoughts on the work process and methods used.
 
+\section{Peer-to-Peer Application Design Choices}
+
+This section will provide the explanation and justification of the choices made for the application traffic type, ad hoc communication technology and ad hoc routing protocol.
+
 In section \ref{sec:wfd}, developed work on Android applications using Wi-Fi Direct has a mean of communication was introduced. Having the guidelines of these works in mind, the development of this application started. The main structure would always be: the application will have a routing algorithm that controls the destinations of the packets in each hop. A communication technology, \textit{e.g.} Bluetooth or Wi-Fi Direct, handler for both discovering nearby devices and establishing communication sockets with peers. A set of functions capable of analyzing incoming messages and deciding which is the next step to perform, in order to complete the requests/advertises. Finally, a user interface where the incoming messages can be seen and analysed (for debug purposes), also providing a text area for the user to enter the requested data.
 
+\subsection{Application Traffic Type}
+
 The choosing of what would be the transferred data between devices was one of the major steps of this work. Many ideas could be pursued and each one of them could be a great work to develop. The main contenders were text messages, beacon messages, geolocation messages and web pages. After some research was made, see section \ref{sec:apps}, some of these contender could be eliminated, due to the existence of works already revolving around them. The main topic was text messages with many of the works developed focusing on recreating popular applications, such as Messenger and WhatsApp, using a peer-to-peer network to route the messages to their destinations. Beacon and geolocation messages were also not a completely innovative choice, since applications such as Uepaa!, see subsection \ref{subsec:uepaa}, are already implementing systems similar to the one being proposed. Given this reasoning, the most innovative choice would be to transfer web pages between devices, creating a multi-hop hot spot in a peer-to-peer network.
+
+\subsection{Ad Hoc Communication Technology}
 
 After being established that web pages were the data to be requested, the next step was to choose the communication technology to be used, followed by the routing algorithm that would manage the next hops to take. The first and most obvious choice would be to use Wi-Fi Direct in both advertising and communication between devices, since this technology offers the best features to transfer files around 1Kbyte, in both range and data rate of transmission. However, during the development it proved to be impossible to continue with this approach, as Wi-Fi Direct's current Android implementation does not allow for devices to transfer files without user consent.
 
 Given this drawback a shift to Bluetooth was made, and a hybrid version of the application was created, where the advertisement would be done via Wi-Fi Direct and the actual transfer of the web pages would be made via Bluetooth. This method also proved to be infeasible, due to security issues, since the the devices would have to display their Bluetooth MAC addresses in their Bluetooth name, making them much more vulnerable to possible attacks.
 
 So, finally, the application was developed using Bluetooth for both advertisement of the devices and data transfer, although this is not the best technology for communication in a peer-to-peer network, it is the only one that, currently, meets all the requirements for this work. In the end of this chapter a brief discussion on the changes that need to be made to Wi-Fi Direct's implementation in Android will be presented, and why developers could benefit from these changes.
+
+\subsection{Ad Hoc Routing Protocol}
 
 The last step would be to create/modify a routing algorithm to control the destination of each incoming message. The requirements are simple, the algorithm simply needs to save the next hop of the shortest path leading to a device with Internet connection.
 
@@ -23,43 +33,55 @@ The last step would be to create/modify a routing algorithm to control the desti
 
 Since the routing of this work does not have a specific destination as a goal, in other words, device A does not want to transmit to B, it only wants to reach a node with network access with the minimum amount of hops, so A does not have knowledge on where its message will be sent after the immediate next hop. Thus, in order to accommodate such requirements some modifications were made to \gls{DSDV}. Firstly, to reduce the bandwidth used by \gls{DSDV}, this adaptation will simply exchange the best estimate of the current device, only including the number of hops and the device's \gls{MAC} address. Secondly, instead of a periodic exchange of tables, devices will update their tables every time a new advertise message is received and they only exchange routing information when a new best path is received, with the contents described above.
 
-In the next section a more detailed and technical description of the work will be presented, along with the explanation of the application's code and some diagrams to give a more comprehensive overview of the developed work.
-
 \section{Architecture}
 \label{sec:architecture}
 
-This section is divided into four subsections: Bluetooth connections, where a detailed explanation on the Bluetooth Service and application Handler used to manage the Bluetooth connections and data transfer between devices, will be presented. An overview of the discovery and advertising code functions, as well as a description on how this was implemented and how the discovery and advertising data is analysed and stored. The same analysis for the exchange of web pages between the devices, from the request to the received response. Finally, a demonstration of the execution of the application with a linear topology with three devices, where one is connected to the Internet.
+In this section the architectures of both framework and application are presented. It will consist of: a description of the Bluetooth connections between devices, an explanation on the discovery and advertising mechanism and a analysis of the web page exchange process.
 
-\subsection{Bluetooth connections}
+\subsection{Bluetooth Connections}
 \label{subsec:btconn}
 
-Since the communication technology is Bluetooth the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system, see \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class, from the application. It creates and listens to insecure communication sockets to allow for devices to exchange data without user approval.
+In this subsection the Bluetooth connections between devices and their possible stages will be described and analysed.
 
-The service has three different threads within it: a thread for the acceptance of incoming communications - \textit{AcceptThread}, for the initial exchange of vital information before the connection - \textit{ConnectThread} - and a thread for the actual exchange of data between devices - \textit{ConnectedThread}. The connection of devices goes through each of this stage, allowing the main thread to get information on what is the connection status of the device at a given time.
+Since the communication technology is Bluetooth, the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system, see \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class, from the application. It creates and listens to insecure communication sockets allowing devices to exchange data without user approval.
 
-There were two different approaches to the connections of devices: either the devices stayed connected as long as possible until a new connection was requested or the devices stayed connected for the minimal amount of time for data to be transferred. The second approached was used, since it is the one that drains less amount of battery from the devices.
+The service has three different threads within it: a thread for the acceptance of incoming communications - \textit{AcceptThread}, a thread for the initial exchange of vital information before the connection - \textit{ConnectThread} - and a thread for the actual exchange of data between devices - \textit{ConnectedThread}. The connection of devices goes through each of these stages, allowing the main thread to get information on what is the connection status of the device at a given time.
 
-This class, seen in appendix \ref{appendix:BluetoothService}, starts with the definition of several variables that will be the core of the service. The variables \textit{NAME\_INSECURE} and \textit{MY\_UUID\_INSECURE} are set so that Bluetooth communications is only accepted if both devices have matching "credentials", they provide a minimal amount of security to prevent against possible attacks. \textit{MY\_UUID\_INSECURE} is a unique identifier, generated randomly that represents this application, no other application should have the same identifier.
+There were two different approaches to the connections of devices: either the devices stayed connected as long as possible until a new connection was requested or the devices stayed connected for the minimal amount of time for data to be transferred. The second approach was used, since it is the one that is more energy efficient, draining a lower amount of battery from the devices.
 
-In the next section, variables are defined to represent the threads, discussed above, the Bluetooth adapter of the device and the handler, creating the bridge between the main activity and the service. Two other variables are defined, one for retrieving the status of the connection and other for assessing if the device is ready to receive the desired file. We will discuss this variables later on this subsection.
+Bluetooth communication between devices is only allowed if both devices have matching "credentials", providing a minimum amount of security to prevent against possible attacks. An application specific name and \gls{UUID} represent the application, making it distinguishable from any other, since the \gls{UUID} of an application should not be repeated in any other.
 
-Finally, a set of four constants is presented, giving a textual representation on the possible connection states: \textit{STATE\_NONE}, \textit{STATE\_LISTENING}, \textit{STATE\_CONNECTING} and \textit{STATE\_CONNECTED}, where each one represents the current thread of the connection and \textit{STATE\_NONE} represents the nonexistence of one of these threads.
+To notify the application of what is being done by the \textit{BluetoothService} a handler is created, acting as bridge between the two parts. It can be used for various actions, such as: retrieving the status of a connection, assessing if a device is ready to receive a file, \textit{etc.}
 
-I will now analyze the code functions deemed most important, as some are trivial and do not require mention. The constructor\footnote{Constructor is invoked in a class to create objects, based on the class blueprint, see \cite{constructors} for more documentation on constructors.} matches the Bluetooth adapter of the main activity to the Bluetooth adapter that this service will use and the handler with the one created in the main activity, in order to pass information from the service to the activity, \textit{e.g.} messages sent/received or connection states.
+To substantiate the possible Bluetooth connections stages four different textual representations are created, one for each stage: listening, connecting, connected and not enabled. Each type of thread mentioned earlier is associated with one stage, being the non-existence of a thread the not enabled stage. The different threads can be seen as the implementation of a stage. They are the ones that dictate how is the application going to act during the stage. 
+
+In the next subsections each stage will be explained in detail, providing a better understanding on how the connections are performed.
 
 \subsubsection{Listening}
 \label{subsubsec:listening}
 
-The \textit{start()} function is, probably, the most important function of this service. It is called every time the service is initialized, creating the threads necessary for the well functioning of the service. We can see that before creating an instance of an \textit{AcceptThread}, this function makes sure any running threads are shut down, avoiding any conflicts between connections. As said before, this application works based on short communication times, so the process of restarting the service in order to close ongoing connections is called more often than it would be usual in long duration communications. Thus, it is essential that there are no memory leaks or communication sockets left open. It also sets the communication status to \textit{STATE\_LISTEN}.
+A device is said to be in the listening stage when it has no ongoing connection but it is waiting for a new one initiated by another device. It is the "first" stage of the \textit{BluetoothService}, since every time the service is initiated the device is moved to this stage.
 
-Jumping now to the \textit{AcceptThread} class, we can see it extends another class, the \textit{Thread} Java class, previously mentioned. This class contains a constructor and two methods: the constructor simply creates a communication socket with which the device listens to incoming communications. The \textit{run()} method handles the listening, it has a cycle whose purpose is to block the thread until a connection is received or an error occurs. Upon successfully accepting a connection, the method assesses the status of the connection and decides upon it. If everything goes as planned, the status should be \textit{STATE\_CONNECTING} and a call to the \textit{connected()} function is performed, indicating that we will now handle the accepted communication and start receiving/transferring data. The second method is simply a closing of the established socket, to avoid memory leaks. It is called whenever we want to force stop the thread.
+As was said previously, each connection stage is associated with a thread class. The listening stage is associated with the \textit{AcceptThread}, which is instantiated every time the device enters this stage. The framework's connections have short durations and each time a new connection is performed the service is restarted, entering the listening stage. Hence, it is imperative to assure there are no memory leaks or communication sockets left open. Thus, before the listening thread is instantiated it is verified if any other Bluetooth connection threads are running and, if so, they are shut down.
+
+Once all the requirements for the instantiation of a new thread are met, a communication socket is created with which the device listens to incoming communications. To implement the listening mechanism a loop is created whose purpose is to block the thread until a new connection is received, an error occurs or the user shuts down the application.
+
+Whenever the device receives a new connection, it verifies the "credentials" sent in that request and compares them with the ones defined in its application. If they match the connection is accepted.
+
+Upon successfully accepting a connection, the method assesses the status of the newly formed connection and decides upon it. If everything goes as planned, the connection should now be in the connected stage. Once this migration between stages is concluded the instance of the listening thread is destroyed, for reasons above stated and the 
 
 \subsubsection{Connecting}
 \label{subsubsec:connecting}
 
-In the side of the communication requester, the \textit{connect()} method is called, in order to try and establish a successful socket between both devices. It has a similar structure as the \textit{start()} method, since it cancels any ongoing thread and simply creates an instance of the \textit{ConnectThread} class, altering the communication status to \textit{STATE\_CONNECTING}.
+Concluded the listening and accepting of connections it is necessary to understand how they are requested. For a Bluetooth connection to be performed at least two devices must exist, one of them acting as the connection requester.
 
-The \textit{ConnectThread} class is also similar to the \textit{AcceptThread}. It has a constructor, and two methods. The constructor receives a BluetoothDevice as parameter and tries to establish a communication socket with it. The \textit{run()} method starts by shutting down any device discovery process as it would slow down the connection time. It then waits on the acceptance of the requested device, in case of failure, the \textit{connectionFailed()} method is called, where a notification is sent to the main activity, in order to notify the application that the connection was not successful, the service is restarted. In case of success this thread is shut down and the \textit{connected()} method is called, with the respective socket and requested device. The \textit{cancel()} method serves the same purpose as in the \textit{AcceptThread} class.
+Similar to the listening thread initiation, the \textit{ConnectThread} is only instantiated after all the previous Bluetooth connection threads running in the device are shut down. Also, to avoid delays during the connection process, the Bluetooth discovery process is shut down. Only then can the requester attempt to establish a connection with the desired device.
+
+To identify the receiver of the connection request, the device needs to retrieve the \gls{MAC} address of its counterpart, this will be explained in subsection \ref{subsec:disandadv}. Once this is attained the requester can attempt to create a communication socket between both devices, using the previously defined Bluetooth "credentials" and the receiver's \gls{MAC} address. If the \gls{MAC} address is valid and corresponds to a device within reach the connection is request successfully.
+
+In case of failure due to the rejection of the connection from the receiver, a notification is sent to the application, notifying the connection was not successful and the service is restarted.
+
+However, if the sent request is accepted by the receiver, the connection state is assessed and, if no interruptions or errors occur, the connection stage is moved to the connected stage, indicating both devices are able to send and receive bytes from their counterpart, by writing and reading from the established communication socket, respectively.
 
 \subsubsection{Connected}
 \label{subsubsec:connected}
@@ -72,7 +94,7 @@ The next two methods, \textit{write()} and \textit{writeFile()} are called by th
 
 Finally, the \textit{cancel()} method serves a similar purpose to the previous classes, it forces the close of the socket and nullifies the thread instance.
 
-\subsection{Discovery and advertising}
+\subsection{Discovery and Advertising}
 \label{subsec:disandadv}
 
 Now that the basic concepts on how the communication between devices are implemented are explained, it is possible to dig deeper into the intrinsics of the application itself, and what is the logic behind the routing of web pages.
@@ -123,7 +145,7 @@ Finally, the addition and update of rows within the table is done by the method 
 
 Note that, in case of a table update, the application does not compare values, \textit{i.e.}, it does not check if the new estimate is better than the old one, since the sender device could have lost the communication with the best route and thus it needs to advertise a worse path. If this check was made, the receiver could be mislead into sending requests through this device, thinking it would provide the better path.
 
-\subsubsection{Discovering peers}
+\subsubsection{Discovering Peers}
 \label{subsubsec:disc}
 
 Now that it is clear how the intern process of modifying the routing tables works, it is possible to discuss where and when these methods are being called. Shifting the focus to \textit{BtActivity.java}, in appendix \ref{appendix:BtActivity}, there are some variable definitions indispensable for the process of advertising and discovery. Starting by the \textit{peers} \textit{ArrayList}, it is a list of \textit{BluetoothDevices} each corresponding to a peer found in the discovery process. This list is then used to retrieve information from these devices, in order to successfully establish communication sockets with them. The \textit{mBluetoothAdapter} is no more than the device's Bluetooth adapter, without which there would be no Bluetooth communications. Finally, the variable \textit{discoveryFinished} is a boolean value that serves the purpose of identifying if the discovery process is finished, assuring that this is not carried away for longer than it was intended to be, using processing power and damaging the performance of the rest of the application.
@@ -152,7 +174,7 @@ In figure \ref{fig:discflux} a fluxogram of the discovery process is presented. 
 	\caption{\label{fig:discflux} Fluxogram of the discovery process}
 \end{figure}
 
-\subsubsection{Sending an advertising message}
+\subsubsection{Sending an Advertising Message}
 \label{subsubsec:sendadv}
 
 The device has now found its peers and it can start the advertising process, done by \textit{advertisePeers()}. The method starts by iterating through each peer contained in the list \textit{peers}, a first check is performed assessing if the device is a smart phone or a different type of device, a sensor or a headset, for instance, for this the \textit{DeviceClass} is compared with 524, which is the value for smart phones, see \cite{btclass}. 
@@ -172,7 +194,7 @@ In figure \ref{fig:advflux} the fluxogram of the advertising process is presente
 	\caption{\label{fig:advflux} Fluxogram of the advertising process from the point of a sender}
 \end{figure}
 
-\subsubsection{Receiving an advertising message}
+\subsubsection{Receiving an Advertising Message}
 \label{subsubsec:rcvadv}
 
 It is now covered how the transmitter of an advertise message operates, however, to fully understand the advertising process it is necessary to analyse the receiver device and how it handles this message.
@@ -207,7 +229,7 @@ Now it should be clear how the discovery and advertising process is performed an
 
 By giving each device a full view of its vicinity it is possible to establish a network in which every device knows the best path instantly. This is done by what was described above, from discovery to advertisement. The next subsection will refer to the next step, where the devices already have their routing tables populated and are ready to exchange web pages. 
 
-\subsection{Exchange of web pages}
+\subsection{Exchange of Web Pages}
 
 In this subsection the logic created and implemented to exchange the web pages will be explained, in detail, also an example, similar to the previous one will be shown to better demonstrate the processes. This analysis will be mainly focused in appendix \ref{appendix:BtActivity}. However, before that it is necessary to explain the routing table related to the exchange of web pages, previously mentioned in subsection \ref{subsec:disandadv} and referred to as response table.
 
@@ -247,7 +269,7 @@ For the example three devices are used: A, B and C. Where device C has an active
 	\caption{\label{fig:example1.0} Example 2: State of the routing tables of the three devices}
 \end{figure}
 
-\subsubsection{Sending a request message}
+\subsubsection{Sending a Request Message}
 \label{subsubsec:sendrqt}
 
 Now that the logic and implementation behind the response table is understood it is possible to start explaining the actual process of web page exchanging. Starting by the definition of variables, in \textit{BtActivity} class, it can be divided into three sections: the first being the definition of variables that will identify the different elements seen by the user, a \textit{Button}, to submit requests, an \textit{EditText}, for the user to input the requested \gls{URL} and a \textit{WebView}, to manage the actions related to web pages.
@@ -298,7 +320,7 @@ Otherwise, if the device is not deemed as the owner, there is no random identifi
 
 In figure \ref{fig:rqtflux} a fluxogram representing the process of sending request message is presented. It provides a better overview of the code hierarchy, and when is each method called. Once the process is finished the device keeps listening to incoming connections, changing the Bluetooth state to \textit{STATE\_LISTEN}.
 
-\subsubsection{Receiving a request message}
+\subsubsection{Receiving a Request Message}
 \label{subsubsec:rcvrqt}
 
 The request receiving process is similar to the advertise, the receiver connects to the sender and receives the bytes from the request sent. As before, the bytes are transmitted from the \textit{BluetoothService} to the main activity, through a \textit{MESSAGE\_READ Message} and the \textit{mHandler} receives them. After comparing the received \textit{Message} to the possible types, explained in subsection \ref{subsubsec:rcvadv}, and concluding it is a \textit{MESSAGE\_READ} the \textit{Handler} converts them to a \textit{String}. Since the newly created \textit{String} is not a response, the \textit{BluetoothService} is restarted and \textit{analyzeMessage()} is called taking as argument the \textit{String}.
@@ -347,7 +369,7 @@ Finally, upon receiving the request, device C will update its own response table
 
 In figure \ref{fig:example1.1} it is shown the above described, as well as the three response tables from the devices once the requests are all sent and the web page downloaded.
 
-\subsubsection{Sending a response message and web page}
+\subsubsection{Sending a Response Message and Web Page}
 \label{subsubsec:sendrsp}
 
 Once the web page is successfully saved in the device it is possible to send the response back until the owner of the request receives the requested web page. As seen before, \textit{sendResponse()} is called in \textit{onPostExecute()} and it is used to send a response to the next device.
@@ -380,7 +402,7 @@ The method gets the number of bytes to be sent and divides that size by 990 byte
 
 In figure \ref{fig:rspsendflux} a fluxogram of the response sending response is presented. It shows the process from the saving of the web page to the sending of the same. As previously described the fluxogram ends by dropping the message if there is no valid next hop for that message identifier, by restarting the \textit{BluetoothService} if the connection fails, or by sending the full web page as expected.
 
-\subsubsection{Receiving a response message and web page}
+\subsubsection{Receiving a Response Message and Web Page}
 \label{subsubsec:rcvrsp}
 
 In the receiver side, the web page and response are received and the device must assess if it is the final destination or if it is a relay node for a different device, in which case the web page will not be displayed, but the response and web page are forwarded.

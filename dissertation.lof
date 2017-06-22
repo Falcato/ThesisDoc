@@ -19,17 +19,17 @@
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Wi-Fi P2P MANET routing table. (source: \cite {manet})}}{25}{figure.2.13}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Advertising message format}}{34}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 1: State of the two devices after the initial step is over}}{36}{figure.3.2}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example 1: State of the two devices after the initial step is over}}{37}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Fluxogram of the discovery process}}{37}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Fluxogram of the advertising process from the point of a sender}}{38}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Fluxogram of the advertising process from the point of a receiver}}{39}{figure.3.5}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Fluxogram of the advertising process from the point of a sender}}{39}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Fluxogram of the advertising process from the point of a receiver}}{40}{figure.3.5}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Example 1: State of the two devices after the advertising process is done}}{40}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Example 2: State of the routing tables of the three devices}}{41}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces User interface for the sending of request messages}}{42}{figure.3.8}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Example 2: State of the routing tables of the three devices}}{42}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces User interface for the sending of request messages}}{43}{figure.3.8}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Request message format}}{43}{figure.3.9}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Fluxogram of the request sending process}}{44}{figure.3.10}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Fluxogram of the request receiving process}}{46}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Example 2: Request sending and receiving process}}{46}{figure.3.12}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Example 2: Request sending and receiving process}}{47}{figure.3.12}
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Format of a response message}}{47}{figure.3.13}
 \contentsline {figure}{\numberline {3.14}{\ignorespaces Fluxogram of the response and web page sending process}}{48}{figure.3.14}
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Fluxogram of the response and web page receiving process}}{50}{figure.3.15}
