@@ -1,0 +1,1364 @@
+%!TEX root = ../dissertation.tex
+
+\chapter{Application code}
+\section{InitActivity.java}
+\label{appendix:initActivity}
+
+\begin{verbatim}
+package com.example.falcato.btrouting;
+
+import ...
+
+public class InitActivity extends Activity {
+
+    private static final String TAG = "InitActivity";
+    Button goButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_init);
+    }
+
+    @Override
+    protected void onStart (){
+        super.onStart();
+
+        // Check if device has an Internet connection
+        new NetworkCheck().execute();
+
+        goButton = (Button) findViewById(R.id.button);
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent ( InitActivity.this, BtActivity.class );
+                startActivity(intent);
+            }
+        });
+    }
+
+    private class NetworkCheck extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            Log.i(TAG, "hasActiveInternetConnection()");
+            try {
+                HttpURLConnection urlc = (HttpURLConnection) (
+                        new URL("http://clients3.google.com/generate_204").openConnection());
+                urlc.setRequestProperty("User-Agent", "Test");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                return (urlc.getResponseCode() == 204 && urlc.getContentLength() == 0);
+            } catch (IOException e) {
+                Log.e(TAG, "Error checking internet connection", e);
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            ((RoutingApp) getApplicationContext()).setHasNet(result);
+        }
+    }
+}
+
+\end{verbatim}
+
+\section{BtActivity.java}
+\label{appendix:BtActivity}
+\begin{verbatim}
+package com.example.falcato.btrouting;
+
+import ...
+
+public class BtActivity extends Activity {
+
+    // Debugging
+    private static final String TAG = "BluetoothActivity";
+    private static final boolean D = true;
+
+    Button goButton;
+    EditText mEdit;
+    WebView mWebview;
+
+    // Message types sent from the BluetoothChatService Handler
+    public static final int MESSAGE_STATE_CHANGE = 1;
+    public static final int MESSAGE_READ = 2;
+    public static final int MESSAGE_WRITE = 3;
+    public static final int MESSAGE_DEVICE_NAME = 4;
+    public static final int MESSAGE_TOAST = 5;
+    public static final int FILE_READ = 6;
+    public static final int FILE_WRITE = 7;
+
+    // Key names received from the BluetoothService Handler
+    public static final String DEVICE_NAME = "device_name";
+    public static final String TOAST = "toast";
+
+    // Intent request codes
+    private static final int REQUEST_ENABLE_BT = 3;
+
+    // Name of the connected device
+    private String mConnectedDeviceName = null;
+    // List of peer devices
+    private ArrayList<BluetoothDevice> peers = null;
+    // String buffer for outgoing messages
+    private StringBuffer mOutStringBuffer;
+    // Local Bluetooth adapter
+    private BluetoothAdapter mBluetoothAdapter = null;
+    // Member object for the chat services
+    private BluetoothService mService = null;
+    // Check if peer discovery is finished
+    private boolean discoveryFinished = false;
+    // Save the message ID
+    private int msgID = 0;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(D) Log.e(TAG, "+++ ON CREATE +++");
+
+        // Set up the window layout
+        setContentView(R.layout.activity_bt);
+
+        // Get local Bluetooth adapter
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        // Initialize peers array
+        peers = new ArrayList<>();
+
+        // If the adapter is null, then Bluetooth is not supported
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(this, "Bluetooth is not available", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(D) Log.e(TAG, "++ ON START ++");
+
+        // If BT is not on, request that it be enabled.
+        if (!mBluetoothAdapter.isEnabled()) {
+            Log.e(TAG, "mBluetoothAdapter not enabled");
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+
+        } else {
+            Log.e(TAG, "mBluetoothAdapter enabled");
+        }
+
+        // Register for broadcasts when a device is discovered
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        this.registerReceiver(mReceiver, filter);
+
+        // Register for broadcasts when discovery has finished
+        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+        this.registerReceiver(mReceiver, filter);
+
+        mWebview = (WebView) findViewById(R.id.webView);
+        mWebview.getSettings().setJavaScriptEnabled(true);
+        mWebview.getSettings().setAllowFileAccess(true);
+        mWebview.getSettings().setDomStorageEnabled(true);
+        mWebview.getSettings().setAllowContentAccess(true);
+        mWebview.getSettings().setAllowFileAccessFromFileURLs(true);
+        mWebview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
+        // Make this device discoverable
+        ensureDiscoverable();
+
+        // update route table and start discovery
+        // If device has net
+        if(((RoutingApp)getApplicationContext()).getHasNet())
+            ((RoutingApp)getApplicationContext()).updateRouteTable
+                ("ADV;" + getOwnMAC() + ";0");
+        // Otherwise infinite number of hops
+        else
+            ((RoutingApp)getApplicationContext()).updateRouteTable
+                    ("ADV;" + getOwnMAC() + ";16");
+
+        // Remove comments
+        doDiscovery();
+        setupBluetoothService();
+
+        goButton = (Button) findViewById(R.id.buttonGo);
+        mEdit = (EditText)findViewById(R.id.editText);
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Test
+                //getPage(mEdit.getText().toString());
+
+                // Remove comments
+                sendRequest(true, -1, mEdit.getText().toString());
+            }
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Stop the Bluetooth chat services
+        if (mService != null) mService.stop();
+        if(D) Log.e(TAG, "--- ON DESTROY ---");
+        unregisterReceiver(mReceiver);
+    }
+
+    private String getOwnMAC () {
+        if (Build.VERSION.SDK_INT > 22)
+            return android.provider.Settings.Secure.getString(this.getContentResolver(),
+                "bluetooth_address");
+        else
+            return mBluetoothAdapter.getAddress();
+    }
+
+    private void ensureDiscoverable() {
+        if(D) Log.i(TAG, "ensure discoverable");
+        if (mBluetoothAdapter.getScanMode() !=
+                BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+            startActivity(discoverableIntent);
+        }
+    }
+
+    private void doDiscovery() {
+        if (D) Log.i(TAG, "doDiscovery()");
+        discoveryFinished = false;
+
+        // If we're already discovering, stop it
+        if (mBluetoothAdapter.isDiscovering()) {
+            mBluetoothAdapter.cancelDiscovery();
+        }
+
+        mBluetoothAdapter.startDiscovery();
+        Toast.makeText(getApplicationContext(), "Starting discovery. Please wait...",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void setupBluetoothService() {
+        Log.i(TAG, "setupBluetoothService()");
+        // Initialize the BluetoothChatService to perform bluetooth connections
+        mService = new BluetoothService(this, mHandler);
+
+        // Initialize the buffer for outgoing messages
+        mOutStringBuffer = new StringBuffer("");
+    }
+
+    private void advertisePeers() {
+        Log.i(TAG, "advertisePeers()");
+        for (BluetoothDevice peer : peers){
+            Log.i(TAG, "Peer class: " + peer.getBluetoothClass().getDeviceClass());
+            // Check if peer is a cell phone
+            if (peer.getBluetoothClass().getDeviceClass() == 524){
+                //Debug
+                //if(!peer.getName().contains(";HUAWEI P8 lite")) {
+                // Check if peer is using app
+                if (peer.getName().contains(";")) {
+                    Log.i(TAG, "Will advertise to: " + peer.getName());
+                    mService.connect(peer);
+
+                    // Wait until connection is done
+                    while (mService.getState() != BluetoothService.STATE_CONNECTED) {
+                        if (mService.getState() == BluetoothService.STATE_LISTEN) {
+                            Log.e(TAG, "Failed to connect, listening");
+                            mService.start();
+                            break;
+                        }
+                    }
+
+                    // Device is connected, advertise
+                    int nrHops = ((RoutingApp) getApplicationContext()).getMinHop() + 1;
+                    sendMessage("ADV;" + getOwnMAC() + ";" + nrHops);
+
+                    // Wait until connection is finished
+                    long initTime = System.currentTimeMillis();
+                    while (mService.getState() != BluetoothService.STATE_LISTEN) {
+                        if (System.currentTimeMillis() - initTime > 5000) {
+                            break;
+                        }
+                    }
+                }
+                //Debug
+                //}
+            }
+        }
+    }
+
+    private void sendRequest(boolean owner, int msgID, String message) {
+        Log.i(TAG, "sendRequest()");
+
+        // Get the address of the next hop
+        BluetoothDevice nextHop = mBluetoothAdapter.getRemoteDevice(
+                ((RoutingApp)getApplicationContext()).getNextHop());
+        // In case there is no next hop
+        if (nextHop.getAddress() == null){
+            Log.i(TAG, "There is no next hop");
+            sendFail(msgID);
+            return;
+        }
+
+        Log.i(TAG, "Will send request to: " + nextHop.getAddress());
+        mService.connect(nextHop);
+
+        // Wait until connection is done
+        for (int aux = 0; mService.getState() != BluetoothService.STATE_CONNECTED; aux ++){
+            if (mService.getState() == BluetoothService.STATE_LISTEN){
+                Log.e(TAG, "Failed to connect, listening");
+                mService.start();
+                // Failed to connect send fail notification
+                sendFail(msgID);
+                return;
+            }
+        }
+
+        // If device is the one sending the request
+        if (owner) {
+            // Device is connected, send request
+            Random rn = new Random();
+            int newMsgID = rn.nextInt();
+            // Message -> RQT ; Message ID ; Own MAC ; Data
+            sendMessage("RQT;" + newMsgID + ";" + getOwnMAC() + ";" + message);
+            // Update the response table with own MAC to know when the response is received
+            ((RoutingApp)getApplicationContext()).updateRspTable(newMsgID, getOwnMAC());
+        // If device is forwarding the request
+        }else{
+            // Message -> RQT ; Message ID ; Own MAC ; Data
+            sendMessage("RQT;" + msgID + ";" + getOwnMAC() + ";" + message);
+        }
+    }
+
+    private void sendResponse(int msgID) {
+        Log.i(TAG, "sendResponse(int msgID) " + msgID);
+        // Retrieve the requester's MAC
+        String nextHopMAC = ((RoutingApp)getApplicationContext()).getRspHop(msgID);
+        // If message ID exists in the response table
+        if (nextHopMAC != null){
+            // Get the address of the next hop
+            BluetoothDevice nextHopDevice = mBluetoothAdapter.getRemoteDevice(nextHopMAC);
+            Log.i(TAG, "Will send response to: " + nextHopDevice.getAddress());
+            mService.connect(nextHopDevice);
+
+            // Wait until connection is done
+            for (int aux = 0; mService.getState() != BluetoothService.STATE_CONNECTED; aux ++){
+                if (mService.getState() == BluetoothService.STATE_LISTEN){
+                    Log.e(TAG, "Failed to connect, listening");
+                    mService.start();
+                    return;
+                }
+            }
+            // Send the response message
+            sendMessage("RSP;" + msgID);
+        }else{
+            Log.i(TAG, "MAC for requested Message ID not found");
+        }
+    }
+
+    private void sendFail(int msgID) {
+        Log.i(TAG, "sendFail(int msgID) " + msgID);
+        // Retrieve the requester's MAC
+        String nextHopMAC = ((RoutingApp)getApplicationContext()).getRspHop(msgID);
+        // If message ID exists in the response table
+        if (nextHopMAC != null){
+            // Get the address of the next hop
+            BluetoothDevice nextHopDevice = mBluetoothAdapter.getRemoteDevice(nextHopMAC);
+            Log.i(TAG, "Will send fail notification to: " + nextHopDevice.getAddress());
+            mService.connect(nextHopDevice);
+
+            // Wait until connection is done
+            for (int aux = 0; mService.getState() != BluetoothService.STATE_CONNECTED; aux ++){
+                if (mService.getState() == BluetoothService.STATE_LISTEN){
+                    Log.e(TAG, "Failed to connect, listening");
+                    mService.start();
+                    return;
+                }
+            }
+            // Send the response message
+            sendMessage("FAIL;" + msgID);
+        }else{
+            Log.i(TAG, "MAC for requested Message ID not found");
+        }
+    }
+
+    private void sendMessage(String message) {
+        // Check that we're actually connected before trying anything
+        if (mService.getState() != BluetoothService.STATE_CONNECTED) {
+            Log.e(TAG, "Not connected, can't send message");
+            return;
+        }
+
+        // Check that there's actually something to send
+        if (message.length() > 0) {
+            // Get the message bytes and tell the BluetoothChatService to write
+            byte[] send = message.getBytes();
+            mService.write(send);
+
+            // Reset out string buffer to zero and clear the edit text field
+            mOutStringBuffer.setLength(0);
+        }
+    }
+
+    private void sendFile() {
+        Log.i(TAG, "sendFile()");
+
+        File file = new File(getFilesDir() + "file.mht");
+        int size = (int) file.length();
+        byte[] bytes = new byte[size];
+
+        try {
+            BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
+            buf.read(bytes, 0, bytes.length);
+            buf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mService.writeFile(bytes);
+
+        Log.i(TAG, "sent file with " + bytes.length + " bytes in: " + getFilesDir() + "file.mht");
+    }
+
+    private void analyzeMessage(String message) {
+
+        // Advertising message
+        if (message.contains("ADV")){
+            // Check if new shortest path was found
+            if (Integer.parseInt(message.split(";")[2]) <
+                    ((RoutingApp)getApplicationContext()).getMinHop()){
+                Log.i(TAG, "New best path will advertise");
+                // If so, update table, initiate discovery and advertise new path
+                ((RoutingApp)getApplicationContext()).updateRouteTable(message);
+                discoveryFinished = false;
+                doDiscovery();
+            }else{
+                Log.i(TAG, "New path is not the best will not advertise");
+                // Otherwise update table and continue listening
+                ((RoutingApp)getApplicationContext()).updateRouteTable(message);
+            }
+
+        // Request message
+        }else if (message.contains("RQT")){
+            // Save the message ID
+            msgID = Integer.parseInt(message.split(";")[1]);
+            // Update the response table
+            ((RoutingApp)getApplicationContext()).updateRspTable(
+                    Integer.parseInt(message.split(";")[1]), message.split(";")[2]);
+
+            // If device is not connected to the Internet
+            if (!((RoutingApp)getApplicationContext()).getHasNet()){
+                // Forward the request
+                sendRequest(false, Integer.parseInt(message.split(";")[1]), message.split(";")[3]);
+            // If it is connected, fetch the web page and send the response
+            }else{
+                getPage(message.split(";")[3], Integer.parseInt(message.split(";")[1]));
+            }
+
+        // Response message
+        }else if (message.contains("RSP")){
+
+            // Save message ID to know the file name
+            msgID = Integer.parseInt(message.split(";")[1]);
+
+            // If device is the destination
+            if (((RoutingApp)getApplicationContext()).getRspHop(Integer.parseInt(
+                    message.split(";")[1])).equals(getOwnMAC())){
+                // Request was successfully sent and response was received
+                Log.i(TAG, "Received my response.");
+
+            // Otherwise forward response to destination
+            }else{
+                // Forward the response
+                Log.i(TAG, "Not the final destination will forward response.");
+            }
+        }else if (message.contains("FAIL")){
+            // Save message ID to know the file name
+            msgID = Integer.parseInt(message.split(";")[1]);
+
+            // If device is the destination
+            if (((RoutingApp)getApplicationContext()).getRspHop(Integer.parseInt(
+                    message.split(";")[1])).equals(getOwnMAC())){
+                // Request was successfully sent but response failed
+                Toast.makeText(getApplicationContext(), "Unfortunately there was a problem along " +
+                                "the path. Please try again later.",
+                        Toast.LENGTH_SHORT).show();
+
+                // Otherwise forward response to destination
+            }else{
+                // Forward the failed request
+                Log.i(TAG, "Not the final destination will forward fail notification.");
+                sendFail(msgID);
+            }
+        }
+    }
+
+    private void getPage(String url, final int msgID){
+        Log.i(TAG, "getPage(String url, final int messageID)");
+        //mWebview.setVisibility(View.VISIBLE);
+        mWebview.setWebViewClient(new WebViewClient() {
+              public void onPageFinished(WebView view, String url) {
+                  // Fix to load all pages and not send 0 bytes
+
+                  File file = new File(getFilesDir() + "file.mht");
+
+                  try {
+                      file.createNewFile();
+                  } catch (IOException e) {
+                      e.printStackTrace();
+                  }
+
+                  view.saveWebArchive(getFilesDir() + "file.mht");
+                  //mWebview.setVisibility(View.INVISIBLE);
+
+                  waitForWebPage dloader = new waitForWebPage();
+                  dloader.execute();
+              }
+        });
+        mWebview.loadUrl("https://" + url);
+    }
+
+    @Override
+    public void onBackPressed(){
+        // If a page is being displayed, let the user enter a new URL
+        if (mWebview.getVisibility() == View.VISIBLE) {
+            mWebview.setVisibility(View.INVISIBLE);
+        // Otherwise act normally and go back
+        }else{
+            super.onBackPressed();
+        }
+    }
+
+    /* --- Logic to display the file --- */
+
+    private void loadPage(){
+        Log.i(TAG, "loading page...");
+
+        mWebview.getSettings().setCacheMode( WebSettings.LOAD_CACHE_ELSE_NETWORK );
+        mWebview.setVisibility(View.VISIBLE);
+        // #1 try to send a re-request
+        mWebview.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request,
+                                        WebResourceError error) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Log.i(TAG, "No Internet connection, sending a re-request of: " +
+                            request.getUrl().toString().split("://")[1]);
+                    view.loadUrl("about:blank");
+                    sendRequest(true, -1, request.getUrl().toString().split("://")[1]);
+                }
+            }
+        });
+        mWebview.setWebChromeClient(new WebChromeClient());
+
+        if (Build.VERSION.SDK_INT < 22) {
+            loadArchive();
+        } else {
+            mWebview.loadUrl("file:///" + getFilesDir() + "file.mht");
+        }
+
+        Log.i(TAG, "Loaded page in: file:///" + getFilesDir() + "file.mht");
+    }
+
+    private void loadArchive(){
+        String rawData = null;
+        try {
+            rawData = getStringFromFile(getFilesDir() + "file.mht");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mWebview.loadDataWithBaseURL(null, rawData, "application/x-webarchive-xml", "UTF-8", null);
+    }
+
+    public String getStringFromFile (String filePath) throws Exception {
+        File fl = new File(filePath);
+        FileInputStream fin = new FileInputStream(fl);
+        String ret = convertStreamToString(fin);
+        //Make sure you close all streams.
+        fin.close();
+        return ret;
+    }
+
+    public  String convertStreamToString(InputStream is) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
+        }
+        reader.close();
+        return sb.toString();
+    }
+
+    /* --- End of logic --- */
+
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+
+        // When discovery finds a device
+        if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+            Log.i(TAG, "Found a device.");
+            // Get the BluetoothDevice object from the Intent
+            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            // If new peer not counted already add it to peer list
+            if (!peers.contains(device)) {
+                peers.add(device);
+            }
+            // When discovery is finished, change the Activity title
+        } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+            if(!discoveryFinished) {
+                TextView peerText = (TextView) findViewById(R.id.textViewPeers);
+                Log.i(TAG, "Discovery finished.");
+                // Stop the discovery
+                mBluetoothAdapter.cancelDiscovery();
+                discoveryFinished = true;
+                Toast.makeText(getApplicationContext(), "Discovery finished",
+                        Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Peers found: " + peers.toString());
+                peerText.setText("Peers found: " + peers.toString());
+                advertisePeers();
+            }
+        }
+        }
+    };
+
+    // The Handler that gets information back from the BluetoothChatService
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MESSAGE_STATE_CHANGE:
+                    if(D) Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
+                    switch (msg.arg1) {
+                        case BluetoothService.STATE_CONNECTED:
+                            Log.e(TAG, "Status: connected");
+                            break;
+                        case BluetoothService.STATE_CONNECTING:
+                            Log.e(TAG, "Status: connecting");
+                            break;
+                        case BluetoothService.STATE_LISTEN:
+                            Log.e(TAG, "Status: listen");
+                            break;
+                        case BluetoothService.STATE_NONE:
+                            Log.e(TAG, "Status: none");
+                            break;
+                    }
+                    break;
+                case MESSAGE_WRITE:
+                    byte[] writeBuf = (byte[]) msg.obj;
+                    // construct a string from the buffer
+                    String writeMessage = new String(writeBuf);
+                    // handle sent message
+                    Log.i(TAG, "Sent a new message: " + writeMessage);
+
+                    // If a response was sent follow with the corresponding file
+                    if (writeMessage.contains("RSP;")){
+                        sendFile();
+                    }
+                    break;
+                case MESSAGE_READ:
+                    byte[] readBuf = (byte[]) msg.obj;
+                    // construct a string from the valid bytes in the buffer
+                    String readMessage = new String(readBuf, 0, msg.arg1);
+                    // handle received message
+                    TextView recvText = (TextView) findViewById(R.id.textViewReceived);
+                    Log.i(TAG, "Received a new message: " + readMessage);
+                    recvText.setText(recvText.getText() + "\n" + readMessage);
+
+                    // Restart the Bluetooth Service
+                    if (!readMessage.contains("RSP;")) {
+                        mService.start();
+                    }else {
+                        mService.fileReady = true;
+                    }
+                    analyzeMessage(readMessage);
+                    break;
+                case MESSAGE_DEVICE_NAME:
+                    // save the connected device's name
+                    mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);
+                    Log.i(TAG, "Connected to " + mConnectedDeviceName);
+                    break;
+                case MESSAGE_TOAST:
+                    break;
+
+                case FILE_READ:
+                    Log.i(TAG, "Received a new file");
+
+                    byte[] readFileBuf = (byte[]) msg.obj;
+                    try {
+
+                        File file = new File(getFilesDir() + "file" + msgID + ".mht");
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileOutputStream stream = new FileOutputStream(
+                                getFilesDir() + "file.mht", false);
+                        stream.write(readFileBuf);
+                        stream.flush();
+                        stream.close();
+
+                        Log.i(TAG, "Saved the file in: " + getFilesDir() + "file.mht");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    // Restart the Bluetooth Service
+                    mService.start();
+                    mService.fileReady = false;
+
+                    // If I am the destination
+                    if (((RoutingApp)getApplicationContext()).getRspHop(msgID).equals(getOwnMAC())) {
+                        // Display the page
+                        loadPage();
+                    }else{
+                        sendResponse(msgID);
+                    }
+
+                    break;
+
+                case FILE_WRITE:
+                    byte[] writeFileBuf = (byte[]) msg.obj;
+                    try {
+
+                        File file = new File(getFilesDir() + "file.mht");
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        FileOutputStream stream = new FileOutputStream(
+                                getFilesDir() + "file.mht", false);
+                        stream.write(writeFileBuf);
+                        stream.flush();
+                        stream.close();
+
+                        Log.i(TAG, "Saved the file in: " + getFilesDir() + "file.mht");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    // Display the page
+                    loadPage();
+                    break;
+            }
+        }
+    };
+
+    private class waitForWebPage extends AsyncTask<Void, Void, Void>{
+        File file = new File(getFilesDir() + "file.mht");
+        @Override
+        protected Void doInBackground(Void... params) {
+            Log.i(TAG, "Downloading webpage...");
+            while(!(file.length() > 0)){
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result){
+            Log.i(TAG, "saved web archive in: " + getFilesDir() + "file.mht with " +
+                    file.length() + " bytes");
+            sendResponse(msgID);
+        }
+    }
+}
+
+\end{verbatim}
+
+\section{RoutingApp.java}
+\label{appendix:RoutingApp}
+
+\begin{verbatim}
+package com.example.falcato.btrouting;
+
+import ...
+
+public class RoutingApp extends Application {
+
+    private static final String TAG = "RoutingApp";
+
+    private boolean hasNet;
+    // Table with routing hops
+    public Map<String, Integer> routeTable = new HashMap<>();
+    // Table with MACs corresponding to message ID's
+    public Map<Integer, String> rspTable = new HashMap<>();
+
+    public boolean getHasNet () {
+        Log.i(TAG, "getHasNet()");
+        return hasNet;
+    }
+
+    public void setHasNet (boolean hasNet) {
+        Log.i(TAG, "setHasNet() " + hasNet);
+        this.hasNet = hasNet;
+    }
+
+    public void updateRouteTable (String msg) {
+        Log.i(TAG, "updateRouteTable()");
+        String dest = msg.split(";")[1];
+        int hops = Integer.parseInt(msg.split(";")[2]);
+        
+        routeTable.put(dest, hops);
+    }
+
+    public int getMinHop () {
+        Log.i(TAG, "getMinHop()");
+        int minHop;
+        try {
+            minHop = Collections.min(routeTable.values());
+        }catch (NoSuchElementException e){
+            Log.e(TAG, e.toString());
+            minHop = 16;
+        }
+
+        Log.i(TAG, "Minimal nr of hops is: " + minHop);
+        return minHop;
+    }
+
+    public String getNextHop () {
+        Log.i(TAG, "getNextHop()");
+        int minHop = getMinHop();
+        if (minHop == 16)
+            return null;
+        else
+            return getKeyFromValue(routeTable, minHop);
+    }
+
+    private String getKeyFromValue (Map<String, Integer> hm, Integer value) {
+        Log.i(TAG, "getKeyFromValue()");
+        for (String key : hm.keySet()) {
+            if (hm.get(key).equals(value)) {
+                return key;
+            }
+        }
+        return null;
+    }
+
+    public void updateRspTable (int msgID, String MAC) {
+        Log.i(TAG, "updateRspTable()");
+        rspTable.put(msgID, MAC);
+        Log.i(TAG, "Updated message table: " + rspTable.toString());
+    }
+
+    public String getRspHop (int msgID) {
+        Log.i(TAG, "getRspHop()");
+        if (rspTable.containsKey(msgID))
+            return rspTable.get(msgID);
+        else
+            return null;
+    }
+}
+\end{verbatim}
+
+\section{BluetoothService.java}
+\label{appendix:BluetoothService}
+
+\begin{verbatim}
+package com.example.falcato.btrouting;
+
+import ...
+
+public class BluetoothService {
+    // Debugging
+    private static final String TAG = "BluetoothService";
+    private static final boolean D = true;
+
+    // Name for the SDP record when creating server socket
+    private static final String NAME_INSECURE = "BluetoothRouteInsecure";
+
+    // Unique UUID for this application
+    private static final UUID MY_UUID_INSECURE =
+            UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
+
+    // Member fields
+    private final BluetoothAdapter mAdapter;
+    private final Handler mHandler;
+    private AcceptThread mInsecureAcceptThread;
+    private ConnectThread mConnectThread;
+    private ConnectedThread mConnectedThread;
+    private int mState;
+    boolean fileReady = false;
+
+    // Constants that indicate the current connection state
+    public static final int STATE_NONE = 0;       // we're doing nothing
+    public static final int STATE_LISTEN = 1;     // now listening for incoming connections
+    public static final int STATE_CONNECTING = 2; // now initiating an outgoing connection
+    public static final int STATE_CONNECTED = 3;  // now connected to a remote device
+
+
+    /**
+     * Constructor. Prepares a new BluetoothChat session.
+     * @param context  The UI Activity Context
+     * @param handler  A Handler to send messages back to the UI Activity
+     */
+    public BluetoothService(Context context, Handler handler) {
+        mAdapter = BluetoothAdapter.getDefaultAdapter();
+        mState = STATE_NONE;
+        mHandler = handler;
+    }
+
+    /**
+     * Set the current state of the chat connection
+     * @param state  An integer defining the current connection state
+     */
+    private synchronized void setState(int state) {
+        if (D) Log.i(TAG, "setState() " + mState + " -> " + state);
+        mState = state;
+
+        // Give the new state to the Handler so the UI Activity can update
+        mHandler.obtainMessage(BtActivity.MESSAGE_STATE_CHANGE, state, -1).sendToTarget();
+    }
+
+    /**
+     * Return the current connection state. */
+    public synchronized int getState() {
+        return mState;
+    }
+
+    /**
+     * Start the chat service. Specifically start AcceptThread to begin a
+     * session in listening (server) mode. Called by the Activity onResume() */
+    public synchronized void start() {
+        if (D) Log.i(TAG, "start");
+
+        // Cancel any thread attempting to make a connection
+        if (mConnectThread != null) {mConnectThread.cancel(); mConnectThread = null;}
+
+        // Cancel any thread currently running a connection
+        if (mConnectedThread != null) {mConnectedThread.cancel(); mConnectedThread = null;}
+
+        setState(STATE_LISTEN);
+
+        // Start the thread to listen on a BluetoothServerSocket
+        if (mInsecureAcceptThread == null) {
+            mInsecureAcceptThread = new AcceptThread();
+            mInsecureAcceptThread.start();
+        }
+    }
+
+    /**
+     * Start the ConnectThread to initiate a connection to a remote device.
+     * @param device  The BluetoothDevice to connect
+     */
+    public synchronized void connect(BluetoothDevice device) {
+        if (D) Log.i(TAG, "connect to: " + device);
+
+        // Cancel any thread attempting to make a connection
+        if (mState == STATE_CONNECTING) {
+            if (mConnectThread != null) {mConnectThread.cancel(); mConnectThread = null;}
+        }
+
+        // Cancel any thread currently running a connection
+        if (mConnectedThread != null) {mConnectedThread.cancel(); mConnectedThread = null;}
+
+        // Start the thread to connect with the given device
+        mConnectThread = new ConnectThread(device);
+        mConnectThread.start();
+        setState(STATE_CONNECTING);
+    }
+
+    /**
+     * Start the ConnectedThread to begin managing a Bluetooth connection
+     * @param socket  The BluetoothSocket on which the connection was made
+     * @param device  The BluetoothDevice that has been connected
+     */
+    public synchronized void connected(BluetoothSocket socket, BluetoothDevice
+            device) {
+        if (D) Log.i(TAG, "connected");
+
+        // Cancel the thread that completed the connection
+        if (mConnectThread != null) {mConnectThread.cancel(); mConnectThread = null;}
+
+        // Cancel any thread currently running a connection
+        if (mConnectedThread != null) {mConnectedThread.cancel(); mConnectedThread = null;}
+
+        // Cancel the accept thread because we only want to connect to one device
+        if (mInsecureAcceptThread != null) {
+            mInsecureAcceptThread.cancel();
+            mInsecureAcceptThread = null;
+        }
+
+        // Start the thread to manage the connection and perform transmissions
+        mConnectedThread = new ConnectedThread(socket);
+        mConnectedThread.start();
+
+        // Send the name of the connected device back to the UI Activity
+        Message msg = mHandler.obtainMessage(BtActivity.MESSAGE_DEVICE_NAME);
+        Bundle bundle = new Bundle();
+        bundle.putString(BtActivity.DEVICE_NAME, device.getName());
+        msg.setData(bundle);
+        mHandler.sendMessage(msg);
+
+        setState(STATE_CONNECTED);
+    }
+
+    /**
+     * Stop all threads
+     */
+    public synchronized void stop() {
+        if (D) Log.i(TAG, "stop");
+
+        if (mConnectThread != null) {
+            mConnectThread.cancel();
+            mConnectThread = null;
+        }
+
+        if (mConnectedThread != null) {
+            mConnectedThread.cancel();
+            mConnectedThread = null;
+        }
+
+        if (mInsecureAcceptThread != null) {
+            mInsecureAcceptThread.cancel();
+            mInsecureAcceptThread = null;
+        }
+        setState(STATE_NONE);
+    }
+
+    /**
+     * Write to the ConnectedThread in an unsynchronized manner
+     * @param out The bytes to write
+     * @see ConnectedThread#write(byte[])
+     */
+    public void write(byte[] out) {
+        // Create temporary object
+        ConnectedThread r;
+        // Synchronize a copy of the ConnectedThread
+        synchronized (this) {
+            if (mState != STATE_CONNECTED) return;
+            r = mConnectedThread;
+        }
+        // Perform the write unsynchronized
+        r.write(out);
+    }
+
+    public void writeFile(byte[] out) {
+        Log.i(TAG, "writeFile(byte[] out)");
+        // Create temporary object
+        ConnectedThread r;
+        // Synchronize a copy of the ConnectedThread
+        synchronized (this) {
+            if (mState != STATE_CONNECTED) return;
+            r = mConnectedThread;
+        }
+        // Perform the write unsynchronized
+        r.writeFile(out);
+    }
+
+    /**
+     * Indicate that the connection attempt failed and notify the UI Activity.
+     */
+    private void connectionFailed() {
+        Log.i(TAG, "connectionFailed()");
+        // Send a failure message back to the Activity
+        Message msg = mHandler.obtainMessage(BtActivity.MESSAGE_TOAST);
+        Bundle bundle = new Bundle();
+        bundle.putString(BtActivity.TOAST, "Unable to connect device");
+        msg.setData(bundle);
+        mHandler.sendMessage(msg);
+
+        // Start the service over to restart listening mode
+        BluetoothService.this.start();
+    }
+
+    /**
+     * Indicate that the connection was lost and notify the UI Activity.
+     */
+    private void connectionLost() {
+        Log.i(TAG, "connectionLost()");
+        // Send a failure message back to the Activity
+        Message msg = mHandler.obtainMessage(BtActivity.MESSAGE_TOAST);
+        Bundle bundle = new Bundle();
+        bundle.putString(BtActivity.TOAST, "Device connection was lost");
+        msg.setData(bundle);
+        mHandler.sendMessage(msg);
+
+        // Start the service over to restart listening mode
+        BluetoothService.this.start();
+    }
+
+    /**
+     * This thread runs while listening for incoming connections. It behaves
+     * like a server-side client. It runs until a connection is accepted
+     * (or until cancelled).
+     */
+    private class AcceptThread extends Thread {
+        // The local server socket
+        private final BluetoothServerSocket mmServerSocket;
+
+        public AcceptThread() {
+            BluetoothServerSocket tmp = null;
+
+            // Create a new listening server socket
+            try {
+                tmp = mAdapter.listenUsingInsecureRfcommWithServiceRecord(
+                        NAME_INSECURE, MY_UUID_INSECURE);
+            } catch (IOException e) {
+                Log.e(TAG, "Listen() failed", e);
+            }
+            mmServerSocket = tmp;
+        }
+
+        public void run() {
+            if (D) Log.i(TAG, "BEGIN mAcceptThread" + this);
+            setName("AcceptThread");
+
+            BluetoothSocket socket = null;
+
+            // Listen to the server socket if we're not connected
+            while (mState != STATE_CONNECTED) {
+                try {
+                    // This is a blocking call and will only return on a
+                    // successful connection or an exception
+                    socket = mmServerSocket.accept();
+                } catch (IOException e) {
+                    Log.e(TAG, "Accept() failed", e);
+                    break;
+                }
+
+                // If a connection was accepted
+                if (socket != null) {
+                    synchronized (BluetoothService.this) {
+                        switch (mState) {
+                            case STATE_LISTEN:
+                            case STATE_CONNECTING:
+                                // Situation normal. Start the connected thread.
+                                connected(socket, socket.getRemoteDevice());
+                                break;
+                            case STATE_NONE:
+                            case STATE_CONNECTED:
+                                // Either not ready or already connected. Terminate new socket.
+                                try {
+                                    socket.close();
+                                } catch (IOException e) {
+                                    Log.e(TAG, "Could not close unwanted socket", e);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            if (D) Log.i(TAG, "END mAcceptThread");
+
+        }
+
+        public void cancel() {
+            if (D) Log.i(TAG, "Cancel " + this);
+            try {
+                mmServerSocket.close();
+            } catch (IOException e) {
+                Log.e(TAG, "Close() of server failed", e);
+            }
+        }
+    }
+
+    /**
+     * This thread runs while attempting to make an outgoing connection
+     * with a device. It runs straight through; the connection either
+     * succeeds or fails.
+     */
+    private class ConnectThread extends Thread {
+        private final BluetoothSocket mmSocket;
+        private final BluetoothDevice mmDevice;
+
+        public ConnectThread(BluetoothDevice device) {
+            mmDevice = device;
+            BluetoothSocket tmp = null;
+
+            // Get a BluetoothSocket for a connection with the
+            // given BluetoothDevice
+            try {
+
+                tmp = device.createInsecureRfcommSocketToServiceRecord(
+                        MY_UUID_INSECURE);
+            } catch (IOException e) {
+                Log.e(TAG, "Create() failed", e);
+            }
+            mmSocket = tmp;
+        }
+
+        public void run() {
+            Log.i(TAG, "BEGIN mConnectThread");
+            setName("ConnectThread");
+
+            // Always cancel discovery because it will slow down a connection
+            mAdapter.cancelDiscovery();
+
+            // Make a connection to the BluetoothSocket
+            try {
+                // This is a blocking call and will only return on a
+                // successful connection or an exception
+                mmSocket.connect();
+            } catch (IOException e) {
+                // Close the socket
+                try {
+                    mmSocket.close();
+                } catch (IOException e2) {
+                    Log.e(TAG, "Unable to close() socket during connection failure", e2);
+                }
+                connectionFailed();
+                return;
+            }
+
+            // Reset the ConnectThread because we're done
+            synchronized (BluetoothService.this) {
+                mConnectThread = null;
+            }
+
+            // Start the connected thread
+            connected(mmSocket, mmDevice);
+        }
+
+        public void cancel() {
+            try {
+                mmSocket.close();
+            } catch (IOException e) {
+                Log.e(TAG, "Close() of connect socket failed", e);
+            }
+        }
+    }
+
+    /**
+     * This thread runs during a connection with a remote device.
+     * It handles all incoming and outgoing transmissions.
+     */
+    private class ConnectedThread extends Thread {
+        private final BluetoothSocket mmSocket;
+        private final InputStream mmInStream;
+        private final OutputStream mmOutStream;
+
+        public ConnectedThread(BluetoothSocket socket) {
+            Log.i(TAG, "Create ConnectedThread");
+            mmSocket = socket;
+            InputStream tmpIn = null;
+            OutputStream tmpOut = null;
+
+            // Get the BluetoothSocket input and output streams
+            try {
+                tmpIn = socket.getInputStream();
+                tmpOut = socket.getOutputStream();
+
+            } catch (IOException e) {
+                Log.e(TAG, "temp sockets not created", e);
+            }
+
+            mmInStream = tmpIn;
+            mmOutStream = tmpOut;
+        }
+
+        public void run() {
+            Log.i(TAG, "BEGIN mConnectedThread");
+            byte[] buffer = new byte[8192];
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            int bytes;
+
+            // Keep listening to the InputStream while connected
+            //while (no notification received)
+            while (true) {
+                try {
+
+                    // Read from the InputStream
+                    bytes = mmInStream.read(buffer);
+
+                    if (!fileReady) {
+                        // Send the obtained bytes to the UI Activity
+                        Log.e(TAG, "nr of bytes: " + bytes);
+                        mHandler.obtainMessage(BtActivity.MESSAGE_READ, bytes, -1, buffer)
+                                .sendToTarget();
+                    }else{
+                        // Join the chunks of the file until we get the full file
+                        Log.e(TAG, "Joining file chunks of " + bytes + "bytes");
+                        output.write(buffer, 0, bytes);
+
+                        // If we received the full file
+                        if(bytes < 990) {
+                            byte[] out = output.toByteArray();
+                            output.flush();
+                            output.close();
+                            Log.e(TAG, "nr of bytes file: " + out.length);
+                            mHandler.obtainMessage(BtActivity.FILE_READ, out.length, -1, out)
+                                    .sendToTarget();
+                        }
+                    }
+
+                } catch (IOException e) {
+                    Log.e(TAG, "disconnected", e);
+                    connectionLost();
+                    break;
+                }
+            }
+        }
+
+        /**
+         * Write to the connected OutStream.
+         * @param buffer  The bytes to write
+         */
+        public void write(byte[] buffer) {
+            Log.i(TAG, "write(byte[] buffer)");
+            try {
+                mmOutStream.write(buffer);
+                mmOutStream.flush();
+                // Share the sent message back to the UI Activity
+                mHandler.obtainMessage(BtActivity.MESSAGE_WRITE, -1, -1, buffer)
+                        .sendToTarget();
+            } catch (IOException e) {
+                Log.e(TAG, "Exception during write", e);
+            }
+        }
+
+        public void writeFile(byte[] buffer) {
+            Log.i(TAG, "writeFile(byte[] buffer)");
+            try {
+                // Send the file in chunks of 990 bytes
+                Double nrSends = Math.ceil((double) buffer.length / (double) 990);
+                Log.i(TAG, "will send " + Math.round(nrSends) + " chunks");
+                for (int currSend = 0; currSend < Math.round(nrSends); currSend ++){
+                    if ((currSend + 1) * 990 > buffer.length) {
+                        Log.i(TAG, "sending final chunk from " + (currSend * 990) + " to "
+                        + (currSend * 990 + (buffer.length - (currSend * 990))));
+                        mmOutStream.write(buffer, currSend * 990, (buffer.length -
+                        (currSend * 990)));
+                        mmOutStream.flush();
+                        Log.i(TAG, "sent final chunk");
+                    }else {
+                        Log.i(TAG, "sending chunk from " + (currSend * 990) + " to " + 
+                        ((currSend * 990) + 990));
+                        mmOutStream.write(buffer, currSend * 990, 990);
+                        mmOutStream.flush();
+                        Log.i(TAG, "sent chunk");
+                    }
+                }
+
+                // Debug purposes
+                /*mHandler.obtainMessage(BtActivity.FILE_WRITE, buffer.length, -1, buffer)
+                        .sendToTarget();*/
+
+
+            } catch (IOException e) {
+                Log.e(TAG, "Exception during write file", e);
+            }
+        }
+
+        public void cancel() {
+            try {
+                mmSocket.close();
+            } catch (IOException e) {
+                Log.e(TAG, "Close() of connect socket failed", e);
+            }
+        }
+    }
+}
+\end{verbatim}
+
+
+
+
+
+
+

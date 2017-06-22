@@ -1,0 +1,127 @@
+\begin{thebibliography}{10}
+
+\bibitem{IEEE80211s}
+W.~S. Conner, J.~Kruys, K.~J. Kim, and J.~C. Zuniga, ``Overview of the
+  amendment for wireless local area mesh networking,'' 2006.
+
+\bibitem{routeMultiGroup}
+C.~Casetti, C.~F. Chiasserini, L.~C. Pelle, C.~D. Valle, Y.~Duan, and
+  P.~Giaccone, ``Content-centric routing in wi-fi direct multi-group
+  networks,'' 2014.
+
+\bibitem{multiHopD2D}
+C.~Funai, C.~Tapparello, and W.~Heinzelman, ``Supporting multi-hop
+  device-to-device networks through wifi direct multi-group networking,'' 2015.
+
+\bibitem{emc}
+A.~A. Shahin and M.~Younis, ``Efficient multi-group formation and communication
+  protocol for wi-fi direct,'' 2015.
+
+\bibitem{manet}
+K.~Liu, W.~Shen, B.~Yin, X.~Cao, L.~X. Cai, and Y.~Cheng, ``Development of
+  mobile ad-hoc networks over wi-fi direct with off-the-shelf android phones,''
+  2016.
+
+\bibitem{dpp}
+Statista, ``Average number of connected devices used per person in selected
+  countries in 2014.''
+  \url{https://www.statista.com/statistics/333861/connected-devices-per-person-in-selected-countries/},
+  2014.
+
+\bibitem{IEEE80211}
+I.~Poole, ``Ieee 802.11n standard.''
+  \url{http://www.radio-electronics.com/info/wireless/wi-fi/ieee-802-11n.php}.
+
+\bibitem{security}
+S.~Choudhuri, ``Understanding the difference between wireless encryption
+  protocols.''
+  \url{http://blogs.cisco.com/smallbusiness/understanding-the-difference-between-wireless-encryption-protocols}.
+
+\bibitem{contentcentric}
+J.~J. Garcia-Luna-Aceves, ``Content-centric networking.''
+  \url{https://www.ietf.org/proceedings/65/slides/DTNRG-12.pdf}.
+
+\bibitem{aodv}
+C.~Perkins, E.~Belding-Royer, and S.~Das, ``Request for comments: 3561,'' 2003.
+
+\bibitem{dsdv}
+C.~Perkins and P.~Bhagwat, ``Highly dynamic destination-sequenced
+  distance-vector routing (dsdv) for mobile computers,'' 1994.
+
+\bibitem{threads}
+Oracle, ``Class thread.''
+  \url{http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html}.
+
+\bibitem{constructors}
+Oracle, ``Providing constructors for your classes.''
+  \url{https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html}.
+
+\bibitem{inputStream}
+Oracle, ``Class inputstream.''
+  \url{https://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html}.
+
+\bibitem{outputStream}
+Oracle, ``Class outputstream.''
+  \url{https://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html}.
+
+\bibitem{ripprotocol}
+G.~Malkin, ``Request for comments: 2453,'' 1998.
+
+\bibitem{map}
+Oracle, ``Interface map.''
+  \url{https://docs.oracle.com/javase/7/docs/api/java/util/Map.html}.
+
+\bibitem{arrays}
+Oracle, ``Arrays.''
+  \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html}.
+
+\bibitem{btandroid}
+A.~Developers, ``Api guides: Bluetooth connectivity.''
+  \url{https://developer.android.com/guide/topics/connectivity/bluetooth.html#ConnectingDevices}.
+
+\bibitem{btclass}
+A.~Developers, ``Bluetoothclass.device.''
+  \url{https://developer.android.com/reference/android/bluetooth/BluetoothClass.Device.html#PHONE_SMART}.
+
+\bibitem{msgclass}
+A.~Developers, ``Message.''
+  \url{https://developer.android.com/reference/android/os/Message.html}.
+
+\bibitem{edittext}
+A.~Developers, ``Edittext.''
+  \url{https://developer.android.com/reference/android/widget/EditText.html}.
+
+\bibitem{webview}
+A.~Developers, ``Webview.''
+  \url{https://developer.android.com/reference/android/webkit/WebView.html}.
+
+\bibitem{random}
+Oracle, ``Random.''
+  \url{https://docs.oracle.com/javase/8/docs/api/java/util/Random.html}.
+
+\bibitem{async}
+A.~Developers, ``Asynctask.''
+  \url{https://developer.android.com/reference/android/os/AsyncTask.html}.
+
+\bibitem{bis}
+Oracle, ``Bufferedinputstream.''
+  \url{https://docs.oracle.com/javase/7/docs/api/java/io/BufferedInputStream.html}.
+
+\bibitem{stack}
+S.~. HimalayanTahr, ``Save webpage for offline use and invoke the same
+  android.''
+  \url{https://stackoverflow.com/questions/17484115/save-webpage-for-offline-use-and-invoke-the-same-android}.
+
+\bibitem{bluetooth}
+B.~S.~I. Group, ``How it works | bluetooth technology website.''
+  \url{https://www.bluetooth.com/what-is-bluetooth-technology/how-it-works}.
+
+\bibitem{wfdrange}
+W.-F. Alliance, ``How far does a wi-fi direct connection travel?.''
+  \url{http://www.wi-fi.org/knowledge-center/faq/how-far-does-a-wi-fi-direct-connection-travel}.
+
+\bibitem{txpower}
+A.~Boukerche, ``Algorithms and protocols for wireless, mobile ad hoc
+  networks,'' 2009.
+
+\end{thebibliography}

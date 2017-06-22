@@ -1,0 +1,66 @@
+\chapter{State of the Art}
+\label{chapter:soa}
+
+\section{Communication Technologies Supported by Mobile Devices}
+\label{sec:commtec}
+
+\subsection{Mobile Networks Technologies}
+\label{subsection:mobtec}
+
+The first form of communication on mobile devices where the mobile cellular telecommunications provided by the Public Land Mobile Network. At first they did not have so many features as we know them now, they were limited to basic voice calls and short text messages. As devices became more sophisticated so did mobile networks, including new features, such as Internet connections and device to device communication.
+
+Mobile networks have become common place, \textit{i.e.}, people make millions of phone calls and text messages everyday, using the service providers' \glspl{BS} to enter a network, where their message/phone call is being routed to its destination. This said, it is important in the scope of this work to have some understanding on how devices communicate with each other using these mobile communication standards.
+
+In this subsection we will briefly present the existing standards for mobile cellular networks and their evolution, passing from 2G, 3G and 4G, emphasizing this last one.
+
+\subsubsection{2G: GSM}
+
+\gls{GSM} is a standard, created by European Telecommunication Standards Institute, to describe second generation cellular networks. These networks differ from the first generation due to the fact that they were no longer analog, as in 1G, and became digital, allowing for voice as well as text transfer.
+
+\gls{GSM}'s architecture can be seen as hierarchical, with components ranging from \glspl{MS} to \glspl{MSC}. \glspl{MS}, the devices, have a unique number, with which a \gls{BS} can identify each one of the \glspl{MS} it controls. A \gls{BSC} controls multiple \glspl{BS} to allocate radio channels, manage call handover between \glspl{BS} and control their power levels, in order to avoid muffling the transmission of other \glspl{MS}. Finally, a \gls{MSC}, in charge of multiple \glspl{BS} connects to a Gateway \gls{MSC} where mobile registration and authentication are made.
+
+\gls{GSM} uses the air interface to transfer information, being a wireless way of communication, specifically, it uses \gls{FDD}, to separate the uplink and downlink frequencies, 890-915MHz and 935-960MHz, respectively. Then divides each block of frequencies into smaller channels, 125 channels of 200kHz each, using \gls{FDMA}. In each \gls{FDMA} channel it's given a time slot for each \gls{MS} to use, using \gls{TDMA}. Using this methodology for medium access, \gls{GSM} allows for a data rate of 9.6kbps per user, after enctryption and error control overhead.
+
+\gls{GSM}'s main technologies are voice communications, \gls{SIM} authentication, encryption and accounting information, handover, enabling \glspl{MS} to move and connect to a different \gls{BS} maintaining the service and SMS (Short Message Service), allowing for text transfer up to 160 characters, sent to one or multiple destinations.
+
+In order to improve \gls{GSM}, \gls{GPRS} was introduced, also known as the 2.5G networks, adding two new elements to the previous \gls{GSM} architecture, a service support node for security, mobility and access control, a gateway support node for establishing connections to external packet switched networks. Although not much improvement on data rate was made on \gls{GPRS}, soon came \gls{EDGE}, which combined \gls{GPRS} with different modulations, improving the spectral efficiency of each channel and allowing for data rates up to 384kbps.
+
+\gls{GSM} requires heavy resource planning, \textit{i.e.}, frequency and time planning and slot assignment, meaning each user has a dedicated time and frequency and thus the number of users in a cell does not influence the cell size.
+
+\subsubsection{3G: UMTS}
+
+\gls{UMTS} was the natural 3G evolution of the \gls{GSM}/\gls{GPRS} netowrk. It used the previously created \gls{GPRS} architecture and improved it using different \gls{MAC} techniques to improve even further spectral efficiency. The architecture of \gls{UMTS} is divided into radio access network, \gls{UTRAN}, in charge of managing cell-level mobility, and \gls{RNS} and air interface, \gls{UTRA}, similar to \gls{GPRS}. Now \gls{UTRAN} controls multiple \glspl{RNS}, who is responsible for handover decisions. The \gls{UMTS} network operates in parallel with the previously established \gls{GSM}/\gls{GPRS} network.
+
+In \gls{UMTS} transmission is made over two 5MHz \gls{FDD} channels, using \gls{DSSS}, improving both the data rate and security of transmissions. \gls{W-CDMA} is now used instead of \gls{FDMA} and \gls{TDMA}, each user has a chipping sequence with which messages are encoded, in the destination, with the same chipping sequence the reverse process is made and the message is transmitted, allowing for similar data rates as \gls{EDGE} and users to transmit simultaneously with little interference, depending on the number of users.
+
+\gls{UMTS} requires heavy power control, because the source can distinguish each user via their chipping sequences, but if one user muffles another user only one message is received in the destination, thus it is needed to control the power with which each user will transmit. This means the more users transmit simultaneously, more interference is created, assuming non ideal conditions, thus having to reduce cell size to compensate for this interference, leading to more complex cell planning.
+
+In order to enchance the data rates of \gls{UMTS}, \gls{HSPA} was introduced, which is an evolution of \gls{W-CDMA}, 3.5G networks. This standard improved upling and downlink speeds, by adding higher-order modulation, \textit{e.g.}, 16QAM or 64QAM, and a more efficient retransmission mechanism in the downlink channel and by allowing parallel transmissions of multiple users, also known as \gls{MIMO}, reaching rates up to 168Mbps and 22Mbps, respectively.
+
+\subsubsection{4G: LTE/LTE-A}
+
+\gls{LTE}, came to meet the specified requirements in International Mobile Telecommunications-Advanced, issued by ITU-R. But since it did not meet all the requirements to be considered a 4G network, it was considered a 3.9G network. It introduced an exclusively IP-based packet-switching core network, denominated \gls{EPC}, and it targets the increase of quality of service, spectrum efficiency and reduced cost.
+
+\gls{EPC} introduced new elements to the existing network, a Packet Data Network Gateway, serving as the termination of \gls{EPC} towards Internet, providing \gls{IP} services, address allocation, packet inspection and policy enforcement, a Mobility Management Entity, responsible for location tracking, paging, roaming and handover, and a Policy Charging Rules Function to manage the quality of service provided.
+
+\gls{LTE} uses multiple frequency bands from 700MHz to 2600MHz, with a flexible bandwidth ranging from 1.4MHz to 20MHz, using both \gls{FDD}, \gls{TDD} and a combination of these two methods. This combined with \gls{OFDM} and \gls{MIMO}, for \gls{MAC}, allows \gls{LTE} to reach data rates of 326Mbps for downlink. In uplink a \gls{SC-FDMA} is used allowing for data rates up to 86Mbps. These data rates are considerably higher than the ones reached by \gls{UMTS}.
+
+In order to further improve data rates on \gls{LTE}, \gls{LTE}-Advanced was introduced. This new network meets the requirements to be considered a 4G network, thus it is where 4G networks were actually introduced. Reaching up to 3Gbps for downlink and 1.5Gbps for uplink, Release 10, \gls{LTE}-Advance immensely improves data rates by using a much wider channel frequency and higher-order \gls{MIMO}, up to 100MHz, also improving on spectral efficiency.
+
+A new type of networks is also introduced, the \glspl{HetNet}, created by deploying a low-power \gls{BS} at cell edges to enhance network perfomance. Three types of cells are created with this network: micro or pico cells, where a relay node is used to extend the service to other devices. Femto cells, for indoor coverage at home, offices or malls, where a Home eNodeB serves as relay node for devices inside the femto cell.
+
+Considered for 4G \gls{LTE}-Advanced was the concept of D2D communications, creating direct links between devices within a small area. This technology would enable the linking of devices by using the cellular spectrum, allowing for data to be transferred from one to the other over short distances, but using a direct connection. This form of device to device has a lot of applications, \textit{e.g.}, in disaster scenarios, where the access to the infrastructure is denied, or when the infrastructure is overloaded in \textit{e.g.}, large public events.
+
+4G \gls{LTE}-Advanced D2D was a feature in Release 12 and brought some benefits, such as reliable and persistent communication, meaning it persists if the \gls{LTE} network is disrupted, data rates, when the distance to an \gls{BS} is considerable and interference reduction, by not having to communicate directly with the \gls{BS} overloading the network. There are of course some issues to be addressed with this communication, such as the authorization and authentication of \glspl{MS} and the fact that inter-operator communication may not be approved by the different operators, limiting the possible links.
+
+
+
+
+
+
+
+
+
+
+
+

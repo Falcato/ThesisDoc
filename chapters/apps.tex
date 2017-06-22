@@ -1,0 +1,54 @@
+\section{Ad hoc Networking Applications in Android}
+\label{sec:apps}
+
+In this section some Android applications that make use of ad hoc networking will be presented, as well as the toolkits on which their development was based, if applicable. It is important in the scope of this work to know what are the offers on today's market on the ad hoc networking, to understand what has been done and what remains to be done and improved. These applications specifically make use of Wi-Fi Direct technology to establish communications or discover peers. It is worth mention that many other applications exist that create ad hoc networks but we are interested in the ones that use this technology in particular, since it will be the base to this work.
+
+\subsection{FireChat}
+
+FireChat is a cross-platform application that allows users to live chat with each other without access to the cellular or infrastructured network. It uses Bluetooth, Wi-Fi Direct or Apple Multipeer Connectivity to provide peer communication between devices.
+
+FireChat is useful when there is a large concentration of users creating traffic that can, possibly, create some congestion in the infrastructured network. By using FireChat users are able to communicate between themselves with minimum delay, offloading the network and being independent on any service provider.
+
+Users can create or join groups, \textit{a.k.a.} chat rooms, to communicate with other users in the same group. Messages can be sent to multiple or single destinations, also messages can be either private or public: in the first case only the selected receiver/receivers will be able to see the message. In the second case the message is broadcasted to all \glspl{GM} that form the chat room.
+
+When a user sends a private message to another device, a private group is automatically created. However, senders might want to reach devices outside the groups where they are inserted, in that case the message is routed across the group as a private message to a \gls{GM} that is connected to the infrastructure and can send the message to the destination, that will receive it upon establishing Internet connection.
+
+FireChat also allows for other features, such as blocking the communication with specific users, sending of photos, following other users' FireChat activity, \textit{etc.}.
+
+This application is built with MeshKit, a \gls{SDK} module with methods allowing for P2P mesh connectivity within devices using this module. It is built over Bluetooth, \gls{BLE}, Wi-Fi Direct, ANT and other wireless protocols.
+
+It works on three different mechanisms: cloud to mesh where devices connected to the Internet receive data from this link and share it with the other devices within its group, using one of the technologies mentioned above. The packets hop from device to device until it reaches the destination. This mechanism uses broadcast to diffuse the packets through the network.
+
+The second mechanism is mesh to cloud where devices connected to the Internet forward data from devices without Internet connection but with a P2P connection established with the gateway devices, \textit{i.e.} the ones connected to the Internet.
+
+Finally, the peer-to-peer mechanism, where the Internet is not accessed and devices transmit data between themselves using only the P2P link. Data is routed within the groups to reach its destination. Multicast or unicast transmissions can be used.
+
+\subsection{Uepaa!}
+\label{subsec:uepaa}
+
+Uepaa! is one of the fastest growing P2P software companies, alongside with OpenGarden, responsible for FireChat. Uepaa! created Uepaa! Safety App, an application that aims to provide a security service for users who spend time outdoors and where cellular or Internet connection might not be available, such as mountaineers.
+
+The app allows users to connect directly to the companies emergency call center even if no mobile network coverage is available in the area. This is achieved by forwarding the rescue message to users in the area using Uepaa!'s application. Similarly to FireChat's peer-to-cloud mechanism, in Ueppa! Safety App the message is routed through devices in the are until a device has a connection with either a mobile network or the Internet, and the rescue message, with the user's location is then sent to Uepaa!'s call center where the user can get assistance.
+
+Uepaa! also developed the p2pkit a cross-platform \gls{SDK} that allows for P2P transmission of beacons, with configurable information. P2pKit also focuses on the battery consumption, since it can be used in battery sensitive applications such as Uepaa! Safety App. It provides P2P communication with all the associated processes, such as discovery and formation of groups. Range estimation on who are the closest peers and how close are they is also included in p2pkit modules, which can be useful to efficiently manage the battery of the device by sending only the beacons to the closest peers.
+
+P2pkit is the base for different applications. Nearby devices using p2pkit are notified when a proximity event takes place and, although the principle is the same, applications are tailored to respond differently to certain types of events, \textit{e.g.} Uepaa! Safety App responds to the event of receiving a beacon by checking the device's Internet or mobile signal and tries to forward the message to the call center. other applications might trigger other responses, such as notifications to the current user, not forwarding the data but storing it and displaying it in the device.
+
+\subsection{Murmur}
+
+Murmur is an open-source, anonymous messaging application. Users can communicate with one another without Internet or mobile connection, similarly to the applications described above. However, Murmur uses Wi-Fi Direct and Bluetooth technologies to establish communications between the devices, creating a \gls{DTN} in which the P2P transmission of messages occurs.
+
+Much like every other P2P network, the more users Murmur has, the faster transmission of data is. Messages are broadcasted over the network and if no device is in the vicinities of the sender, the message is queued for posterior transmission, thus the delay tolerant network designation. Murmur allows users to post messages to the network, a system to upvote, store, share and search for posts.
+
+The discovery and connection between devices is done using both Wi-Fi Direct and Bluetooth: each user advertises it is running Murmur via the Wi-Fi Direct interface with a specific name, "MURMUR:Bluetooth MAC", constantly searching for peers using a similar device name, \textit{i.e.}, starting by "MURMUR". If a discovery is made, the application filters the Bluetooth \gls{MAC} address from the device's name and creates a Bluetooth connection, exchanging the message. The actual exchange starts with a handshake where each device sends its contact list and the amount of shared contacts between the two is calculated. Secondly, the number of expected messages to be exchanged is sent and, upon agreement, each device transmits until that number is reached. Finally, when the exchange is complete, the received messages are saved to a local database and the devices set a backoff time before establishing other connections, avoiding redundant exchanges and unnecessary battery consumption.
+
+
+
+
+
+
+
+
+
+
+
