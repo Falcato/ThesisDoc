@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  22 JUN 2017 20:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  23 JUN 2017 02:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1034,7 +1034,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 7.
-<images/context.pdf, id=529, 472.76625pt x 323.2075pt>
+<images/context.pdf, id=535, 472.76625pt x 323.2075pt>
 File: images/context.pdf Graphic file (type pdf)
 
 <use images/context.pdf>
@@ -1083,14 +1083,14 @@ ed re-quire-ments in In-ter-na-tional Mo-bile Telecommunications-
 
 
 ]
-<images/infranet.png, id=749, 436.5108pt x 204.765pt>
+<images/infranet.png, id=755, 436.5108pt x 204.765pt>
 File: images/infranet.png Graphic file (type png)
 
 <use images/infranet.png>
 Package pdftex.def Info: images/infranet.png used on input line 30.
 (pdftex.def)             Requested size: 455.24411pt x 213.5567pt.
  [9 <./images/infranet.png>]
-<images/adhocnet.jpg, id=773, 450.18187pt x 336.50719pt>
+<images/adhocnet.jpg, id=779, 450.18187pt x 336.50719pt>
 File: images/adhocnet.jpg Graphic file (type jpg)
 
 <use images/adhocnet.jpg>
@@ -1105,7 +1105,7 @@ l-ized point of fail-ure, peer-to-peer file/packet
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10 <./images/adhocnet.jpg>] <images/ieee80211s.pdf, id=800, 293.31984pt x 172
+ [10 <./images/adhocnet.jpg>] <images/ieee80211s.pdf, id=806, 293.31984pt x 172
 .25755pt>
 File: images/ieee80211s.pdf Graphic file (type pdf)
 
@@ -1115,7 +1115,7 @@ Package pdftex.def Info: images/ieee80211s.pdf used on input line 68.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11 <./images/ieee80211s.pdf>] <images/wifidirnet.pdf, id=820, 386.07436pt x 9
+ [11 <./images/ieee80211s.pdf>] <images/wifidirnet.pdf, id=826, 386.07436pt x 9
 7.57263pt>
 File: images/wifidirnet.pdf Graphic file (type pdf)
 
@@ -1132,7 +1132,7 @@ Underfull \hbox (badness 6658) in paragraph at lines 86--86
 \openout2 = `chapters/bluetooth.aux'.
 
  (./chapters/bluetooth.tex
-<images/bluetooth.pdf, id=850, 642.4pt x 401.5pt>
+<images/bluetooth.pdf, id=856, 642.4pt x 401.5pt>
 File: images/bluetooth.pdf Graphic file (type pdf)
  <use images/bluetooth.pdf>
 Package pdftex.def Info: images/bluetooth.pdf used on input line 12.
@@ -1164,14 +1164,14 @@ Underfull \vbox (badness 7186) has occurred while \output is active []
 
 
 ]
-<images/mgrouprouting.pdf, id=958, 596.27768pt x 319.2196pt>
+<images/mgrouprouting.pdf, id=964, 596.27768pt x 319.2196pt>
 File: images/mgrouprouting.pdf Graphic file (type pdf)
 
 <use images/mgrouprouting.pdf>
 Package pdftex.def Info: images/mgrouprouting.pdf used on input line 44.
 (pdftex.def)             Requested size: 455.24411pt x 243.72485pt.
  [18 <./images/mgrouprouting.pdf>]
-<images/1o1routingMGroup.pdf, id=990, 524.00168pt x 270.43233pt>
+<images/1o1routingMGroup.pdf, id=996, 524.00168pt x 270.43233pt>
 File: images/1o1routingMGroup.pdf Graphic file (type pdf)
 
 <use images/1o1routingMGroup.pdf>
@@ -1183,14 +1183,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
  []
 
 [19 <./images/1o1routingMGroup.pdf>]
-<images/mhop2d2GM.pdf, id=1013, 342.10611pt x 210.80557pt>
+<images/mhop2d2GM.pdf, id=1019, 342.10611pt x 210.80557pt>
 File: images/mhop2d2GM.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GM.pdf>
 Package pdftex.def Info: images/mhop2d2GM.pdf used on input line 78.
 (pdftex.def)             Requested size: 273.14923pt x 168.3198pt.
 
-<images/mhop2d2GO.pdf, id=1016, 344.51611pt x 269.83008pt>
+<images/mhop2d2GO.pdf, id=1022, 344.51611pt x 269.83008pt>
 File: images/mhop2d2GO.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GO.pdf>
@@ -1201,7 +1201,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-[21] <images/emc.pdf, id=1065, 587.24295pt x 361.38011pt>
+[21] <images/emc.pdf, id=1071, 587.24295pt x 361.38011pt>
 File: images/emc.pdf Graphic file (type pdf)
  <use images/emc.pdf>
 Package pdftex.def Info: images/emc.pdf used on input line 109.
@@ -1212,7 +1212,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
  []
 
 [22 <./images/emc.pdf>]
-<images/manettop.pdf, id=1091, 599.23875pt x 183.68625pt>
+<images/manettop.pdf, id=1097, 599.23875pt x 183.68625pt>
 File: images/manettop.pdf Graphic file (type pdf)
 
 <use images/manettop.pdf>
@@ -1225,7 +1225,7 @@ Overfull \hbox (5.10506pt too wide) in paragraph at lines 139--140
  []
 
 [23 <./images/manettop.pdf>]
-<images/packet.pdf, id=1141, 359.3425pt x 90.3375pt>
+<images/packet.pdf, id=1147, 359.3425pt x 90.3375pt>
 File: images/packet.pdf Graphic file (type pdf)
  <use images/packet.pdf>
 Package pdftex.def Info: images/packet.pdf used on input line 165.
@@ -1236,7 +1236,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--170
  []
 
 [24 <./images/packet.pdf>]
-<images/routeTables.pdf, id=1167, 402.33614pt x 144.55203pt>
+<images/routeTables.pdf, id=1173, 402.33614pt x 144.55203pt>
 File: images/routeTables.pdf Graphic file (type pdf)
 
 <use images/routeTables.pdf>
@@ -1262,164 +1262,176 @@ Underfull \vbox (badness 5077) has occurred while \output is active []
 
 ]
 Chapter 3.
-[29] [30] [31] [32]
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 91.
- [33]
-<images/adv_message.pdf, id=1257, 412.54124pt x 54.2025pt>
+[29] [30] [31] <images/btreceiver.pdf, id=1241, 801.99625pt x 270.00874pt>
+File: images/btreceiver.pdf Graphic file (type pdf)
+
+<use images/btreceiver.pdf>
+Package pdftex.def Info: images/btreceiver.pdf used on input line 75.
+(pdftex.def)             Requested size: 455.24411pt x 153.2721pt.
+ [32 <./images/btreceiver.pdf>]
+<images/btrequester.pdf, id=1255, 793.96625pt x 242.9075pt>
+File: images/btrequester.pdf Graphic file (type pdf)
+
+<use images/btrequester.pdf>
+Package pdftex.def Info: images/btrequester.pdf used on input line 96.
+(pdftex.def)             Requested size: 455.24411pt x 139.28154pt.
+
+<images/inoutstreams.pdf, id=1258, 441.65pt x 82.3075pt>
+File: images/inoutstreams.pdf Graphic file (type pdf)
+
+<use images/inoutstreams.pdf>
+Package pdftex.def Info: images/inoutstreams.pdf used on input line 111.
+(pdftex.def)             Requested size: 364.19667pt x 67.87563pt.
+ [33 <./images/btrequester.pdf>]
+<images/adv_message.pdf, id=1268, 412.54124pt x 54.2025pt>
 File: images/adv_message.pdf Graphic file (type pdf)
 
 <use images/adv_message.pdf>
-Package pdftex.def Info: images/adv_message.pdf used on input line 106.
+Package pdftex.def Info: images/adv_message.pdf used on input line 130.
 (pdftex.def)             Requested size: 318.66948pt x 41.8692pt.
- [34 <./images/adv_message.pdf>] [35]
-<images/adv_example_1.pdf, id=1306, 499.8675pt x 183.68625pt>
+ [34 <./images/inoutstreams.pdf> <./images/adv_message.pdf>] [35] [36]
+<images/adv_example_1.pdf, id=1326, 499.8675pt x 183.68625pt>
 File: images/adv_example_1.pdf Graphic file (type pdf)
 
 <use images/adv_example_1.pdf>
-Package pdftex.def Info: images/adv_example_1.pdf used on input line 163.
+Package pdftex.def Info: images/adv_example_1.pdf used on input line 187.
 (pdftex.def)             Requested size: 409.71692pt x 150.56482pt.
- [36]
-<images/discovery_flux.pdf, id=1313, 663.47874pt x 463.7325pt>
+ [37 <./images/adv_example_1.pdf>]
+<images/discovery_flux.pdf, id=1336, 663.47874pt x 463.7325pt>
 File: images/discovery_flux.pdf Graphic file (type pdf)
 
 <use images/discovery_flux.pdf>
-Package pdftex.def Info: images/discovery_flux.pdf used on input line 173.
+Package pdftex.def Info: images/discovery_flux.pdf used on input line 197.
 (pdftex.def)             Requested size: 455.24411pt x 318.19261pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [37 <./images/adv_example_1.pdf> <./images/discovery_flux.pdf>]
-<images/advertise_flux.pdf, id=1332, 745.78625pt x 493.845pt>
+ [38 <./images/discovery_flux.pdf>]
+<images/advertise_flux.pdf, id=1352, 745.78625pt x 493.845pt>
 File: images/advertise_flux.pdf Graphic file (type pdf)
 
 <use images/advertise_flux.pdf>
-Package pdftex.def Info: images/advertise_flux.pdf used on input line 193.
+Package pdftex.def Info: images/advertise_flux.pdf used on input line 217.
 (pdftex.def)             Requested size: 455.24411pt x 301.44846pt.
- [38]
+ [39 <./images/advertise_flux.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./images/recv_advertise_flux.pdf): PDF inclu
 sion: found PDF version <1.6>, but at most version <1.5> allowed
-<images/recv_advertise_flux.pdf, id=1341, 771.88374pt x 293.095pt>
+<images/recv_advertise_flux.pdf, id=1362, 771.88374pt x 293.095pt>
 File: images/recv_advertise_flux.pdf Graphic file (type pdf)
 
 <use images/recv_advertise_flux.pdf>
-Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 212.
+Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 236.
 
 (pdftex.def)             Requested size: 455.24411pt x 172.86192pt.
 
-<images/adv_example_2.pdf, id=1343, 502.87875pt x 248.93pt>
+<images/adv_example_2.pdf, id=1364, 502.87875pt x 248.93pt>
 File: images/adv_example_2.pdf Graphic file (type pdf)
 
 <use images/adv_example_2.pdf>
-Package pdftex.def Info: images/adv_example_2.pdf used on input line 220.
+Package pdftex.def Info: images/adv_example_2.pdf used on input line 244.
 (pdftex.def)             Requested size: 455.24411pt x 225.34915pt.
- [39 <./images/advertise_flux.pdf>] [40 <./images/recv_advertise_flux.pdf> <./i
-mages/adv_example_2.pdf>]
-<images/example_1_0.pdf, id=1385, 652.4375pt x 243.91125pt>
+ [40 <./images/recv_advertise_flux.pdf>] [41 <./images/adv_example_2.pdf>]
+<images/example_1_0.pdf, id=1405, 652.4375pt x 243.91125pt>
 File: images/example_1_0.pdf Graphic file (type pdf)
 
 <use images/example_1_0.pdf>
-Package pdftex.def Info: images/example_1_0.pdf used on input line 268.
+Package pdftex.def Info: images/example_1_0.pdf used on input line 292.
 (pdftex.def)             Requested size: 455.24411pt x 170.19704pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2707) has occurred while \output is active []
 
- [41]
-<images/initScreen.pdf, id=1394, 211.54031pt x 371.88937pt>
+ [42 <./images/example_1_0.pdf>]
+<images/initScreen.pdf, id=1416, 211.54031pt x 371.88937pt>
 File: images/initScreen.pdf Graphic file (type pdf)
 
 <use images/initScreen.pdf>
-Package pdftex.def Info: images/initScreen.pdf used on input line 283.
+Package pdftex.def Info: images/initScreen.pdf used on input line 307.
 (pdftex.def)             Requested size: 136.57462pt x 240.10797pt.
- [42 <./images/example_1_0.pdf>]
-<images/rqtmessage.pdf, id=1413, 553.06625pt x 52.195pt>
+ [43 <./images/initScreen.pdf>]
+<images/rqtmessage.pdf, id=1434, 553.06625pt x 52.195pt>
 File: images/rqtmessage.pdf Graphic file (type pdf)
 
 <use images/rqtmessage.pdf>
-Package pdftex.def Info: images/rqtmessage.pdf used on input line 299.
+Package pdftex.def Info: images/rqtmessage.pdf used on input line 323.
 (pdftex.def)             Requested size: 409.71692pt x 38.66669pt.
- [43 <./images/initScreen.pdf> <./images/rqtmessage.pdf>] <images/rqtflux.pdf, 
-id=1438, 791.95876pt x 544.0325pt>
+ [44 <./images/rqtmessage.pdf>]
+<images/rqtflux.pdf, id=1459, 791.95876pt x 544.0325pt>
 File: images/rqtflux.pdf Graphic file (type pdf)
 
 <use images/rqtflux.pdf>
-Package pdftex.def Info: images/rqtflux.pdf used on input line 317.
+Package pdftex.def Info: images/rqtflux.pdf used on input line 341.
 (pdftex.def)             Requested size: 455.24411pt x 312.73325pt.
- [44 <./images/rqtflux.pdf>] [45]
-<images/rqt_rcv_flux.pdf, id=1465, 781.92125pt x 539.01375pt>
+ [45 <./images/rqtflux.pdf>] [46]
+<images/rqt_rcv_flux.pdf, id=1485, 781.92125pt x 539.01375pt>
 File: images/rqt_rcv_flux.pdf Graphic file (type pdf)
 
 <use images/rqt_rcv_flux.pdf>
-Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 352.
+Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 376.
 (pdftex.def)             Requested size: 455.24411pt x 313.82076pt.
 
-<images/example_1_1.pdf, id=1467, 652.4375pt x 200.75pt>
+<images/example_1_1.pdf, id=1487, 652.4375pt x 200.75pt>
 File: images/example_1_1.pdf Graphic file (type pdf)
 
 <use images/example_1_1.pdf>
-Package pdftex.def Info: images/example_1_1.pdf used on input line 360.
+Package pdftex.def Info: images/example_1_1.pdf used on input line 384.
 (pdftex.def)             Requested size: 455.24411pt x 140.07986pt.
- [46 <./images/rqt_rcv_flux.pdf>]
-<images/rspmessage.pdf, id=1485, 251.94125pt x 53.19875pt>
+ [47 <./images/rqt_rcv_flux.pdf> <./images/example_1_1.pdf>] <images/rspmessage
+.pdf, id=1508, 251.94125pt x 53.19875pt>
 File: images/rspmessage.pdf Graphic file (type pdf)
 
 <use images/rspmessage.pdf>
-Package pdftex.def Info: images/rspmessage.pdf used on input line 381.
+Package pdftex.def Info: images/rspmessage.pdf used on input line 405.
 (pdftex.def)             Requested size: 182.09486pt x 38.44998pt.
- [47 <./images/example_1_1.pdf> <./images/rspmessage.pdf>] <images/send_rsp_flu
-x.pdf, id=1501, 781.92125pt x 493.845pt>
+
+<images/send_rsp_flux.pdf, id=1513, 781.92125pt x 493.845pt>
 File: images/send_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/send_rsp_flux.pdf>
-Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 399.
+Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 423.
 (pdftex.def)             Requested size: 455.24411pt x 287.52293pt.
- [48 <./images/send_rsp_flux.pdf>] [49]
-<images/rcv_rsp_flux.pdf, id=1528, 778.91pt x 622.325pt>
+ [48 <./images/rspmessage.pdf>] [49 <./images/send_rsp_flux.pdf>] <images/rcv_r
+sp_flux.pdf, id=1543, 778.91pt x 622.325pt>
 File: images/rcv_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/rcv_rsp_flux.pdf>
-Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 433.
+Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 457.
 (pdftex.def)             Requested size: 455.24411pt x 363.72154pt.
- [50 <./images/rcv_rsp_flux.pdf>]
-<images/example_1_2.pdf, id=1544, 652.4375pt x 200.75pt>
+ [50]
+<images/example_1_2.pdf, id=1557, 652.4375pt x 200.75pt>
 File: images/example_1_2.pdf Graphic file (type pdf)
 
 <use images/example_1_2.pdf>
-Package pdftex.def Info: images/example_1_2.pdf used on input line 449.
+Package pdftex.def Info: images/example_1_2.pdf used on input line 473.
 (pdftex.def)             Requested size: 455.24411pt x 140.07986pt.
-) [51 <./images/example_1_2.pdf>]
+) [51 <./images/rcv_rsp_flux.pdf>] [52 <./images/example_1_2.pdf>]
 \openout2 = `chapters/testing.aux'.
 
-
-(./chapters/testing.tex [52
-
-
-
-]
+ (./chapters/testing.tex
 Chapter 4.
-[53] <images/bt_max_visib.pdf, id=1569, 402.50375pt x 82.3075pt>
+[53
+
+
+
+] <images/bt_max_visib.pdf, id=1584, 402.50375pt x 82.3075pt>
 File: images/bt_max_visib.pdf Graphic file (type pdf)
 
 <use images/bt_max_visib.pdf>
 Package pdftex.def Info: images/bt_max_visib.pdf used on input line 30.
 (pdftex.def)             Requested size: 273.14923pt x 55.85532pt.
 
-<images/wfd_max_visib.pdf, id=1570, 402.50375pt x 82.3075pt>
+<images/wfd_max_visib.pdf, id=1585, 402.50375pt x 82.3075pt>
 File: images/wfd_max_visib.pdf Graphic file (type pdf)
 
 <use images/wfd_max_visib.pdf>
 Package pdftex.def Info: images/wfd_max_visib.pdf used on input line 36.
 (pdftex.def)             Requested size: 273.14923pt x 55.85532pt.
 
-<images/bt_max_inv.pdf, id=1573, 563.10374pt x 82.3075pt>
+<images/bt_max_inv.pdf, id=1588, 563.10374pt x 82.3075pt>
 File: images/bt_max_inv.pdf Graphic file (type pdf)
 
 <use images/bt_max_inv.pdf>
 Package pdftex.def Info: images/bt_max_inv.pdf used on input line 44.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
 
-<images/wfd_max_inv.pdf, id=1574, 563.10374pt x 82.3075pt>
+<images/wfd_max_inv.pdf, id=1589, 563.10374pt x 82.3075pt>
 File: images/wfd_max_inv.pdf Graphic file (type pdf)
 
 <use images/wfd_max_inv.pdf>
@@ -1869,26 +1881,17 @@ Package rerunfilecheck Info: File `dissertation.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
  ) 
 Here is how much of TeX's memory you used:
- 16015 strings out of 492995
- 257534 string characters out of 6132191
- 412251 words of memory out of 5000000
- 18804 multiletter control sequences out of 15000+600000
- 32651 words of font info for 57 fonts, out of 8000000 for 9000
+ 16031 strings out of 492995
+ 257925 string characters out of 6132191
+ 412684 words of memory out of 5000000
+ 18817 multiletter control sequences out of 15000+600000
+ 30765 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,8n,39p,2249b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not ex
-ist, replaced by a fixed one
+ 45i,8n,39p,1951b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exi
+st, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:URL} has been referenced but does not exist, re
-placed by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:RIP} has been referenced but does not exist, re
 placed by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
@@ -1896,6 +1899,9 @@ pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
 
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:RIP} has been referenced but does not exist, re
+placed by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
 , replaced by a fixed one
@@ -2117,10 +2123,10 @@ les/TexLive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><e:/Program Fil
 es/TexLive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><e:/Program Files/Tex
 Live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><e:/Program Files/TexLive/t
 exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (109 pages, 2188754 bytes).
+Output written on dissertation.pdf (109 pages, 2453034 bytes).
 PDF statistics:
- 1885 PDF objects out of 2073 (max. 8388607)
- 1693 compressed objects within 17 object streams
- 325 named destinations out of 1000 (max. 500000)
- 720 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1903 PDF objects out of 2073 (max. 8388607)
+ 1707 compressed objects within 18 object streams
+ 326 named destinations out of 1000 (max. 500000)
+ 735 words of extra memory for PDF output out of 10000 (max. 10000000)
 
