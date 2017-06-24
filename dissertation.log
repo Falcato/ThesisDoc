@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  23 JUN 2017 02:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  24 JUN 2017 01:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1034,7 +1034,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 7.
-<images/context.pdf, id=535, 472.76625pt x 323.2075pt>
+<images/context.pdf, id=540, 472.76625pt x 323.2075pt>
 File: images/context.pdf Graphic file (type pdf)
 
 <use images/context.pdf>
@@ -1083,14 +1083,14 @@ ed re-quire-ments in In-ter-na-tional Mo-bile Telecommunications-
 
 
 ]
-<images/infranet.png, id=755, 436.5108pt x 204.765pt>
+<images/infranet.png, id=761, 436.5108pt x 204.765pt>
 File: images/infranet.png Graphic file (type png)
 
 <use images/infranet.png>
 Package pdftex.def Info: images/infranet.png used on input line 30.
 (pdftex.def)             Requested size: 455.24411pt x 213.5567pt.
  [9 <./images/infranet.png>]
-<images/adhocnet.jpg, id=779, 450.18187pt x 336.50719pt>
+<images/adhocnet.jpg, id=784, 450.18187pt x 336.50719pt>
 File: images/adhocnet.jpg Graphic file (type jpg)
 
 <use images/adhocnet.jpg>
@@ -1105,7 +1105,7 @@ l-ized point of fail-ure, peer-to-peer file/packet
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10 <./images/adhocnet.jpg>] <images/ieee80211s.pdf, id=806, 293.31984pt x 172
+ [10 <./images/adhocnet.jpg>] <images/ieee80211s.pdf, id=811, 293.31984pt x 172
 .25755pt>
 File: images/ieee80211s.pdf Graphic file (type pdf)
 
@@ -1115,7 +1115,7 @@ Package pdftex.def Info: images/ieee80211s.pdf used on input line 68.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11 <./images/ieee80211s.pdf>] <images/wifidirnet.pdf, id=826, 386.07436pt x 9
+ [11 <./images/ieee80211s.pdf>] <images/wifidirnet.pdf, id=831, 386.07436pt x 9
 7.57263pt>
 File: images/wifidirnet.pdf Graphic file (type pdf)
 
@@ -1132,7 +1132,7 @@ Underfull \hbox (badness 6658) in paragraph at lines 86--86
 \openout2 = `chapters/bluetooth.aux'.
 
  (./chapters/bluetooth.tex
-<images/bluetooth.pdf, id=856, 642.4pt x 401.5pt>
+<images/bluetooth.pdf, id=861, 642.4pt x 401.5pt>
 File: images/bluetooth.pdf Graphic file (type pdf)
  <use images/bluetooth.pdf>
 Package pdftex.def Info: images/bluetooth.pdf used on input line 12.
@@ -1164,14 +1164,14 @@ Underfull \vbox (badness 7186) has occurred while \output is active []
 
 
 ]
-<images/mgrouprouting.pdf, id=964, 596.27768pt x 319.2196pt>
+<images/mgrouprouting.pdf, id=969, 596.27768pt x 319.2196pt>
 File: images/mgrouprouting.pdf Graphic file (type pdf)
 
 <use images/mgrouprouting.pdf>
 Package pdftex.def Info: images/mgrouprouting.pdf used on input line 44.
 (pdftex.def)             Requested size: 455.24411pt x 243.72485pt.
  [18 <./images/mgrouprouting.pdf>]
-<images/1o1routingMGroup.pdf, id=996, 524.00168pt x 270.43233pt>
+<images/1o1routingMGroup.pdf, id=1001, 524.00168pt x 270.43233pt>
 File: images/1o1routingMGroup.pdf Graphic file (type pdf)
 
 <use images/1o1routingMGroup.pdf>
@@ -1183,14 +1183,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
  []
 
 [19 <./images/1o1routingMGroup.pdf>]
-<images/mhop2d2GM.pdf, id=1019, 342.10611pt x 210.80557pt>
+<images/mhop2d2GM.pdf, id=1024, 342.10611pt x 210.80557pt>
 File: images/mhop2d2GM.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GM.pdf>
 Package pdftex.def Info: images/mhop2d2GM.pdf used on input line 78.
 (pdftex.def)             Requested size: 273.14923pt x 168.3198pt.
 
-<images/mhop2d2GO.pdf, id=1022, 344.51611pt x 269.83008pt>
+<images/mhop2d2GO.pdf, id=1027, 344.51611pt x 269.83008pt>
 File: images/mhop2d2GO.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GO.pdf>
@@ -1201,7 +1201,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-[21] <images/emc.pdf, id=1071, 587.24295pt x 361.38011pt>
+[21] <images/emc.pdf, id=1076, 587.24295pt x 361.38011pt>
 File: images/emc.pdf Graphic file (type pdf)
  <use images/emc.pdf>
 Package pdftex.def Info: images/emc.pdf used on input line 109.
@@ -1212,7 +1212,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
  []
 
 [22 <./images/emc.pdf>]
-<images/manettop.pdf, id=1097, 599.23875pt x 183.68625pt>
+<images/manettop.pdf, id=1103, 599.23875pt x 183.68625pt>
 File: images/manettop.pdf Graphic file (type pdf)
 
 <use images/manettop.pdf>
@@ -1225,7 +1225,7 @@ Overfull \hbox (5.10506pt too wide) in paragraph at lines 139--140
  []
 
 [23 <./images/manettop.pdf>]
-<images/packet.pdf, id=1147, 359.3425pt x 90.3375pt>
+<images/packet.pdf, id=1152, 359.3425pt x 90.3375pt>
 File: images/packet.pdf Graphic file (type pdf)
  <use images/packet.pdf>
 Package pdftex.def Info: images/packet.pdf used on input line 165.
@@ -1236,7 +1236,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--170
  []
 
 [24 <./images/packet.pdf>]
-<images/routeTables.pdf, id=1173, 402.33614pt x 144.55203pt>
+<images/routeTables.pdf, id=1178, 402.33614pt x 144.55203pt>
 File: images/routeTables.pdf Graphic file (type pdf)
 
 <use images/routeTables.pdf>
@@ -1262,193 +1262,211 @@ Underfull \vbox (badness 5077) has occurred while \output is active []
 
 ]
 Chapter 3.
-[29] [30] [31] <images/btreceiver.pdf, id=1241, 801.99625pt x 270.00874pt>
+[29]
+Underfull \vbox (badness 5563) has occurred while \output is active []
+
+ [30]
+<images/app_sandbox.pdf, id=1237, 570.13pt x 402.50375pt>
+File: images/app_sandbox.pdf Graphic file (type pdf)
+
+<use images/app_sandbox.pdf>
+Package pdftex.def Info: images/app_sandbox.pdf used on input line 48.
+(pdftex.def)             Requested size: 455.24411pt x 321.3954pt.
+ [31] [32 <./images/app_sandbox.pdf>]
+<images/btreceiver.pdf, id=1268, 801.99625pt x 270.00874pt>
 File: images/btreceiver.pdf Graphic file (type pdf)
 
 <use images/btreceiver.pdf>
-Package pdftex.def Info: images/btreceiver.pdf used on input line 75.
+Package pdftex.def Info: images/btreceiver.pdf used on input line 99.
 (pdftex.def)             Requested size: 455.24411pt x 153.2721pt.
- [32 <./images/btreceiver.pdf>]
-<images/btrequester.pdf, id=1255, 793.96625pt x 242.9075pt>
+ [33]
+<images/btrequester.pdf, id=1280, 793.96625pt x 242.9075pt>
 File: images/btrequester.pdf Graphic file (type pdf)
 
 <use images/btrequester.pdf>
-Package pdftex.def Info: images/btrequester.pdf used on input line 96.
+Package pdftex.def Info: images/btrequester.pdf used on input line 120.
 (pdftex.def)             Requested size: 455.24411pt x 139.28154pt.
 
-<images/inoutstreams.pdf, id=1258, 441.65pt x 82.3075pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34 <./images/btreceiver.pdf> <./images/btrequester.pdf>]
+<images/inoutstreams.pdf, id=1293, 441.65pt x 82.3075pt>
 File: images/inoutstreams.pdf Graphic file (type pdf)
 
 <use images/inoutstreams.pdf>
-Package pdftex.def Info: images/inoutstreams.pdf used on input line 111.
+Package pdftex.def Info: images/inoutstreams.pdf used on input line 135.
 (pdftex.def)             Requested size: 364.19667pt x 67.87563pt.
- [33 <./images/btrequester.pdf>]
-<images/adv_message.pdf, id=1268, 412.54124pt x 54.2025pt>
+ [35 <./images/inoutstreams.pdf>]
+<images/adv_message.pdf, id=1304, 412.54124pt x 54.2025pt>
 File: images/adv_message.pdf Graphic file (type pdf)
 
 <use images/adv_message.pdf>
-Package pdftex.def Info: images/adv_message.pdf used on input line 130.
+Package pdftex.def Info: images/adv_message.pdf used on input line 154.
 (pdftex.def)             Requested size: 318.66948pt x 41.8692pt.
- [34 <./images/inoutstreams.pdf> <./images/adv_message.pdf>] [35] [36]
-<images/adv_example_1.pdf, id=1326, 499.8675pt x 183.68625pt>
+ [36 <./images/adv_message.pdf>]
+<images/nexthoprqt.pdf, id=1330, 723.70375pt x 280.04625pt>
+File: images/nexthoprqt.pdf Graphic file (type pdf)
+
+<use images/nexthoprqt.pdf>
+Package pdftex.def Info: images/nexthoprqt.pdf used on input line 196.
+(pdftex.def)             Requested size: 455.24411pt x 176.16512pt.
+ [37] [38 <./images/nexthoprqt.pdf>]
+<images/adv_example_1.pdf, id=1355, 499.8675pt x 183.68625pt>
 File: images/adv_example_1.pdf Graphic file (type pdf)
 
 <use images/adv_example_1.pdf>
-Package pdftex.def Info: images/adv_example_1.pdf used on input line 187.
+Package pdftex.def Info: images/adv_example_1.pdf used on input line 225.
 (pdftex.def)             Requested size: 409.71692pt x 150.56482pt.
- [37 <./images/adv_example_1.pdf>]
-<images/discovery_flux.pdf, id=1336, 663.47874pt x 463.7325pt>
+
+<images/discovery_flux.pdf, id=1356, 786.94pt x 390.45876pt>
 File: images/discovery_flux.pdf Graphic file (type pdf)
 
 <use images/discovery_flux.pdf>
-Package pdftex.def Info: images/discovery_flux.pdf used on input line 197.
-(pdftex.def)             Requested size: 455.24411pt x 318.19261pt.
- [38 <./images/discovery_flux.pdf>]
-<images/advertise_flux.pdf, id=1352, 745.78625pt x 493.845pt>
+Package pdftex.def Info: images/discovery_flux.pdf used on input line 233.
+(pdftex.def)             Requested size: 455.24411pt x 225.87639pt.
+ [39 <./images/adv_example_1.pdf> <./images/discovery_flux.pdf>]
+<images/advertise_flux.pdf, id=1373, 744.7825pt x 326.21875pt>
 File: images/advertise_flux.pdf Graphic file (type pdf)
 
 <use images/advertise_flux.pdf>
-Package pdftex.def Info: images/advertise_flux.pdf used on input line 217.
-(pdftex.def)             Requested size: 455.24411pt x 301.44846pt.
- [39 <./images/advertise_flux.pdf>]
+Package pdftex.def Info: images/advertise_flux.pdf used on input line 254.
+(pdftex.def)             Requested size: 455.24411pt x 199.40628pt.
 
-pdfTeX warning: pdflatex.exe (file ./images/recv_advertise_flux.pdf): PDF inclu
-sion: found PDF version <1.6>, but at most version <1.5> allowed
-<images/recv_advertise_flux.pdf, id=1362, 771.88374pt x 293.095pt>
+Underfull \vbox (badness 2150) has occurred while \output is active []
+
+ [40 <./images/advertise_flux.pdf>]
+<images/recv_advertise_flux.pdf, id=1387, 810.02625pt x 252.945pt>
 File: images/recv_advertise_flux.pdf Graphic file (type pdf)
 
 <use images/recv_advertise_flux.pdf>
-Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 236.
+Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 275.
 
-(pdftex.def)             Requested size: 455.24411pt x 172.86192pt.
+(pdftex.def)             Requested size: 455.24411pt x 142.16156pt.
 
-<images/adv_example_2.pdf, id=1364, 502.87875pt x 248.93pt>
+<images/adv_example_2.pdf, id=1389, 502.87875pt x 248.93pt>
 File: images/adv_example_2.pdf Graphic file (type pdf)
 
 <use images/adv_example_2.pdf>
-Package pdftex.def Info: images/adv_example_2.pdf used on input line 244.
+Package pdftex.def Info: images/adv_example_2.pdf used on input line 283.
 (pdftex.def)             Requested size: 455.24411pt x 225.34915pt.
- [40 <./images/recv_advertise_flux.pdf>] [41 <./images/adv_example_2.pdf>]
-<images/example_1_0.pdf, id=1405, 652.4375pt x 243.91125pt>
+ [41 <./images/recv_advertise_flux.pdf>] [42 <./images/adv_example_2.pdf>]
+<images/example_1_0.pdf, id=1414, 652.4375pt x 243.91125pt>
 File: images/example_1_0.pdf Graphic file (type pdf)
 
 <use images/example_1_0.pdf>
-Package pdftex.def Info: images/example_1_0.pdf used on input line 292.
+Package pdftex.def Info: images/example_1_0.pdf used on input line 332.
 (pdftex.def)             Requested size: 455.24411pt x 170.19704pt.
-
-Underfull \vbox (badness 2707) has occurred while \output is active []
-
- [42 <./images/example_1_0.pdf>]
-<images/initScreen.pdf, id=1416, 211.54031pt x 371.88937pt>
+ [43 <./images/example_1_0.pdf>]
+<images/initScreen.pdf, id=1425, 211.54031pt x 371.88937pt>
 File: images/initScreen.pdf Graphic file (type pdf)
 
 <use images/initScreen.pdf>
-Package pdftex.def Info: images/initScreen.pdf used on input line 307.
+Package pdftex.def Info: images/initScreen.pdf used on input line 347.
 (pdftex.def)             Requested size: 136.57462pt x 240.10797pt.
- [43 <./images/initScreen.pdf>]
-<images/rqtmessage.pdf, id=1434, 553.06625pt x 52.195pt>
+ [44 <./images/initScreen.pdf>]
+<images/rqtmessage.pdf, id=1444, 553.06625pt x 52.195pt>
 File: images/rqtmessage.pdf Graphic file (type pdf)
 
 <use images/rqtmessage.pdf>
-Package pdftex.def Info: images/rqtmessage.pdf used on input line 323.
+Package pdftex.def Info: images/rqtmessage.pdf used on input line 363.
 (pdftex.def)             Requested size: 409.71692pt x 38.66669pt.
- [44 <./images/rqtmessage.pdf>]
-<images/rqtflux.pdf, id=1459, 791.95876pt x 544.0325pt>
+ [45 <./images/rqtmessage.pdf>]
+<images/rqtflux.pdf, id=1468, 791.95876pt x 544.0325pt>
 File: images/rqtflux.pdf Graphic file (type pdf)
 
 <use images/rqtflux.pdf>
-Package pdftex.def Info: images/rqtflux.pdf used on input line 341.
+Package pdftex.def Info: images/rqtflux.pdf used on input line 381.
 (pdftex.def)             Requested size: 455.24411pt x 312.73325pt.
- [45 <./images/rqtflux.pdf>] [46]
-<images/rqt_rcv_flux.pdf, id=1485, 781.92125pt x 539.01375pt>
+ [46 <./images/rqtflux.pdf>]
+<images/rqt_rcv_flux.pdf, id=1489, 781.92125pt x 539.01375pt>
 File: images/rqt_rcv_flux.pdf Graphic file (type pdf)
 
 <use images/rqt_rcv_flux.pdf>
-Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 376.
+Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 416.
 (pdftex.def)             Requested size: 455.24411pt x 313.82076pt.
 
-<images/example_1_1.pdf, id=1487, 652.4375pt x 200.75pt>
+<images/example_1_1.pdf, id=1491, 652.4375pt x 200.75pt>
 File: images/example_1_1.pdf Graphic file (type pdf)
 
 <use images/example_1_1.pdf>
-Package pdftex.def Info: images/example_1_1.pdf used on input line 384.
+Package pdftex.def Info: images/example_1_1.pdf used on input line 424.
 (pdftex.def)             Requested size: 455.24411pt x 140.07986pt.
- [47 <./images/rqt_rcv_flux.pdf> <./images/example_1_1.pdf>] <images/rspmessage
-.pdf, id=1508, 251.94125pt x 53.19875pt>
+ [47] [48 <./images/rqt_rcv_flux.pdf> <./images/example_1_1.pdf>] <images/rspme
+ssage.pdf, id=1517, 251.94125pt x 53.19875pt>
 File: images/rspmessage.pdf Graphic file (type pdf)
 
 <use images/rspmessage.pdf>
-Package pdftex.def Info: images/rspmessage.pdf used on input line 405.
+Package pdftex.def Info: images/rspmessage.pdf used on input line 445.
 (pdftex.def)             Requested size: 182.09486pt x 38.44998pt.
 
-<images/send_rsp_flux.pdf, id=1513, 781.92125pt x 493.845pt>
+<images/send_rsp_flux.pdf, id=1522, 781.92125pt x 493.845pt>
 File: images/send_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/send_rsp_flux.pdf>
-Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 423.
+Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 463.
 (pdftex.def)             Requested size: 455.24411pt x 287.52293pt.
- [48 <./images/rspmessage.pdf>] [49 <./images/send_rsp_flux.pdf>] <images/rcv_r
-sp_flux.pdf, id=1543, 778.91pt x 622.325pt>
+ [49 <./images/rspmessage.pdf>] [50 <./images/send_rsp_flux.pdf>] <images/rcv_r
+sp_flux.pdf, id=1553, 778.91pt x 622.325pt>
 File: images/rcv_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/rcv_rsp_flux.pdf>
-Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 457.
+Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 497.
 (pdftex.def)             Requested size: 455.24411pt x 363.72154pt.
- [50]
-<images/example_1_2.pdf, id=1557, 652.4375pt x 200.75pt>
+ [51]
+<images/example_1_2.pdf, id=1566, 652.4375pt x 200.75pt>
 File: images/example_1_2.pdf Graphic file (type pdf)
 
 <use images/example_1_2.pdf>
-Package pdftex.def Info: images/example_1_2.pdf used on input line 473.
+Package pdftex.def Info: images/example_1_2.pdf used on input line 513.
 (pdftex.def)             Requested size: 455.24411pt x 140.07986pt.
-) [51 <./images/rcv_rsp_flux.pdf>] [52 <./images/example_1_2.pdf>]
+) [52 <./images/rcv_rsp_flux.pdf>] [53 <./images/example_1_2.pdf>]
 \openout2 = `chapters/testing.aux'.
 
- (./chapters/testing.tex
+ (./chapters/testing.tex [54
+
+
+
+]
 Chapter 4.
-[53
-
-
-
-] <images/bt_max_visib.pdf, id=1584, 402.50375pt x 82.3075pt>
+[55] <images/bt_max_visib.pdf, id=1597, 402.50375pt x 82.3075pt>
 File: images/bt_max_visib.pdf Graphic file (type pdf)
 
 <use images/bt_max_visib.pdf>
 Package pdftex.def Info: images/bt_max_visib.pdf used on input line 30.
 (pdftex.def)             Requested size: 273.14923pt x 55.85532pt.
 
-<images/wfd_max_visib.pdf, id=1585, 402.50375pt x 82.3075pt>
+<images/wfd_max_visib.pdf, id=1598, 402.50375pt x 82.3075pt>
 File: images/wfd_max_visib.pdf Graphic file (type pdf)
 
 <use images/wfd_max_visib.pdf>
 Package pdftex.def Info: images/wfd_max_visib.pdf used on input line 36.
 (pdftex.def)             Requested size: 273.14923pt x 55.85532pt.
 
-<images/bt_max_inv.pdf, id=1588, 563.10374pt x 82.3075pt>
+<images/bt_max_inv.pdf, id=1601, 563.10374pt x 82.3075pt>
 File: images/bt_max_inv.pdf Graphic file (type pdf)
 
 <use images/bt_max_inv.pdf>
 Package pdftex.def Info: images/bt_max_inv.pdf used on input line 44.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
 
-<images/wfd_max_inv.pdf, id=1589, 563.10374pt x 82.3075pt>
+<images/wfd_max_inv.pdf, id=1602, 563.10374pt x 82.3075pt>
 File: images/wfd_max_inv.pdf Graphic file (type pdf)
 
 <use images/wfd_max_inv.pdf>
 Package pdftex.def Info: images/wfd_max_inv.pdf used on input line 50.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
- [54 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf> <./images/bt_max_
-inv.pdf>]) [55 <./images/wfd_max_inv.pdf>]
+ [56 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf> <./images/bt_max_
+inv.pdf>]) [57 <./images/wfd_max_inv.pdf>]
 \openout2 = `chapters/conclusion.aux'.
 
 
-(./chapters/conclusion.tex [56
+(./chapters/conclusion.tex [58
 
 
 
 ]
 Chapter 5.
-) [57]) (./dissertation.bbl [58
+) [59]) (./dissertation.bbl [60
 
 
 ]
@@ -1487,7 +1505,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--66
  / / docs . oracle . com / javase / 7 / docs / api / java / io /
  []
 
-[59]
+[61]
 Underfull \hbox (badness 10000) in paragraph at lines 75--77
 []\OT1/phv/m/n/10 Oracle, ``Ar-rays.'' []$\OT1/cmtt/m/n/10 https : / / docs . o
 racle . com / javase / tutorial / java / nutsandbolts / arrays .
@@ -1535,7 +1553,7 @@ Underfull \hbox (badness 2285) in paragraph at lines 120--122
 travel?.'' []$\OT1/cmtt/m/n/10 http : / / www . wi-[]fi . org /
  []
 
-) (./appendix/main.tex [60]
+) (./appendix/main.tex [62]
 \openout2 = `appendix/appendixa.aux'.
 
  (./appendix/appendixa.tex
@@ -1543,7 +1561,7 @@ Appendix A.
 
 Underfull \vbox (badness 2368) has occurred while \output is active []
 
- [61
+ [63
 
 
 ]
@@ -1558,7 +1576,7 @@ Overfull \hbox (1.5019pt too wide) in paragraph at lines 66--66
 c.getContentLength() == 0);[] 
  []
 
-[62]
+[64]
 Overfull \hbox (12.00182pt too wide) in paragraph at lines 772--772
 []            \OT1/cmtt/m/n/10 Toast.makeText(this, "Bluetooth is not available
 ", Toast.LENGTH_LONG).show();[] 
@@ -1567,10 +1585,10 @@ Overfull \hbox (12.00182pt too wide) in paragraph at lines 772--772
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63]
+ [65]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64]
+ [66]
 Overfull \hbox (6.75186pt too wide) in paragraph at lines 772--772
 []            \OT1/cmtt/m/n/10 return android.provider.Settings.Secure.getStrin
 g(this.getContentResolver(),[] 
@@ -1591,7 +1609,7 @@ RA_DISCOVERABLE_DURATION, 0);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65]
+ [67]
 Overfull \hbox (6.75186pt too wide) in paragraph at lines 772--772
 []                    \OT1/cmtt/m/n/10 int nrHops = ((RoutingApp) getApplicatio
 nContext()).getMinHop() + 1;[] 
@@ -1600,7 +1618,7 @@ nContext()).getMinHop() + 1;[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [66]
+ [68]
 Overfull \hbox (22.50172pt too wide) in paragraph at lines 772--772
 []        \OT1/cmtt/m/n/10 for (int aux = 0; mService.getState() != BluetoothSe
 rvice.STATE_CONNECTED; aux ++){[] 
@@ -1609,7 +1627,7 @@ rvice.STATE_CONNECTED; aux ++){[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [67]
+ [69]
 Overfull \hbox (22.50172pt too wide) in paragraph at lines 772--772
 []            \OT1/cmtt/m/n/10 // Update the response table with own MAC to kno
 w when the response is received[] 
@@ -1648,7 +1666,7 @@ nextHopDevice.getAddress());[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [68]
+ [70]
 Overfull \hbox (43.50154pt too wide) in paragraph at lines 772--772
 []            \OT1/cmtt/m/n/10 for (int aux = 0; mService.getState() != Bluetoo
 thService.STATE_CONNECTED; aux ++){[] 
@@ -1663,7 +1681,7 @@ m(new FileInputStream(file));[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [69]
+ [71]
 Overfull \hbox (59.2514pt too wide) in paragraph at lines 772--772
 []        \OT1/cmtt/m/n/10 Log.i(TAG, "sent file with " + bytes.length + " byte
 s in: " + getFilesDir() + "file.mht");[] 
@@ -1684,7 +1702,7 @@ Int(message.split(";")[1]));[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [70]
+ [72]
 Overfull \hbox (69.75131pt too wide) in paragraph at lines 772--772
 []                \OT1/cmtt/m/n/10 Toast.makeText(getApplicationContext(), "Unf
 ortunately there was a problem along " +[] 
@@ -1699,7 +1717,7 @@ orward fail notification.");[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [71]
+ [73]
 Overfull \hbox (1.5019pt too wide) in paragraph at lines 772--772
 []                    \OT1/cmtt/m/n/10 sendRequest(true, -1, request.getUrl().t
 oString().split("://")[1]);[] 
@@ -1708,7 +1726,7 @@ oString().split("://")[1]);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [72]
+ [74]
 Overfull \hbox (64.50136pt too wide) in paragraph at lines 772--772
 []        \OT1/cmtt/m/n/10 mWebview.loadDataWithBaseURL(null, rawData, "applica
 tion/x-webarchive-xml", "UTF-8", null);[] 
@@ -1717,7 +1735,7 @@ tion/x-webarchive-xml", "UTF-8", null);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [73]
+ [75]
 Overfull \hbox (33.00163pt too wide) in paragraph at lines 772--772
 []            \OT1/cmtt/m/n/10 BluetoothDevice device = intent.getParcelableExt
 ra(BluetoothDevice.EXTRA_DEVICE);[] 
@@ -1726,7 +1744,7 @@ ra(BluetoothDevice.EXTRA_DEVICE);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [74]
+ [76]
 Overfull \hbox (1.5019pt too wide) in paragraph at lines 772--772
 []                    \OT1/cmtt/m/n/10 TextView recvText = (TextView) findViewB
 yId(R.id.textViewReceived);[] 
@@ -1735,7 +1753,7 @@ yId(R.id.textViewReceived);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [75]
+ [77]
 Overfull \hbox (1.5019pt too wide) in paragraph at lines 772--772
 []                        \OT1/cmtt/m/n/10 Log.i(TAG, "Saved the file in: " + g
 etFilesDir() + "file.mht");[] 
@@ -1756,17 +1774,17 @@ etFilesDir() + "file.mht");[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [76]
-[77]
+ [78]
+[79]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [78]
+ [80]
 Overfull \hbox (22.50172pt too wide) in paragraph at lines 1357--1357
 []    \OT1/cmtt/m/n/10 public static final int STATE_LISTEN = 1;     // now lis
 tening for incoming connections[] 
  []
 
-[79]
+[81]
 Overfull \hbox (17.25177pt too wide) in paragraph at lines 1357--1357
 []    \OT1/cmtt/m/n/10 public static final int STATE_CONNECTING = 2; // now ini
 tiating an outgoing connection[] 
@@ -1787,7 +1805,7 @@ el(); mConnectedThread = null;}[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [80]
+ [82]
 Overfull \hbox (12.00182pt too wide) in paragraph at lines 1357--1357
 []            \OT1/cmtt/m/n/10 if (mConnectThread != null) {mConnectThread.canc
 el(); mConnectThread = null;}[] 
@@ -1808,16 +1826,16 @@ el(); mConnectedThread = null;}[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [81]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [82]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [83]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [84]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [85]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [86]
 Overfull \hbox (43.50154pt too wide) in paragraph at lines 1357--1357
 []                                \OT1/cmtt/m/n/10 // Either not ready or alrea
 dy connected. Terminate new socket.[] 
@@ -1826,7 +1844,7 @@ dy connected. Terminate new socket.[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [85]
+ [87]
 Overfull \hbox (12.00182pt too wide) in paragraph at lines 1357--1357
 []                    \OT1/cmtt/m/n/10 Log.e(TAG, "Unable to close() socket dur
 ing connection failure", e2);[] 
@@ -1835,10 +1853,10 @@ ing connection failure", e2);[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [86]
+ [88]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [87]
+ [89]
 Overfull \hbox (17.25177pt too wide) in paragraph at lines 1357--1357
 []                        \OT1/cmtt/m/n/10 mHandler.obtainMessage(BtActivity.ME
 SSAGE_READ, bytes, -1, buffer)[] 
@@ -1853,7 +1871,7 @@ y.FILE_READ, out.length, -1, out)[]
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [88]
+ [90]
 Overfull \hbox (17.25177pt too wide) in paragraph at lines 1357--1357
 []                        \OT1/cmtt/m/n/10 Log.i(TAG, "sending final chunk from
  " + (currSend * 990) + " to "[] 
@@ -1865,7 +1883,7 @@ Overfull \hbox (17.25177pt too wide) in paragraph at lines 1357--1357
 TE, buffer.length, -1, buffer)[] 
  []
 
-) [89])
+) [91])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
  (./dissertation.aux (./cover.aux) (./abstract/abstract-en.aux)
@@ -1877,31 +1895,28 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 9B7D341B36BE676EA11EA925F0C7BC5B;5014.
+(rerunfilecheck)             Checksum: AE33B3AD49B089050B60B32162A0E6A7;5006.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
  ) 
 Here is how much of TeX's memory you used:
- 16031 strings out of 492995
- 257925 string characters out of 6132191
- 412684 words of memory out of 5000000
- 18817 multiletter control sequences out of 15000+600000
+ 16048 strings out of 492995
+ 258251 string characters out of 6132191
+ 413214 words of memory out of 5000000
+ 18829 multiletter control sequences out of 15000+600000
  30765 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,8n,39p,1951b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exi
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
 st, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:URL} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{glo:RIP} has been referenced but does not exist, re
+placed by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:RIP} has been referenced but does not exist, re
-placed by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
 , replaced by a fixed one
@@ -1909,17 +1924,17 @@ pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
 , replaced by a fixed one
 
-pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
-, replaced by a fixed one
-
 pdfTeX warning (dest): name{glo:UUID} has been referenced but does not exist, r
 eplaced by a fixed one
 
-pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:DSDV} has been referenced but does not exist, r
 eplaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:DTN} has been referenced but does not exist, re
 placed by a fixed one
@@ -2123,10 +2138,10 @@ les/TexLive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><e:/Program Fil
 es/TexLive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><e:/Program Files/Tex
 Live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><e:/Program Files/TexLive/t
 exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (109 pages, 2453034 bytes).
+Output written on dissertation.pdf (111 pages, 2658313 bytes).
 PDF statistics:
- 1903 PDF objects out of 2073 (max. 8388607)
- 1707 compressed objects within 18 object streams
- 326 named destinations out of 1000 (max. 500000)
- 735 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1921 PDF objects out of 2073 (max. 8388607)
+ 1725 compressed objects within 18 object streams
+ 329 named destinations out of 1000 (max. 500000)
+ 745 words of extra memory for PDF output out of 10000 (max. 10000000)
 
