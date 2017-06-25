@@ -295,11 +295,11 @@ By giving each device a full view of its vicinity it is possible to establish a 
 \subsection{Exchange of Web Pages}
 \label{subsec:exch}
 
-In this subsection the logic created and implemented to exchange the web pages will be explained, in detail, also an example, similar to the previous one will be shown to better demonstrate the processes. This analysis will be mainly focused in appendix \ref{appendix:BtActivity}. However, before that it is necessary to explain the routing table related to the exchange of web pages, previously mentioned in Subsection \ref{subsec:disandadv} and referred to as response table.
+In this subsection the logic created and implemented to exchange the web pages will be explained in detail, also an example, similar to the previous one, Figures \ref{fig:adveg1} and \ref{fig:adveg2}, will be shown to better demonstrate the processes. Before describing the web page exchange process, it is necessary to explain the routing table related to the exchange of web pages, previously mentioned in Subsection \ref{subsec:disandadv} and referred to as response table.
 
-The main purpose of this table is to provide a destination for a response message. Once a device has received a request and it has an Internet connection, it should know where to send back the response. This would be easy if only this case applied, it would simply send back the response from where it received the request. But, in the case this device is a "bridge" node, \textit{i.e.}, it is simply a node that forwarded a request, it may have received requests from different devices and it still needs to be able to differentiate each message and decide which device to send back the response to.
+The main purpose of the response table is to provide a destination for a response message. Once a device has received a request and it has an Internet connection, it should know where to send back the response. This would be easy if only this case applied, it would simply send back the response from where it received the request. But, in the case this device is a "bridge" node, \textit{i.e.}, a node that forwarded a request, it may have received requests from different devices and it still needs to be able to differentiate each message and decide which device to send back the response to.
 
-The response table has a similar structure to the routing table, see Table \ref{tab:rspTables}, but it serves a different purpose. Similarly to routing table, the response table is defined in \textit{RoutingApp} class, it is an object of the Java class \textit{Map}.
+The response table has a similar structure to the routing table but it serves a different purpose. In Table \ref{tab:rspTables} it is possible to see the structure of the response table.
 
 \begin{table}[ht]
 \centering
@@ -319,13 +319,12 @@ Message ID \#9 & Device X's MAC \\ \hline
 \label{tab:rspTables}
 \end{table}
 
-Despite the similarities, there is one difference between the two: routing table maps \textit{Strings} to integers whereas response table maps integers to \textit{Strings}. The latter is used to associate message identifiers, the integers, with the \gls{MAC} address of the next destination of a response, the \textit{String}.
+Despite having similar structures the two tables store different information: routing table maps a \gls{MAC} address to an estimate whereas the response table maps a message identifier to a \gls{MAC} address. Hence, the necessity of having two distinct tables.
 
-The table is defined as \textit{rspTable} and it has two associated methods: \textit{updateRspTable()} and \textit{getRspHop()}. The first method is used to add new rows to the response table, it is similar to routing table's method \textit{updateRouteTable()}, and makes use of the same Java method \textit{put()}, previously explained. Although it has a slight difference in logic, since this method will not update rows, it will always insert new rows, seeing the message identifiers are unique there should be no duplicate entries.
+Two main actions must be allowed to be performed in a response table: it must be possible to add new rows, each referring to a specific request and it must be possible to retrieve the next hop's \gls{MAC} address for a certain message identifier. Since the message identifiers are unique, there is no need to update response table rows as there will be no duplicates.
 
-The second method, \textit{getRspHop()} is used to retrieve the \gls{MAC} address associated to a certain message identifier, that is as a parameter. In case a table entry is found for that specific identifier, the associated \gls{MAC} address is returned, otherwise it will return null, notifying the application that no entry was found and thus, the response will not be routed.
+The second action employs a simple logic, given a message identifier the \gls{MAC} address should be returned. Since to a message identifier corresponds a single \gls{MAC} address there should be no problems in the response path. However, in case the requested message identifier is not found in the response table, the application is notified that the response can not be routed due to the lack of a next hop \gls{MAC} address.
 
-For the example three devices are used: A, B and C. Where device C has an active Internet connection, as seen in Figure \ref{fig:example1.0}. In this figure it is possible to see the routing tables of each device after this process is completed. Device A will choose B to send a request and B will choose C, since they provide the best estimates, respectively.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -333,14 +332,25 @@ For the example three devices are used: A, B and C. Where device C has an active
 	\caption{\label{fig:example1.0} Example 2: State of the routing tables of the three devices}
 \end{figure}
 
+For the example three devices are used: A, B and C. Where device C has an active Internet connection, as seen in Figure \ref{fig:example1.0}. In the figure it is possible to observe the routing tables of each device after this process is completed. Device A will choose B to send a request and B will choose C, since they provide the best estimates, respectively.
+
+
 \subsubsection{Sending a Request Message}
 \label{subsubsec:sendrqt}
 
-Now that the logic and implementation behind the response table is understood it is possible to start explaining the actual process of web page exchanging. Starting by the definition of variables, in \textit{BtActivity} class, it can be divided into three sections: the first being the definition of variables that will identify the different elements seen by the user, a \textit{Button}, to submit requests, an \textit{EditText}, for the user to input the requested \gls{URL} and a \textit{WebView}, to manage the actions related to web pages.
+Now that the logic and implementation behind the response table is understood it is possible to explain the mechanism behind the exchange of web pages. This process counts with a number of features that need to be mentioned before further explanation:
 
-It is then possible to see the definition of the constants relative to the \textit{BluetoothService} class, see \ref{subsec:btconn}. The possible \textit{Message} types received from the service are defined: \textit{MESSAGE\_STATE\_CHANGE}, \textit{MESSAGE\_READ}, \textit{MESSAGE\_WRITE}, \textit{MESSAGE\_DEVICE\_NAME}, \textit{MESSAGE\_TOAST}, \textit{FILE\_READ} and \textit{FILE\_WRITE}. These types are explained in \ref{subsubsec:rcvadv}, and \textit{MESSAGE\_READ} was already mentioned, although only covering the advertising messages.
-
-Finally, the last block of variables, containing various definitions relative to this class. \textit{msgID} is the variable that concerns this process of exchange, it stores the message identifier of the last received request or response.
+\begin{itemize}
+	\item  A text area must be defined to enable the input of a \gls{URL} from the application user. This text must be retrievable to form the web page request with the specified \gls{URL}.
+	
+	\item A button needs to be implemented so the user may notify the application that he/she has finished inputting the desired \gls{URL}. This button will act as a trigger for the application to begin the request sending.
+	
+	\item A mechanism to manage the actions related to web pages must be created. In this thesis the method found that best fit the requirements was the creation of a \textit{WebView} instance.
+	
+	\item A handler providing the link between the \textit{BluetoothService} and the main activity, previously mentioned in the context of the advertisement process, that can communicate the bytes received by the service to the rest of the application.
+	
+	\item Finally, a mechanism to identify how the received bytes should be processed, \textit{i.e.}, what format should they be converted into. This mechanism must also provide a method to identify the received messages between the possibilities and command the application to act accordingly, \textit{i.e.}, follow a specific set of actions for that message type.
+\end{itemize}
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -348,41 +358,53 @@ Finally, the last block of variables, containing various definitions relative to
 	\caption{\label{fig:initScreen} User interface for the sending of request messages}
 \end{figure}
 
-In Figure \ref{fig:initScreen} it can be seen the display of the main activity page, it has five main elements: a place where the \textit{peers} list will be displayed, at the top. The received messages, this is optional and used for debugging as it would incur in severe security issues, so it should be removed if not for debugging. An \textit{EditText}, see \cite{edittext} for documentation on this Android feature, used to allow the user to input the web page he/she desires and to capture this input to be processed. A \textit{Button}, to notify the activity it should now begin the process of requesting the web page. Finally, a \textit{WebView}, see \cite{webview} for documentation on this feature, that is hidden from user view and will remain so until the user receives the response to its request.
+In Figure \ref{fig:initScreen} it can be seen the user interface of the main activity, it has five main elements: a place where the \textit{peers} list is displayed, at the top. The received messages, this is an optional element and used for debugging as it would incur in severe security issues. A text area, as mentioned before, allowing the user to input the web page he/she desires and to capture this input to be processed. And a button to notify the activity that the process of requesting that specific web page must be initiated.
 
-Assuming the device already established the best route to reach the Internet, the journey of the request, from the user input to the display of the response, will be explained. Starting by the user input, has said above, a \textit{Button} and an \textit{EditView} are defined, so a user interface is created, in order to send requests based on the user input. This is defined in method \textit{onStart()}, from appendix \ref{appendix:BtActivity}, after the routing table is first populated and the discovery is started, discussed in \ref{subsec:disandadv}. The variables previously defined, \textit{goButton} and \textit{mEdit} are matched to the elements in Figure \ref{fig:initScreen}, so they can be identified by the application.
-
-The \textit{Button} class' method \textit{onClick()} is then overwritten, meaning it is tailored for the specific needs of this application. This method has the purpose of responding to a click of the user in the specific button, to this click the method must associate an intent to send a request message. With these parameters the method \textit{onClick()} is set to call \textit{sendRequest()}.
-
-The \textit{sendRequest()} method receives as parameters: a boolean to identify if the intent is coming from the owner of the request or from a mediator node, an integer that corresponds to the message identifier and a \textit{String} containing the requested \gls{URL}.
-
-Since this particular request comes directly from the user input, this method is initially called by this device with the following arguments: "true", "-1" and the user input text. The "true" value is used whenever the device is the one issuing the request, \textit{i.e.}, whenever it is its origin. "-1" is used when the value of the message identifier is not important, in this case, since this device is the "owner" of the request, a random message identifier will be generated. Finally, to identify the web page requested, the user input \gls{URL} is passed.
+Assuming the device already established the best route to reach the Internet, \textit{i.e.}, its routing table is populated, the journey of the web page request from the user input to the display of the response will be explained. Starting from the user input, has mentioned above a button and a text area are created, forming a user interface allowing the sending of requests based on the user input.
 
 \begin{figure}[ht]
-   \noindent\makebox[\textwidth]
-    {\includegraphics[width=0.9\textwidth]{images/rqtmessage.pdf}}
+	\noindent\makebox[\textwidth]
+	{\includegraphics[width=0.9\textwidth]{images/rqtmessage.pdf}}
 	\caption{\label{fig:rqtmsg} Request message format}
 \end{figure}
 
-In Figure \ref{fig:rqtmsg} a generic request message is shown. Its format does not differ much from the one presented in Figure \ref{fig:advmsg}, however there is a new field, the \textit{Message ID}, a unique identifier representing each message that will be useful to keep track of what is each message's payload and sender. The \textit{\gls{URL} to request} is the web page's \gls{URL} the user is trying to access, it is considered to be the payload of the message.
+In Figure \ref{fig:rqtmsg} a generic request message is shown. Its format does not differ much from the one presented in Figure \ref{fig:advmsg}. However two new fields are introduced: the \textit{Message ID}, a unique identifier representing each message that will be useful to keep track of what is each message's payload and sender and the \textit{\gls{URL} to request} is the web page's \gls{URL} the user is trying to access, it is considered to be the payload of the message.
 
-Continuing the analysis on method \textit{sendRequest()}, the first thing that is done is to retrieve the next hop, to whom the device shall send its request, this is done by calling the method \textit{getNextHop()}, defined in \ref{appendix:RoutingApp}. This method returns the \gls{MAC} address of the device's peer who provides the best path. \textit{getMinHop()} is called to retrieve the best estimate, to which is applied the function \textit{getKeyFromValue()}, alongside with the routing table, see Subsection \ref{subsubsec:disc} to get more a detailed explanation on how these two methods work. This combination should return the desired \gls{MAC} address, however if the best estimate is 16, "null" is returned to notify the device that no path was found.
+The web page request process may be initiated by two different events: when the user inputs an \gls{URL} and presses the "Go!" button or when the device receives a request and its next action is to forward it to the next hop.
 
-Once the \gls{MAC} address of the next hop is attained, \textit{sendRequest()} compares it with "null", to ensure there is an actual device to connect to. In case this comparison is successful, meaning there is no next hop, the method \textit{sendFail()} is called. Since this device is the owner of the request, the \textit{sendFail()} method will not send a failure notification to another device, it will simply notify the user of the failure. The method \textit{sendFail()} will be discussed further on this subsection.
+Beginning by the first event, the button needs to act as a trigger for the application. To achieve this the logic to begin the request process when the button is pressed must be implemented. This trigger must also be able to provide the input text by the user, containing the web page to be requested. Having the \gls{URL} the request process can be initiated. Note that this process must differentiate the two possible events that lead to it, since they incur into different workflows.
 
-In the case of the device having a valid next hop, the connection is performed, similarly to the advertising connections, by the \textit{BluetoothService connect()} method. The first cycle described in the advertising process is now repeated here, to ensure the connection is established before sending the message, with the single difference of in case of failure, \textit{i.e.}, the Bluetooth state becoming \textit{STATE\_LISTEN}, \textit{sendFail()} is called again, to notify possible predecessors of this request, however in this case it does not apply.
+Assuming the originating event is correctly identified and the process is aware that it was initiated by user interaction, the first action is to retrieve the next hop's \gls{MAC} address, to whom the device shall send its request. This can be achieved by using the routing table features, see Subsection \ref{subsec:disandadv}, that provide the best path's next hop.
 
-If the cycle is finished and everything is completed without any incidents, the method verifies the first argument, the boolean variable to identify if the device is the owner of the request. If the device is the owner a random message identifier is generated through the Java class \textit{Random}, see \cite{random}. Once the identifier is generated, the message is sent with the parameters: "RQT" as \textit{Type}, the value of the generated random as \textit{Message ID}, the device's \gls{MAC} address gotten through \textit{getOwnMAC()} as \textit{Bluetooth MAC Identifier} and the received \gls{URL} from the arguments as the \textit{\gls{URL} to request}, as seen in Figure \ref{fig:rqtmsg}. The response table is also updated with the newly generated message identifier and device's \gls{MAC} address, through \textit{updateRspTable()}.
+If the routing table query does not return a valid \gls{MAC} address the user must be notified of the request failure. However, if a valid \gls{MAC} address for the next hop is returned, the device attempts to establish a connection with the next hop, following the same mechanism as in the advertising process. Should the connection attempt fail the user is also notified of the request failure, allowing him/her to restart the request process, and the \textit{BluetoothService} restarted to keep the device listening to incoming connections.
 
-Otherwise, if the device is not deemed as the owner, there is no random identifier generation, since the value will come from the received request. Also the response table is not updated, since it will be updated earlier in the receiving process, that will be the next focus. However, the message is sent as before, with the slight difference that the \textit{Message ID} is now the one received as an argument.
+If the connection is successfully performed, the application may proceed to the generation of the request message to be sent. The message is composed by four sections previously defined, see Figure \ref{fig:rqtmsg}. 
+
+\begin{itemize}
+	\item The \textit{Type} corresponds to the message type and is already known, as the button clicking triggered the request sending process, being populated accordingly.
+	
+	\item To fill the \textit{Message ID} section a message identifier must generated to distinguish this request between the others that may be sent throughout the network. To do this, a random number is generated between -2\textsuperscript{31} and 2\textsuperscript{31}, providing a wide range of possibilities and minimizing immensely the occurrence of duplicates.
+	
+	\item The \textit{Bluetooth \gls{MAC} Identifier} address is the device's own \gls{MAC} address and it will allow the receiver to correctly assess the response's path.
+	
+	\item Finally, the \textit{\gls{URL} to request} is populated with the text retrieved from the user input, seen in Figure \ref{fig:initScreen}.
+\end{itemize}
+
+Once the request message is sent the application updates its response table with the generated message identifier and the \gls{MAC} address of the sending device, \textit{i.e.}, its own, as a key-value pair. With this mechanism the device is able to assess if it is the destination of a certain response or if it is a "bridge" node and needs to forward the response to the next hop. This assessment will be presented and explained in \ref{subsubsec:rcvrqt}.
+
+If the device is not deemed as the owner, there is no random identifier generation, since the value will be retrieved from the received request message. Also, the response table is not updated because this will be done during the receiving process, the next focus. Despite that, the connection is attempted, same as before.
+
+However, if the connection establishment fails the user is not notified, since this request was not originated by him/her. In this case, the device queries the response table for the \gls{MAC} address mapped by the request message identifier, corresponding to the device that sent/forwarded the request to this node. A failure notice is then sent to that device, with the intent of notifying the request originator of the inability to forward the request until it reaches the Internet.
+
+If the connection is successfully established, the message is sent as before with the slight difference that the message identifier and the \gls{URL} to be requested are retrieved from the values encapsulated in the received request message, see Figure \ref{fig:rqtmsg}.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
     {\includegraphics[width=1\textwidth]{images/rqtflux.pdf}}
-	\caption{\label{fig:rqtflux} Fluxogram of the request sending process}
+	\caption{\label{fig:rqtflux} Fluxogram of the request sending process triggered by user input}
 \end{figure}
 
-In figure \ref{fig:rqtflux} a fluxogram representing the process of sending request message is presented. It provides a better overview of the code hierarchy, and when is each method called. Once the process is finished the device keeps listening to incoming connections, changing the Bluetooth state to \textit{STATE\_LISTEN}.
+In Figure \ref{fig:rqtflux} a fluxogram representing the process described above is presented. It provides a visual overview of the application workflow when user input triggers the request sending mechanism. Once the process is finished the device keeps listening to incoming connections.
 
 \subsubsection{Receiving a Request Message}
 \label{subsubsec:rcvrqt}

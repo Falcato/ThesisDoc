@@ -3,6 +3,7 @@
 \select@language {portuguese}
 \contentsline {chapter}{List of Tables}{xi}{chapter*.2}
 \contentsline {chapter}{List of Figures}{xiii}{chapter*.3}
+\contentsline {chapter}{Acronyms}{xvii}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Context}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Problem Statement}{1}{section.1.2}

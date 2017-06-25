@@ -52,52 +52,16 @@ C.~Perkins and P.~Bhagwat, ``Highly dynamic destination-sequenced
 Oracle, ``Class thread.''
   \url{http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html}.
 
-\bibitem{constructors}
-Oracle, ``Providing constructors for your classes.''
-  \url{https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html}.
-
-\bibitem{inputStream}
-Oracle, ``Class inputstream.''
-  \url{https://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html}.
-
-\bibitem{outputStream}
-Oracle, ``Class outputstream.''
-  \url{https://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html}.
-
 \bibitem{ripprotocol}
 G.~Malkin, ``Request for comments: 2453,'' 1998.
-
-\bibitem{map}
-Oracle, ``Interface map.''
-  \url{https://docs.oracle.com/javase/7/docs/api/java/util/Map.html}.
-
-\bibitem{arrays}
-Oracle, ``Arrays.''
-  \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html}.
-
-\bibitem{btandroid}
-A.~Developers, ``Api guides: Bluetooth connectivity.''
-  \url{https://developer.android.com/guide/topics/connectivity/bluetooth.html#ConnectingDevices}.
-
-\bibitem{btclass}
-A.~Developers, ``Bluetoothclass.device.''
-  \url{https://developer.android.com/reference/android/bluetooth/BluetoothClass.Device.html#PHONE_SMART}.
-
-\bibitem{msgclass}
-A.~Developers, ``Message.''
-  \url{https://developer.android.com/reference/android/os/Message.html}.
-
-\bibitem{edittext}
-A.~Developers, ``Edittext.''
-  \url{https://developer.android.com/reference/android/widget/EditText.html}.
-
-\bibitem{webview}
-A.~Developers, ``Webview.''
-  \url{https://developer.android.com/reference/android/webkit/WebView.html}.
 
 \bibitem{random}
 Oracle, ``Random.''
   \url{https://docs.oracle.com/javase/8/docs/api/java/util/Random.html}.
+
+\bibitem{webview}
+A.~Developers, ``Webview.''
+  \url{https://developer.android.com/reference/android/webkit/WebView.html}.
 
 \bibitem{async}
 A.~Developers, ``Asynctask.''
