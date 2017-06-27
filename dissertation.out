@@ -54,16 +54,15 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Battery consumptions}{section.4.1}% 54
 \BOOKMARK [2][-]{subsection.4.1.3}{Discovery times}{section.4.1}% 55
 \BOOKMARK [2][-]{subsection.4.1.4}{File transfer data rates}{section.4.1}% 56
-\BOOKMARK [1][-]{section.4.2}{Tests on the developed application}{chapter.4}% 57
-\BOOKMARK [2][-]{subsection.4.2.1}{Ranges of communication}{section.4.2}% 58
-\BOOKMARK [2][-]{subsection.4.2.2}{Battery consumption during use}{section.4.2}% 59
-\BOOKMARK [2][-]{subsection.4.2.3}{Discovery times on different topologies}{section.4.2}% 60
-\BOOKMARK [2][-]{subsection.4.2.4}{Routes taken on different topologies}{section.4.2}% 61
-\BOOKMARK [2][-]{subsection.4.2.5}{File transfer data rates on different topologies}{section.4.2}% 62
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 63
-\BOOKMARK [0][-]{chapter.5}{Bibliography}{}% 64
-\BOOKMARK [0][-]{appendix.A}{Application code}{}% 65
-\BOOKMARK [1][-]{section.A.1}{InitActivity.java}{appendix.A}% 66
-\BOOKMARK [1][-]{section.A.2}{BtActivity.java}{appendix.A}% 67
-\BOOKMARK [1][-]{section.A.3}{RoutingApp.java}{appendix.A}% 68
-\BOOKMARK [1][-]{section.A.4}{BluetoothService.java}{appendix.A}% 69
+\BOOKMARK [1][-]{section.4.2}{Testing the developed application}{chapter.4}% 57
+\BOOKMARK [2][-]{subsection.4.2.1}{Battery consumption during use}{section.4.2}% 58
+\BOOKMARK [2][-]{subsection.4.2.2}{Discovery times}{section.4.2}% 59
+\BOOKMARK [2][-]{subsection.4.2.3}{Connection times}{section.4.2}% 60
+\BOOKMARK [2][-]{subsection.4.2.4}{File transfer data rates}{section.4.2}% 61
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 62
+\BOOKMARK [0][-]{chapter.5}{Bibliography}{}% 63
+\BOOKMARK [0][-]{appendix.A}{Application code}{}% 64
+\BOOKMARK [1][-]{section.A.1}{InitActivity.java}{appendix.A}% 65
+\BOOKMARK [1][-]{section.A.2}{BtActivity.java}{appendix.A}% 66
+\BOOKMARK [1][-]{section.A.3}{RoutingApp.java}{appendix.A}% 67
+\BOOKMARK [1][-]{section.A.4}{BluetoothService.java}{appendix.A}% 68

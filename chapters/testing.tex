@@ -7,9 +7,11 @@ This chapter will be divided in two different sections: one regarding the compar
 
 \section{Bluetooth vs. Wi-Fi Direct}
 
-This section will cover the differences, advantages and disadvantages of both Bluetooth and Wi-Fi Direct. A series of experiments will be conducted and their results analyzed, in order to justify which technology is best suited for this application and applications with a similar architecture and/or purpose.
+This section will cover the differences, advantages and disadvantages of both Bluetooth and Wi-Fi Direct. A series of experiments will be conducted and their results analysed, providing a justification on which technology is best suited for this application and applications with a similar architecture and/or purpose.
 
-The tests will range from battery consumptions to data rates and most of them will be backed up by both theoretical and empirical results, although in some of them, due to the inability of getting precise measures, the results will be taken from developed experiments.
+Since the first implementation of Bluetooth in Android several releases have been developed. Different Bluetooth versions provide different \gls{QoS}, this may impact the performed tests as a device running a newer Bluetooth version may provide better results than a device running an older version. To avoid confusion all the tested devices will be running Bluetooth version 4.0.
+
+The tests will range from battery consumptions to data rates analysis and most of them will be backed up by both theoretical and empirical results, although in some of them, due to the inability of getting precise measures, the results will be taken from previous developed works.
 
 \subsection{Ranges of communication}
 
@@ -27,13 +29,13 @@ Bluetooth was able to create a connection between devices from a distance up to 
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
-    {\includegraphics[width=0.6\textwidth]{images/bt_max_visib.pdf}}
+    {\includegraphics[width=0.8\textwidth]{images/bt_max_visib.pdf}}
 	\caption{\label{fig:btMaxVisib} Max range of Bluetooth communication with line of sight between devices}
 \end{figure}
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
-    {\includegraphics[width=0.6\textwidth]{images/wfd_max_visib.pdf}}
+    {\includegraphics[width=0.8\textwidth]{images/wfd_max_visib.pdf}}
 	\caption{\label{fig:wfdMaxVisib} Max range of Wi-Fi Direct communication with line of sight between devices}
 \end{figure}
 
@@ -61,24 +63,28 @@ After these experiments it is possible to conclude that Wi-Fi Direct is more des
 
 \subsection{Discovery times}
 
-check
+The discovery times are a critical time factor for this application. The discovery process is the biggest time consumer during an application run thus, minimizing it comes with a great advantage for the overall performance of the application.
+
+For this test three mobile devices where used: Samsung Grand Neo running Android version 4.2.2, Motorola Moto G2 running Android version 7.1 and Huawei P8 Lite running Android version 6.0, providing an heterogeneous sample space. For each device 10 discoveries where performed, providing a large sample size.
+
+Bluetooth version 4.0 theoretically provides a discovery time of 10.24ms, as mentioned in \cite{btdisc1} and \cite{btdisc2}, and, to confirm this hypothesis, the three devices were put to the test. Each device was forced to do multiple discoveries with a different number of discovered devices, ranging from 0 devices found to 3 devices found.
+
+
+
+
 
 \subsection{File transfer data rates}
 \label{subsec:ftdr}
 
-
-
-\section{Tests on the developed application}
-
-\subsection{Ranges of communication}
+\section{Testing the developed application}
 
 \subsection{Battery consumption during use}
 
-\subsection{Discovery times on different topologies}
+\subsection{Discovery times}
 
-\subsection{Routes taken on different topologies}
+\subsection{Connection times}
 
-\subsection{File transfer data rates on different topologies}
+\subsection{File transfer data rates}
 
 
 

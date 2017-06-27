@@ -55,10 +55,6 @@ Oracle, ``Class thread.''
 \bibitem{ripprotocol}
 G.~Malkin, ``Request for comments: 2453,'' 1998.
 
-\bibitem{random}
-Oracle, ``Random.''
-  \url{https://docs.oracle.com/javase/8/docs/api/java/util/Random.html}.
-
 \bibitem{webview}
 A.~Developers, ``Webview.''
   \url{https://developer.android.com/reference/android/webkit/WebView.html}.
@@ -87,5 +83,13 @@ W.-F. Alliance, ``How far does a wi-fi direct connection travel?.''
 \bibitem{txpower}
 A.~Boukerche, ``Algorithms and protocols for wireless, mobile ad hoc
   networks,'' 2009.
+
+\bibitem{btdisc1}
+R.~Woodings, D.~Joos, T.~Clifton, and C.~D. Knutson, ``Rapid heterogeneous
+  connection establishment: Accelerating bluetooth inquiry using irda,'' 2002.
+
+\bibitem{btdisc2}
+B.~S. Peterson, R.~O. Baldwin, and R.~A. Raines, ``Bluetooth discovery time
+  with multiple inquirers,'' 2006.
 
 \end{thebibliography}
