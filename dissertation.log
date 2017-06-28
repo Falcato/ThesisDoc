@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  27 JUN 2017 01:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  28 JUN 2017 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1402,25 +1402,28 @@ Package pdftex.def Info: images/rspmessage.pdf used on input line 461.
 (pdftex.def)             Requested size: 182.09486pt x 38.44998pt.
  [48 <./images/rqt_rcv_flux.pdf> <./images/example_1_1.pdf> <./images/rspmessag
 e.pdf>]
-<images/send_rsp_flux.pdf, id=1671, 781.92125pt x 493.845pt>
+<images/send_rsp_flux.pdf, id=1669, 801.99625pt x 492.84125pt>
 File: images/send_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/send_rsp_flux.pdf>
-Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 479.
-(pdftex.def)             Requested size: 455.24411pt x 287.52293pt.
+Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 477.
+(pdftex.def)             Requested size: 455.24411pt x 279.76431pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [49 <./images/send_rsp_flux.pdf>] [50]
-<images/rcv_rsp_flux.pdf, id=1698, 778.91pt x 622.325pt>
+<images/rcv_rsp_flux.pdf, id=1692, 771.88374pt x 483.8075pt>
 File: images/rcv_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/rcv_rsp_flux.pdf>
-Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 513.
-(pdftex.def)             Requested size: 455.24411pt x 363.72154pt.
+Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 516.
+(pdftex.def)             Requested size: 455.24411pt x 285.34059pt.
  [51 <./images/rcv_rsp_flux.pdf>]
-<images/example_1_2.pdf, id=1714, 652.4375pt x 200.75pt>
+<images/example_1_2.pdf, id=1707, 652.4375pt x 200.75pt>
 File: images/example_1_2.pdf Graphic file (type pdf)
 
 <use images/example_1_2.pdf>
-Package pdftex.def Info: images/example_1_2.pdf used on input line 529.
+Package pdftex.def Info: images/example_1_2.pdf used on input line 530.
 (pdftex.def)             Requested size: 455.24411pt x 140.07986pt.
 ) [52 <./images/example_1_2.pdf>]
 \openout2 = `chapters/testing.aux'.
@@ -1432,28 +1435,28 @@ Chapter 4.
 
 
 
-] <images/bt_max_visib.pdf, id=1734, 603.25375pt x 82.3075pt>
+] <images/bt_max_visib.pdf, id=1727, 603.25375pt x 82.3075pt>
 File: images/bt_max_visib.pdf Graphic file (type pdf)
 
 <use images/bt_max_visib.pdf>
 Package pdftex.def Info: images/bt_max_visib.pdf used on input line 32.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/wfd_max_visib.pdf, id=1735, 603.25375pt x 82.3075pt>
+<images/wfd_max_visib.pdf, id=1728, 603.25375pt x 82.3075pt>
 File: images/wfd_max_visib.pdf Graphic file (type pdf)
 
 <use images/wfd_max_visib.pdf>
 Package pdftex.def Info: images/wfd_max_visib.pdf used on input line 38.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/bt_max_inv.pdf, id=1738, 563.10374pt x 82.3075pt>
+<images/bt_max_inv.pdf, id=1731, 563.10374pt x 82.3075pt>
 File: images/bt_max_inv.pdf Graphic file (type pdf)
 
 <use images/bt_max_inv.pdf>
 Package pdftex.def Info: images/bt_max_inv.pdf used on input line 46.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
 
-<images/wfd_max_inv.pdf, id=1739, 563.10374pt x 82.3075pt>
+<images/wfd_max_inv.pdf, id=1732, 563.10374pt x 82.3075pt>
 File: images/wfd_max_inv.pdf Graphic file (type pdf)
 
 <use images/wfd_max_inv.pdf>
@@ -1506,31 +1509,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--61
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
-[]\OT1/phv/m/n/10 A. De-vel-op-ers, ``Async-task.'' []$\OT1/cmtt/m/n/10 https :
- / / developer . android . com / reference / android / os /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-[]\OT1/phv/m/n/10 Oracle, ``Buffered-in-put-stream.'' []$\OT1/cmtt/m/n/10 https
- : / / docs . oracle . com / javase / 7 / docs / api / java / io /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 71--74
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
 []\OT1/phv/m/n/10 S. . Hi-malayan-Tahr, ``Save web-page for of-fline use and in
 -voke
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--74
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
 \OT1/phv/m/n/10 the same an-droid.'' []$\OT1/cmtt/m/n/10 https : / / stackoverf
 low . com / questions / 17484115 /
  []
 
 [59]
-Underfull \hbox (badness 2285) in paragraph at lines 80--82
+Underfull \hbox (badness 2285) in paragraph at lines 72--74
 []\OT1/phv/m/n/10 W.-F. Al-liance, ``How far does a wi-fi di-rect con-nec-tion 
 travel?.'' []$\OT1/cmtt/m/n/10 http : / / www . wi-[]fi . org /
  []
@@ -1881,10 +1872,10 @@ Package rerunfilecheck Info: File `dissertation.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
  ) 
 Here is how much of TeX's memory you used:
- 16066 strings out of 492995
- 258527 string characters out of 6132191
- 411746 words of memory out of 5000000
- 18851 multiletter control sequences out of 15000+600000
+ 16061 strings out of 492995
+ 258479 string characters out of 6132191
+ 410595 words of memory out of 5000000
+ 18848 multiletter control sequences out of 15000+600000
  30765 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,8n,39p,1951b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1922,10 +1913,10 @@ les/TexLive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><e:/Program Fil
 es/TexLive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><e:/Program Files/Tex
 Live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><e:/Program Files/TexLive/t
 exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (111 pages, 2705363 bytes).
+Output written on dissertation.pdf (111 pages, 2747738 bytes).
 PDF statistics:
- 2034 PDF objects out of 2073 (max. 8388607)
- 1837 compressed objects within 19 object streams
- 323 named destinations out of 1000 (max. 500000)
+ 2023 PDF objects out of 2073 (max. 8388607)
+ 1826 compressed objects within 19 object streams
+ 321 named destinations out of 1000 (max. 500000)
  745 words of extra memory for PDF output out of 10000 (max. 10000000)
 

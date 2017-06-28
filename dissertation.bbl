@@ -59,14 +59,6 @@ G.~Malkin, ``Request for comments: 2453,'' 1998.
 A.~Developers, ``Webview.''
   \url{https://developer.android.com/reference/android/webkit/WebView.html}.
 
-\bibitem{async}
-A.~Developers, ``Asynctask.''
-  \url{https://developer.android.com/reference/android/os/AsyncTask.html}.
-
-\bibitem{bis}
-Oracle, ``Bufferedinputstream.''
-  \url{https://docs.oracle.com/javase/7/docs/api/java/io/BufferedInputStream.html}.
-
 \bibitem{stack}
 S.~. HimalayanTahr, ``Save webpage for offline use and invoke the same
   android.''
