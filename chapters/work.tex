@@ -1,47 +1,53 @@
-\chapter{Developed Peer-to-Peer Communication Prototype}
+\chapter{Prototype Peer-to-Peer Web Access over Bluetooth}
 \label{chapter:work}
 
-In this chapter the implementation of the developed peer-to-peer communication prototype will be analysed. This explanation will extend from the decisions of the technology and protocols to use to the architecture and workflow of the application.
+In this chapter the developed peer-to-peer communication prototype will be analysed. This explanation will address the decisions of the technology and protocols to use as well as the architecture and workflow of the application.
 
-It will begin with a brief summary of the steps taken to reach the developed application's features, functionalities and architecture. Which obstacles led to this solution and which were the fundamental drivers to decide upon this development and architecture to solve the problems previously stated. After the overall application's objectives and high-level architecture is described, a section on the lower-level architecture and components of the application will be presented, also containing flowcharts and diagrams on its normal functioning. A summary on the limitations and future work of this application will be given, as well as some possible solutions to its current limitations, outside the scope of this work. Finally, a conclusion on the difficulties and drawbacks of the development process and overall project appreciation will be given, along with some final thoughts on the work process and methods used.
+It will begin with a brief summary of the steps taken to reach the developed application's features, functionalities and architecture. Next, it will present the obstacles that led to this solution as well as the fundamental drivers to decide upon this development and architecture to solve the problems previously stated. After the overall application's objectives and high-level architecture is described, a section on the lower-level architecture and components of the application will be presented, also containing flowcharts and diagrams on its normal operation. A summary on the limitations and future work of this application will be given, as well as some possible solutions to its current limitations, to be further explored in future work. Finally, a conclusion on the difficulties and drawbacks of the development process and overall project appreciation will be given, along with some final thoughts on the work process and methods used.
 
-\section{Peer-to-Peer Application Design Choices}
+\section{Design Choices}
 
-This section will provide the explanation and justification of the choices made for the application traffic type, ad hoc communication technology and ad hoc routing protocol.
+This section will provide the explanation and justification of the choices made for the application type, ad hoc communication technology and ad hoc routing protocol.
 
-In Section \ref{sec:wfd}, developed work on Android applications using Wi-Fi Direct has a mean of communication was introduced. Having the guidelines of these works in mind, the development of this application started. The main structure would always be: the application will have a routing algorithm that controls the destinations of the packets in each hop. A communication technology, \textit{e.g.} Bluetooth or Wi-Fi Direct, handler for both discovering nearby devices and establishing communication sockets with peers. A set of functions capable of analyzing incoming messages and deciding which is the next step to perform, in order to complete the requests/advertises. Finally, a user interface where the incoming messages can be seen and analysed (for debug purposes), also providing a text area for the user to enter the requested data.
+In Section \ref{sec:wfd}, developed work on Android applications using Wi-Fi Direct as a mean of communication was introduced. Having the guidelines of these works in mind, the development of this application started. The main structure would always be:
+\begin{itemize}
+	\item The application will have a routing algorithm that controls the destinations of the packets in each hop.
+	\item A communication technology, \textit{e.g.} Bluetooth or Wi-Fi Direct, handler, for both discovering nearby devices and to establish communication sockets with peers.
+	\item A set of functions capable of analysing incoming messages and deciding which is the next step to perform, in order to complete the requests/advertises.
+	\item Finally, a user interface where the incoming messages can be seen and analysed (for debug purposes), also providing a text area for the user to enter the requested data.
+\end{itemize}
 
 \subsection{Application Type}
 
-The choosing of what would be the transferred data between devices was one of the major steps of this work. Many ideas could be pursued and each one of them could be a great work to develop. The main contenders were text messages, beacon messages, geolocation messages and web pages. After some research was made, see Section \ref{sec:apps}, some of these contender could be eliminated, due to the existence of works already revolving around them. The main topic was text messages with many of the works developed focusing on recreating popular applications, such as Messenger and WhatsApp, using a peer-to-peer network to route the messages to their destinations. Beacon and geolocation messages were also not a completely innovative choice, since applications such as Uepaa!, see Subsection \ref{subsec:uepaa}, are already implementing systems similar to the one being proposed. Given this reasoning, the most innovative choice would be to transfer web pages between devices, creating a multi-hop hot spot in a peer-to-peer network.
+The choice of the target application was mainly based on the innovation criterium. For this purpose, an investigation was made on already existing peer-to-peer applications, see Section \ref{sec:apps}. Most of th existing applications are designed to support text messaging with much of the developed work focusing on recreating popular applications, such as Messenger and WhatsApp, using a peer-to-peer network to route the messages to their destinations. Beaconing and geolocation messages are also not completely innovative, since applications such as Uepaa!, see Subsection \ref{subsec:uepaa}, already implement peer-to-peer applications where these types of messages are exchanged. Given this reasoning it was considered that the most innovative application type would be web browsing, supporting a multi-hop hot spot in an ad hoc network.
 
 \subsection{Ad Hoc Communication Technology}
 
-After being established that web pages were the data to be requested, the next step was to choose the communication technology to be used, followed by the routing algorithm that would manage the next hops to take. The first and most obvious choice would be to use Wi-Fi Direct in both advertising and communication between devices, since this technology offers the best features to transfer files around 1Kbyte, in both range and data rate of transmission. However, during the development it proved to be impossible to continue with this approach, as Wi-Fi Direct's current Android implementation does not allow for devices to transfer files without user consent.
+The choice of ad hoc network technology was another important step. The first and most obvious choice would be to use Wi-Fi Direct in both advertising and communication between devices, since this technology offers the best features to transfer files around 1Kbyte, in both range and data rate of transmission. However, during the development it proved to be impossible to continue with this approach, as Wi-Fi Direct's current Android implementation does not allow for devices to transfer files without active user participation.
 
 Given this drawback a shift to Bluetooth was made, and a hybrid version of the application was created, where the advertisement would be done via Wi-Fi Direct and the actual transfer of the web pages would be made via Bluetooth. This method also proved to be infeasible, due to security issues, since the the devices would have to display their Bluetooth MAC addresses in their Bluetooth name, making them much more vulnerable to possible attacks.
 
-The advertisement was also a topic of debate. Two possibilities were presented: to use simple Bluetooth connections to advertise to each peer and to use \gls{BLE} beacons as an advertisement method. The first method is slower, since the advertising device needs to create a connection with each discovered peer, however it offers more security, since the receivers of the advertisement are targeted. Despite that, the second method would offer a better advertisement mechanism, since it is faster and consumes less resources than the traditional Bluetooth connections, see Subsection \ref{subsection:bt}, but it gives every device the ability of capturing the advertisement bringing some security issues.
+The advertisement was also a topic of debate. Two possibilities were presented: to use simple Bluetooth connections to advertise to each peer or to use \gls{BLE} beacons as an advertisement method. The first method is slower, since the advertising device needs to create a connection with each discovered peer, in order to transmit its advertisement. The second method would offer a better advertisement mechanism, since it is faster and consumes less resources than the traditional Bluetooth connections (see Subsection \ref{subsection:bt}), but it gives every device the ability to capture the advertisement, bringing some security issues.
 
-The beacon advertisement is a tempting mechanism to implement, given all its advantages, it comprises two components: transmitting and ranging. Transmitting occurs when a device wants to issue an advertisement to a certain region\footnote{A beacon region is the physical space reached by the advertisement.}. Ranging is the act of listening to beacon transmissions in a certain region. During the implementation of this two components it was possible to verify that the current Android implementations - tested with Android versions 6.0 and 7.0 - are not able to reproduce \gls{BLE}'s transmitting mechanism, being only able to use the ranging.
+The beacon advertisement is a tempting mechanism to implement, given all its advantages. It comprises two components: transmission and ranging. Transmission occurs when a device wants to issue an advertisement to a certain region\footnote{A beacon region is the physical space reached by the advertisement.}. Ranging is the act of listening to beacon transmissions in a certain region. During the implementation of these two components it was possible to verify that the current Android implementations - tested with Android versions 6.0 and 7.0 - are not able to reproduce \gls{BLE}'s transmission mechanism, being only able to use the ranging.
 
-Given these facts, the application was developed using Bluetooth for both advertisement of the devices and data transfer, although this is not the best technology for communication in a peer-to-peer network, it is the only one that, currently, meets all the requirements for this work. In the end of this chapter a brief discussion on the changes that need to be made to Wi-Fi Direct's implementation in Android will be presented, and why developers could benefit from these changes.
+Given these facts, the application was developed using simple Bluetooth connections for both advertisement of the devices and data transfer, although this is not the best technology for communication in an ad hoc network, it is the only one that, currently, meets all the requirements for this work. In the end of this chapter, a brief discussion on the changes that need to be made to Wi-Fi Direct's implementation in Android will be presented, and why developers could benefit from these changes.
 
 \subsection{Ad Hoc Routing Protocol}
 \label{subsec:routprot}
 
 The last step would be to create/modify a routing algorithm to control the destination of each incoming message. The requirements are simple, the algorithm simply needs to save the next hop of the shortest path leading to a device with Internet connection.
 
-\gls{AODV} is a known routing scheme used in ad hoc mobile networks, precisely what this application will establish with the devices. However, it establishes dynamic paths, \textit{i.e.} only when a device wants to retrieve a web page does this protocol searches for a path in which to send the packet, see \cite{aodv} for the full specification of this scheme. This scheme is not the best for the applications reliability, since the requesting device should know before hand if it is capable of reaching the Internet, otherwise users will experience long periods of path requesting and advertising every time they request a web page.
+\gls{AODV} is a known routing scheme used in ad hoc mobile networks. It establishes paths in a reactive way, \textit{i.e.} only when a device wants to retrieve a web page does this protocol search for a path in which to send the packet - see \cite{aodv} for the full specification of this scheme. This scheme is not the most reliable, since the requesting device should know beforehand if it is capable of reaching the Internet, otherwise users will uselessly experience long periods of path requesting and advertising every time they request a web page.
 
-\gls{DSDV} is also known for its use in ad hoc mobile networks. This protocol uses a routing table where it stores in each entry: the destination, next hop, number of hops to reach the destination and a sequence number - avoiding routing loops. The devices exchange full routing tables, creating a network where every device has total knowledge of the topology, being a powerful advantage. However, \gls{DSDV} requires the exchange of routing tables and their regular updates, using unnecessary bandwidth, see \cite{dsdv} for more information on \gls{DSDV}.
+\gls{DSDV} is also known for its use in ad hoc mobile networks. This protocol uses a routing table where it stores in each entry: the destination, next hop, number of hops to reach the destination and a sequence number to avoid routing loops. The devices exchange full routing tables, creating a network where every device has total knowledge of the topology. However, \gls{DSDV} requires the exchange of routing tables and their regular updates, wasting bandwidth, see \cite{dsdv} for more information on \gls{DSDV}.
 
-Since the routing of this work does not have a specific destination as a goal, in other words, device A does not want to transmit to B, it only wants to reach a node with network access with the minimum amount of hops, so A does not have knowledge on where its message will be sent after the immediate next hop. Thus, in order to accommodate such requirements some modifications were made to \gls{DSDV}. Firstly, to reduce the bandwidth used by \gls{DSDV}, this adaptation will simply exchange the best estimate of the current device, only including the number of hops and the device's \gls{MAC} address. Secondly, instead of a periodic exchange of tables, devices will update their tables every time a new advertise message is received and they only exchange routing information when a new best path is received, with the contents described above.
+Since the proposed application does not have a specific destination as a goal, \textit{i.e.}, a device A does not want to transmit to B, it only wants to reach a node with network access with the minimum amount of hops. Hence, the sending device will have no need to know the elements of the routing path, other than the next hop node. Thus, in order to accommodate such requirements some modifications were made to \gls{DSDV}. Firstly, to reduce the signalling overhead used by \gls{DSDV}, the developed version will simply exchange the best next hop estimate of the current device. Secondly, instead of a periodic exchange of tables, devices will update their tables every time a new advertise message is received and they only exchange routing information when a new best path is received.
 
 \section{Architecture}
 \label{sec:architecture}
 
-In this section the architectures of both framework and application are presented. It will consist of: a description of the Bluetooth connections between devices, an explanation on the discovery and advertising mechanism and a analysis of the web page exchange process.
+In this section the architectures of both framework and application are presented.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
@@ -52,47 +58,45 @@ In this section the architectures of both framework and application are presente
 In Figure \ref{fig:appsandbox} an overview of the application is shown. It can be seen that there are two main parts of the application, the main activity and the \textit{BluetoothService}.
 \begin{itemize}
 
-\item The main activity is where most of the processing logic is executed, from the analysis of the received data to the management of the routing tables, it comprises of four threads: the main thread seen by the user, also known as the user interface thread. The \textit{NetworkCheck} thread used to perform the query regarding the Internet connection status of the device. The \textit{loadUrl} thread, created when a \textit{WebView} object is used to show or download a web page. Finally, the \textit{waitForWebPage} Thread used to ensure the requested web page is successfully saved in the device.
+\item The main activity is where most of the processing logic is executed, from the analysis of the received data to the management of the routing tables. It comprises four threads: the main thread seen by the user, also known as the user interface thread; the \textit{NetworkCheck} thread, used to perform the query regarding the Internet connection status of the device; the \textit{loadUrl} thread, created when a \textit{WebView} object is used to show or download a web page; finally, the \textit{waitForWebPage} Thread used to ensure the requested web page is successfully saved in the device.
 
-\item The \textit{BluetoothService} is used to manage the Bluetooth connections between devices, it is composed by three threads: the \textit{AcceptThread}, the \textit{ConnectThread} and the \textit{ConnectedThread}. Each of these threads will be explained in detail in the next subsection.
+\item The \textit{BluetoothService} is used to manage the Bluetooth connections between devices, it comprises three threads: the \textit{AcceptThread}, the \textit{ConnectThread} and the \textit{ConnectedThread}. Each of these threads will be explained in detail in the next subsection.
 
 \end{itemize}
 
-Inside the main activity the different threads communication with each other, mainly to notify the main thread of a certain occurrence that may lead to a new set of actions. However, communication is also done between the main activity and the service , usually when the first needs to access the \textit{BluetoothService}'s current status.
-
-Having a better understanding on how the application is divided and the communication between the different parts the next subsections should be more easily comprehended.
+Inside the main activity the different threads communicate with each other, mainly to notify the main thread of a certain occurrence that may lead to a new set of actions. However, communication is also done between the main activity and the service , usually when the former needs to access the \textit{BluetoothService}'s current status.
 
 \subsection{Bluetooth Connections}
 \label{subsec:btconn}
 
-In this subsection the Bluetooth connections between devices and their possible stages will be described and analysed.
+In this subsection, the Bluetooth connections between devices and their possible stages will be described and analysed.
 
-Since the communication technology is Bluetooth, the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system, see \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class, from the application. It creates and listens to insecure communication sockets allowing devices to exchange data without user approval.
+Since the communication technology is Bluetooth, the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system, see \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class. It creates and listens to insecure communication sockets allowing devices to exchange data without user intervention.
 
-The service has three different threads within it: a thread for the acceptance of incoming communications - \textit{AcceptThread}, a thread for the initial exchange of vital information before the connection - \textit{ConnectThread} - and a thread for the actual exchange of data between devices - \textit{ConnectedThread}. The connection of devices goes through each of these stages, allowing the main thread to get information on what is the connection status of the device at a given time.
+The service has three different threads within it: a thread for the acceptance of incoming communications - \textit{AcceptThread}; a thread for the initial exchange of vital information before the connection - \textit{ConnectThread}; and a thread for the actual exchange of data between devices - \textit{ConnectedThread}. The connection of devices goes through each of these stages, allowing the main thread to get information on the connection status of the device at a given time.
 
-There were two different approaches to the connections of devices: either the devices stayed connected as long as possible until a new connection was requested or the devices stayed connected for the minimal amount of time for data to be transferred. The second approach was used, since it is the one that is more energy efficient, draining a lower amount of battery from the devices.
+There were two different approaches to the connections of devices: either the devices stayed connected as long as possible until a new connection was requested, or the devices stayed connected for the minimal amount of time for data to be transferred. The second approach was used, since it is the one that is more energy efficient, draining a lower amount of battery from the devices.
 
 Bluetooth communication between devices is only allowed if both devices have matching "credentials", providing a minimum amount of security to prevent against possible attacks. An application specific name and \gls{UUID} represent the application, making it distinguishable from any other, since the \gls{UUID} of an application should not be repeated in any other.
 
-To notify the main thread of what is being done by the \textit{BluetoothService} a handler is created, acting as bridge between the two parts. It can be used for various actions, such as: retrieving the status of a connection, assessing if a device is ready to receive a file, \textit{etc.}
+To notify the main thread about what is being done by the \textit{BluetoothService}, a handler is created, acting as bridge between the two parts. It can be used for various actions, such as: retrieving the status of a connection, assessing if a device is ready to receive a file, \textit{etc.}
 
-To substantiate the possible Bluetooth connections stages four different textual representations are defined, one for each stage: listening, connecting, connected and not enabled. Each type of thread mentioned earlier is associated with one stage, being the non-existence of a thread the not enabled stage. The different threads can be seen as the implementation of a stage. They are the ones that dictate how is the application going to act during the stage. 
+To substantiate the possible Bluetooth connections stages, four different textual representations are defined, one for each stage: listening, connecting, connected and not enabled. Each type of thread mentioned earlier is associated with a different connection stage. The different threads can be seen as the implementation of a stage.
 
 In the next subsections each stage will be explained in detail, providing a better understanding on how the connections are performed.
 
 \subsubsection{Listening}
 \label{subsubsec:listening}
 
-A device is said to be in the listening stage when it has no ongoing connection but it is waiting for a new one initiated by another device. It is the "first" stage of the \textit{BluetoothService}, since every time the service is initiated the device is moved to this stage.
+A device is said to be in the listening stage when it has no ongoing connection but it is waiting for a new one initiated by another device. It is the "first" stage of the \textit{BluetoothService}, since every time the service is initiated, the device is moved to this stage.
 
-As was said previously, each connection stage is associated with a thread class. The listening stage is associated with the \textit{AcceptThread}, which is instantiated every time the device enters this stage. The framework's connections have short durations and each time a new connection is performed the service is restarted, entering the listening stage. Hence, it is imperative to assure there are no memory leaks or communication sockets left open. Thus, before the listening thread is instantiated it is verified if any other Bluetooth connection threads are running and, if so, they are shut down.
+As was said previously, each connection stage is associated with a thread class. The listening stage is associated with the \textit{AcceptThread}, which is instantiated every time the device enters this stage. The framework's connections have short durations and each time a new connection is performed, the service is restarted, entering the listening stage. Hence, it is imperative to assure there are no memory leaks or communication sockets left open. Thus, before the listening thread is instantiated, it is verified if any other Bluetooth connection threads are running, in which case they are shut down.
 
-Once all the requirements for the instantiation of a new thread are met, a communication socket is created with which the device listens to incoming communications. To implement the listening mechanism a loop is created whose purpose is to block the thread until a new connection is received, an error occurs or the user shuts down the application.
+Once all the requirements for the instantiation of a new thread are met, a communication socket is created in which the device listens to incoming communications. To implement the listening mechanism, a loop is created whose purpose is to block the thread until a new connection is received, an error occurs or the user shuts down the application.
 
-Whenever the device receives a new connection, it verifies the "credentials" sent in that request and compares them with the ones defined in its \textit{BluetoothService}. If they match the connection is accepted.
+Whenever the device receives a new connection, it verifies the "credentials" sent in that request and compares them with the ones defined in its \textit{BluetoothService}. If they match, the connection is accepted.
 
-Upon successfully accepting a connection, the method assesses the status of the newly formed connection and decides upon it. If everything goes as planned, the connection should now be in the connected stage. Once this migration between stages is concluded the instance of the listening thread is destroyed, for reasons above stated and the 
+Upon successfully accepting a connection, the method assesses the status of the newly formed connection and decides upon it. If everything goes as planned, the connection should now be in the connected stage. Once this migration between stages is concluded the instance of the listening thread is destroyed and a new connected thread is created.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
@@ -105,15 +109,15 @@ In Figure \ref{fig:btreceiver} it is possible to see the performed actions from 
 \subsubsection{Connecting}
 \label{subsubsec:connecting}
 
-Concluded the listening and accepting of connections it is necessary to understand how they are requested. For a Bluetooth connection to be performed at least two devices must exist, one of them acting as the connection requester.
+Concluded the listening and accepting of connections it is necessary to understand how they are requested. For a Bluetooth connection to be performed, at least two devices must exist, one of them acting as the connection requester.
 
 Similar to the listening thread initiation, the \textit{ConnectThread} is only instantiated after all the previous Bluetooth connection threads running in the device are shut down. Also, to avoid delays during the connection process, the Bluetooth discovery process is shut down. Only then can the requester attempt to establish a connection with the desired device.
 
-To identify the receiver of the connection request, the device needs to retrieve the \gls{MAC} address of its counterpart, this will be explained in Subsection \ref{subsec:disandadv}. Once this is attained the requester can attempt to create a communication socket between both devices, using the previously defined Bluetooth "credentials" and the receiver's \gls{MAC} address. If the \gls{MAC} address is valid and corresponds to a device within reach the connection is request successfully.
+To identify the receiver of the connection request, the device needs to retrieve the \gls{MAC} address of its counterpart, this will be explained in Subsection \ref{subsec:disandadv}. Once this is attained, the requester can attempt to create a communication socket between both devices, using the previously defined Bluetooth "credentials" and the receiver's \gls{MAC} address. If the \gls{MAC} address is valid and corresponds to a device within reach, the connection is requested successfully.
 
 In case of failure due to the rejection of the connection from the receiver, a notification is sent to the main thread, notifying the connection was not successful and the service is restarted.
 
-However, if the sent request is accepted by the receiver, the connection state is assessed and, if no interruptions or errors occur, the connection stage is moved to the connected stage, indicating both devices are able to send and receive bytes from their counterpart, by writing and reading from the established communication socket, respectively.
+However, if the sent request is accepted by the receiver, the connection state is assessed and, if no interruptions or errors occur, the connection stage is moved to the connected stage, indicating both devices are able to send and receive bytes from their counterpart.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
@@ -126,9 +130,9 @@ In Figure \ref{fig:btrequester} the actions performed by a Bluetooth connection 
 \subsubsection{Connected}
 \label{subsubsec:connected}
 
-When the connection reaches the connected state both requester and receiver devices are linked through a Bluetooth communication socket. To start the receiving and transmitting mechanisms a \textit{ConnectedThread} is created, after all ongoing threads are cancelled to avoid conflicts between communications or memory leaks. To notify the main thread of the connection success the service sends the counterpart's Bluetooth identifier, \textit{i.e.} its Bluetooth name, to the main thread.
+When the connection reaches the connected state, both the requester and the receiver devices are linked through a Bluetooth communication socket. To start the receiving and transmitting mechanisms, a \textit{ConnectedThread} is created, after all ongoing threads are cancelled to avoid conflicts between communications or memory leaks. To notify the main thread of the connection success, the service sends the counterpart's Bluetooth identifier, \textit{i.e.} its Bluetooth name, to the main thread.
 
-To understand how data is transferred between the two connected devices it is necessary to explain two different mechanisms: the writing of data and the reading of data. By creating a socket linking both devices two data streams are also created, implicitly, where one provides a stream to write data into the socket and the other provides a stream to read data from the socket, see Figure \ref{fig:inoutstreams}. Both writing and reading data is in the form of byte arrays that can be posteriorly manipulated into the desired format.
+To understand how data is transferred between the two connected devices it is necessary to explain two different mechanisms: the writing of data and the reading of data. By creating a socket linking both devices, two data streams are also created implicitly, where one provides a stream to write data into the socket and the other provides a stream to read data from the socket - see Figure \ref{fig:inoutstreams}. Both writing and reading data is in the form of byte arrays that can be afterwards manipulated into the desired format.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
@@ -136,18 +140,18 @@ To understand how data is transferred between the two connected devices it is ne
 	\caption{\label{fig:inoutstreams} Communication channel with input and output streams}
 \end{figure}
 
-The writing of bytes into the socket is done through an output stream, name given to the part of the stream that handles the writing. For any data format the principle is the same, to convert the data into a byte array that will be sent through the stream. It is important to note that the channel has a limited size buffer shrinking the arrays' size, thus if the data to be exchanged has a large amount of bytes, it is wise to create a cycle that sends parts of that data, instead of the whole. The writing process is asynchronous, since it is only executed at a certain time following a certain trigger, \textit{e.g.} user input. It is possible to notify the main thread of the sent bytes if they are relevant to other processes, \textit{e.g.} notifying that a text message was sent and prepare to receive/send an image.
+Writing bytes into the socket is done through an output stream, name given to the part of the stream that handles the writing. For any data format, the principle is the same: to convert the data into a byte array that will be sent through the stream. It is important to note that the channel has a limited size buffer shrinking the arrays' size, thus if the data to be exchanged has a large amount of bytes, it is wise to create a cycle that sends parts of that data, instead of the whole. The writing process is asynchronous, since it is only executed at a certain time following a certain trigger, \textit{e.g.} user input. It is possible to notify the main thread aboutof the sent bytes in case they are relevant to other processes, \textit{e.g.} notifying that a text message was sent and prepare to receive/send an image.
 
-The reading of data from the socket is done through an input stream. Since the output stream only writes byte arrays into the socket the input stream will only read byte arrays. This property burdens the developer with the task of treating the received bytes, \textit{i.e.} converting them to their original data type. Also, as mentioned before, the communication socket has a limited size buffer, thus it is also the developer's responsibility to create the reception cycle, following the premises used to create the sending cycle, \textit{e.g.} read the same amount of bytes sent. This mechanism may need to comprise the necessary logic to aggregate the multiple byte arrays received, if the original data was divided and sent in several parts. The reception loop is running while the connection remains active and whenever bytes are read from the socket, these are sent to the main thread to be analysed and converted back to their original format.
+The reading of data from the socket is done through an input stream. Since the output stream only writes byte arrays into the socket, the input stream will only read byte arrays. This property burdens the developer with the task of parsing the received bytes, \textit{i.e.} identifying them and then converting them into their original data type. Also, as mentioned before, the communication socket has a limited size buffer, thus it is also the developer's responsibility to perform segmentation and reassembly of the sent data.
 
-To send and receive different data formats within the same application it is needed to develop a protocol to handle the different conversions of the sent and received byte arrays. Further along this chapter it will be explained how this was done in the developed application to exchange both text messages and web pages.
+To send and receive different data formats within the same application, it is needed to develop a protocol to support the required multiplexing functions. Further along this chapter it will be explained how this was done in the developed application to exchange both text messages and web pages.
 
 \subsection{Discovery and Advertising}
 \label{subsec:disandadv}
 
 Now that the basic concepts on how the communication between devices are implemented are explained, it is possible to dig deeper into the intrinsics of the application itself, and what is the logic behind the routing of web pages.
 
-The first thing in order for each device to know what is the next hop of a certain request will be to fill the routing tables. This process is done by a series of discoveries\footnote{Discovery is the act of finding nearby devices with Bluetooth on.} and advertisements\footnote{Advertise is the act of notifying peer devices of the cost of relaying a request to the device issuing the advertisement.}. Upon starting the main activity, each device will advertise its best estimate to reach the Internet. This advertisement will be received by peers and analysed. In case the estimate of relaying the requests through that node improves the current estimate, the receiving peer will begin another discovery and advertising process with the newly discovered path. Otherwise, the peer will add or update an entry in the routing table, regarding the advertiser.
+The first thing in order for each device to know what the next hop of a certain request will be to fill the routing tables. This process is done by a series of neighbor discoveries\footnote{Discovery is the act of finding nearby devices with Bluetooth on.} and advertisements\footnote{Advertisement is the act of notifying peer devices of the cost of relaying a request to the device issuing the advertisement.}, explained in Subsection \ref{subsubsec:disc} and \ref{subsubsec:sendadv}, respectively. Each device will advertise its best estimate to reach the Internet. This advertisement will be received by peers and analysed.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -155,11 +159,9 @@ The first thing in order for each device to know what is the next hop of a certa
 	\caption{\label{fig:advmsg} Advertising message format}
 \end{figure}
 
-In Figure \ref{fig:advmsg} the format of an advertise message is shown. The type is a feature common to all messages exchanged in this application. It servers the purpose of identifying which type of message is being received. It can take four different values: \textit{ADV}, \textit{RQT}, \textit{RSP} and \textit{FAIL} for an advertisement, request, response and fail message, respectively. In this case it will take the value \textit{ADV}. The delimiters of the different message parts - vertical lines in Figure \ref{fig:advmsg} - are represented by the dot comma character (;), in order to be able to separate the different parts of the message. The Bluetooth \gls{MAC} identifier is always the \gls{MAC} address of the Bluetooth adapter of the sender, it is then used by the receiver to populate its routing table. Finally, the estimate number of hops is the smallest number of hops the sender needs to be able to reach the Internet plus one, corresponding to the hop from the receiver to the sender.
+In Figure \ref{fig:advmsg} the format of an advertisement message is shown. The type is a feature common to all messages exchanged in this application. It servers the purpose of identifying which type of message is being received. It can take four different values: \textit{ADV}, \textit{RQT}, \textit{RSP} and \textit{FAIL} for an advertisement, request, response and fail message, respectively. In this case it will take the value \textit{ADV}. The Bluetooth \gls{MAC} identifier is always the \gls{MAC} address of the Bluetooth adapter of the sender, it is then used by the receiver to populate its routing table. Finally, the estimated number of hops is the lower number of hops that separate the sender from the Internet access point plus one, the hop corresponding to the connection between sender and receiver.
 
-Each device has two different routing tables: one that is used to store the information retrieved from the advertisement process, providing the best path for routing the requests to the final device. Other that is used to route the responses back to the original sender, as explained in the next subsection. For simplicity the first routing table will be referred by the same name, while the second will be referred to as response table, as it handles the routing of responses. 
-
-Both routing and response tables along with some other variables, such as the one keeping the Internet access state must be made accessible and synchronized throughout the application. Hence, contrasting to other variables they can be referred to as application specific.
+Each device has two different routing tables: one that is used to store the information retrieved from the advertisement process, providing the best path for routing the requests to the Internet access point. Another used to route a response back to the original sender of the request that originated the response, as explained in the next subsection. For simplicity, the first routing table will be referred as Routing Table, while the second will be referred to as Response Table, since it handles the routing of responses. 
 
 \begin{table}[ht]
 \centering
@@ -167,44 +169,44 @@ Both routing and response tables along with some other variables, such as the on
 \def\arraystretch{2.5}
 \begin{tabular}{|c|c|}
 \hline
-\textbf{Next hop's MAC} & \textbf{Number of hops} \\ \hline
-Own MAC & 0 or 16 \\ \hline
-Device A's MAC & Estimate through A \\ \hline
-Device B's MAC & Estimate through B \\ \hline
+\textbf{Next hop node (MAC address)} & \textbf{Number of hops} \\ \hline
+Own MAC address & 0 or 16 \\ \hline
+Device A's MAC address & Estimate through A \\ \hline
+Device B's MAC address & Estimate through B \\ \hline
 ... & ... \\ \hline
-Device Z's MAC & Estimate through Z \\ \hline
+Device Z's MAC address & Estimate through Z \\ \hline
 \end{tabular}
 \egroup
-\caption{Routing table example and format}
+\caption{Routing Table example and format}
 \label{tab:routTables}
 \end{table}
 
-In Table \ref{tab:routTables}, an example of a routing table is presented, where the first entry is always populated with the device's own \gls{MAC} address and its estimate, which is either 0 or 16\footnote{16 was chosen to be the representation of infinity or inability to reach a destination, since it has been represented by this number in various protocols, for instance in \gls{RIP}, see \cite{ripprotocol}}, meaning the device has an Internet connection or not, respectively. Every time a device receives an advertisement message, it populates this table, either by adding a new row or updating an existing one, with the information contained in the message - see Figure \ref{fig:advmsg}. When the routing table is done being populated, each node knows its immediate peers and the best estimate through each one of those peers, giving it a full knowledge of its vicinity, \textit{i.e.}, the sub-network created by the peers that are reached by the device using a single hop.
+In Table \ref{tab:routTables}, an example of a Routing Table is presented, where the first entry is always populated with the device's own \gls{MAC} address and its hop distance estimate, which is either 0 or 16\footnote{16 was chosen to be the representation of infinity or inability to reach a destination, since it has been represented by this number in various protocols, for instance in \gls{RIP}, see \cite{ripprotocol}}, meaning the device has an Internet connection or not, respectively. Every time a device receives an advertisement message, it populates this table, either by adding a new row or updating an existing one, with the information contained in the message - see Figure \ref{fig:advmsg}. When the routing table is done being populated, each node knows its immediate peers and the best estimate through each one of those peers, giving it a full knowledge of its vicinity, \textit{i.e.}, the sub-network created by the peers that are reached by the device using a single hop.
 
-It is important to start by understanding how the routing tables are created and, posteriorly, how and when they are populated. Both tables follow the same principle, they are objects that relate keys to values. To a single key corresponds a single value, thus not creating duplicate entries.
+It is important to start by understanding how the routing tables are created and, then, how and when they are populated. Both tables follow the same principle, they are objects that relate keys to values. To a single key corresponds a single value, thus not creating duplicate entries.
 
-In the scope of this subsection only the routing table will be explained, see Subsection \ref{subsec:exch} for the description of the response table. The keys of this table correspond to the \gls{MAC} address of the next hop while the values correspond to the respective estimated number of hops. So when querying the table for a specific \gls{MAC} address it should return one and only one estimated number of hops.
+In the scope of this subsection only the Routing Table will be explained - see Subsection \ref{subsec:exch} for the description of the response table. The keys of this table correspond to the \gls{MAC} address of the next hop while the values correspond to the respective estimated number of hops. When querying the table for a specific \gls{MAC} address it should return one and only one estimated number of hops.
 
-There are three important features that the application needs from this table: to get the absolute minimum value, meaning retrieving the lowest possible value for any given key, in order to retrieve the device's best path. To get the corresponding key to the minimum value, in order to retrieve the receiver to whom this device should send the message. Finally, to update or add a row with a new key-value pair, in order to add newly received advertisement information.
+There are three important things that the application needs from this table: to get the absolute minimum hop distance estimate to the Internet access point, in order to retrieve the device's best path. To get the corresponding key to the minimum hop distance estimate to the Internet access point, in order to retrieve the receiver to whom this device should send the message. Finally, to update or add a row with a new key-value pair, in order to add newly received advertisement information.
 
-To be able to get the absolute minimum of the estimated number of hops, it is necessary to compare all the existing values of the table. Since it only contains the information of its immediate peers this process is fast and does not interfere with the rest of the application. However, if the routing table keeps the information from all the devices in the network, as suggested in \textit{DSDV}, see Subsection \ref{subsec:routprot}, this could be a heavy resource consumption process and could impact the well functioning of the application. If the routing table comprises a minimum estimated number of hops that value will be returned. However, if the table is not populated, 16 will be returned, for reasons explained above.
+To be able to get the absolute minimum of the estimated number of hops, it is necessary to compare all the existing values of the table. Since it only contains the information of its immediate peers, this process is fast and does not interfere with the rest of the application. However, if the Routing Table keeps the information from all the devices in the network, as suggested in \gls{DSDV}, see Subsection \ref{subsec:routprot}, this could lead to significant storage consumption and could impact the performance of the application.
 
-Having the minimum value from the routing table, it is now necessary to retrieve the \gls{MAC} address corresponding to the device providing this estimate. This is done by iterating through every key and, in every iteration, comparing the value of the current key to the minimum value, previously defined. If, in a given iteration, it finds a key mapping the desired value, this key will be returned, corresponding to \gls{MAC} address of a device that gives the minimum estimated number of hops, otherwise the main thread must be notified that there is no best estimate. It is important to note that several devices may provide the shortest path, but the application will only choose the one that was found first, since they all provide the same estimate.
+Having the minimum hop distance estimate to the Internet access point from the Routing Table, it is now necessary to retrieve the \gls{MAC} address corresponding to the device providing this estimated number of hops. The Routing Table is searched until an entry providing the same hop distance estimate to the Internet access point is found, then the associated \gls{MAC} address is retrieved. In case there are more than one entries providing the desired estimate, only the one that was found first is returned.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
 	{\includegraphics[width=1\textwidth]{images/nexthoprqt.pdf}}
-	\caption{\label{fig:nexthoprqt} Process of retrieving the next hop from the routing table}
+	\caption{\label{fig:nexthoprqt} Process of retrieving the next hop from the Routing Table}
 \end{figure}
 
 In Figure \ref{fig:nexthoprqt} it is shown how the application proceeds to retrieve the \gls{MAC} address of the next hop where a new request will be sent. It contains two main loops, one iterating through all the values in search of the lowest and one iterating through all the keys to find one that maps to that value.
 
-Finally, the addition and update of routing table rows is done whenever an advertisement message is received. By separating the message in its parts, according to Figure \ref{fig:advmsg}, it is possible to retrieve both the \gls{MAC} address and estimated number of hops through that peer. Having this information it is possible to insert the retrieved key-value pair into the existing table. As mentioned before one key maps to a single value, thus in case this key already maps to a value, the latter will be overwritten with the new one. In case the key does not exist a new row is created mapping the key to its specific estimate. Note that, in case of a table update, the application does not compare values, \textit{i.e.}, it does not check if the new estimate is better than the old one, since the sender device could have lost the communication with the best route and thus it needs to advertise a worse path. If this check was made, the receiver could be mislead into sending requests through this device, thinking it would provide the better path.
+Finally, the addition and update of Routing Table rows is done whenever an advertisement message is received. By separating the message in its parts, according to Figure \ref{fig:advmsg}, it is possible to retrieve both the \gls{MAC} address and estimated number of hops through that peer. Having this information, it is possible to insert the retrieved key-value pair into the existing table. As mentioned before, one key maps to a single value, thus in case this key already maps to a value, the latter will be overwritten with the new one. In case the key does not exist, a new row is created mapping the key to its specific estimate. Note that, in case of a table update, the application does not compare values, \textit{i.e.}, it does not check if the new estimate is better than the previous one, since the previous route may have been broken and thus the sender of the advertisement always advertises the most recent one.
 
 \subsubsection{Discovering Peers}
 \label{subsubsec:disc}
 
-Now that it is clear how the mechanism of modifying the routing tables works, it is possible to discuss where and when these methods are being called. However, before that there are still some indispensable features that need mentioning:
+Now that it is clear how the mechanism of modifying the Routing Table works, it is possible to discuss where and when these methods are being called. However, before that there are still some indispensable features that need mentioning:
 
 \begin{itemize}
 	\item During the peer discovery process several peers may be found, making it necessary to create a place to store them, for further examination. To achieve this a list of Bluetooth devices is created, where each device corresponds to a found peer in the discovery process. This list is then used to retrieve information from these devices, in order to successfully establish communication sockets with them.
@@ -214,11 +216,11 @@ Now that it is clear how the mechanism of modifying the routing tables works, it
 
 Before beginning the discovery process the application needs to ensure all the conditions are met. The Bluetooth status is the first to be checked, the device should have Bluetooth enabled and it should be discoverable for an unlimited amount of time. If the Bluetooth is not enabled the device cannot begin the discovery process and if the device is not discoverable its peers are not able to make their advertisement reach it.
 
-Once the Bluetooth is set up, the initial update of the routing table is performed, a quick network check indicates if the device has an active Internet connection. Should the check return positive, it will add a new row to the routing with its own \gls{MAC} address and 0 hops, since its estimate to reach the Internet is immediate. In case the check returns negative, meaning the device is currently unable to establish an Internet connection, the same process is performed, however instead of 0 hops, the estimate will be of 16 hops, for reasons already explained.
+Once the Bluetooth is set up, the initial update of the Routing Table is performed, a quick network check indicates if the device has an active Internet connection. Should the check return positive, it will add a new row to the routing with its own \gls{MAC} address and 0 hops, since its estimate to reach the Internet is immediate. In case the check returns negative, meaning the device is currently unable to establish an Internet connection, the same process is performed, however instead of 0 hops, the estimate will be of 16 hops, for reasons already explained.
 
-The device is now finished with the first step of advertisement, filling the routing table with its own \gls{MAC} address and estimate. It is now possible to start the discovery process to advertise this same estimate to the discovered peers.
+The device is now finished with the first step of advertisement, filling the Routing Table with its own \gls{MAC} address and estimate. It is now possible to start the discovery process to advertise this same estimate to the discovered peers.
 
-Figure \ref{fig:adveg1} demonstrates how two devices, one without an Internet connection (left) and one with an active Internet connection (right). At this point both devices should have exactly one entry at their routing tables, since they have not communicated with any other device but they have established their position in the network, \textit{i.e.}, if they have an Internet connection. Device A is unable to reach the Internet, so it adds to the routing table an entry with its own \gls{MAC} address and an estimate of 16 hops. Device B, on the other hand, is able to reach the Internet, thus having an entry with its own \gls{MAC} address and an estimate of 0 hops.
+Figure \ref{fig:adveg1} demonstrates how two devices, one without an Internet connection (left) and one with an active Internet connection (right). At this point both devices should have exactly one entry at their Routing Tables, since they have not communicated with any other device but they have established their position in the network, \textit{i.e.}, if they have an Internet connection. Device A is unable to reach the Internet, so it adds to the Routing Table an entry with its own \gls{MAC} address and an estimate of 16 hops. Device B, on the other hand, is able to reach the Internet, thus having an entry with its own \gls{MAC} address and an estimate of 0 hops.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -245,7 +247,7 @@ Since the number of Bluetooth devices is growing, it is a plausible possibility 
 
 Once the necessary checks are performed and the peer device is eligible to receive an advertisement message, the device attempts to establish a Bluetooth connection, using the mechanism described in \ref{subsec:btconn}. Before sending the advertisement message the application needs to ensure the connection has been successfully established and both devices are ready to write and receive bytes, through the respective streams.
 
-If the conditions to send the message are met the device queries its routing table for the minimum estimated number of hops, explained in Subsection \ref{subsec:disandadv}. To the returned value a unit is added, symbolizing the hop this message will take from sender to receiver. The advertisement is then sent, following the format seen in Figure \ref{fig:advmsg}, where the Bluetooth \gls{MAC} identifier is the device's own \gls{MAC} address.
+If the conditions to send the message are met the device queries its Routing Table for the minimum estimated number of hops, explained in Subsection \ref{subsec:disandadv}. To the returned value a unit is added, symbolizing the hop this message will take from sender to receiver. The advertisement is then sent, following the format seen in Figure \ref{fig:advmsg}, where the Bluetooth \gls{MAC} identifier is the device's own \gls{MAC} address.
 
 Before the next iteration through the peer list, a new cycle must be performed to ensure this device does not advertise to a new peer whilst sending a message to the previous one. Thus, the device waits on confirmation that the advertisement message was successfully received by its destination before starting the process again with the next peer.
 
@@ -268,7 +270,7 @@ The connection to the advertiser is no longer required, thus the \textit{Bluetoo
 
 By comparing the type present in the message, see Figure \ref{fig:advmsg}, the message is identified as an advertisement and submitted to the chain of actions specific to that message type. The first step is to extract the information contained in the message, \textit{i.e.}, the sender's \gls{MAC} address and the estimated number of hops to reach the Internet should a request be sent through that path.
 
-Having these values, the device compares the received estimate with the best from the ones stored in the routing table, process described in Subsection \ref{subsec:disandadv}. If the comparison concludes the received estimate does not top the current best, the routing table is updated with the received estimate and \gls{MAC} address. Otherwise, it means the device has found a better path to reach the Internet, so, once the routing table is updated, the device takes the necessary steps to start a new advertisement process, this time advertising the new best estimate, previously described. 
+Having these values, the device compares the received estimate with the best from the ones stored in the Routing Table, process described in Subsection \ref{subsec:disandadv}. If the comparison concludes the received estimate does not top the current best, the Routing Table is updated with the received estimate and \gls{MAC} address. Otherwise, it means the device has found a better path to reach the Internet, so, once the Routing Table is updated, the device takes the necessary steps to start a new advertisement process, this time advertising the new best estimate, previously described. 
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -284,22 +286,22 @@ In Figure \ref{fig:recvadvflux} a fluxogram of the actions taken by the receiver
 	\caption{\label{fig:adveg2} Example 1: State of the two devices after the advertising process is done} 
 \end{figure}
 
-To summarize, in Figure \ref{fig:adveg2} the example with devices A and B from Figure \ref{fig:adveg1} is complemented. Now device B has advertised to its peers, which include device A. Upon receiving this message, device A proceeded to store the information in its routing table, followed by and advertise from itself, since the new estimate tops the previous one. After this is concluded both devices have the shown routing tables, and A knows it routes to B, while B routes to itself, since A provides a poorer estimate.
+To summarize, in Figure \ref{fig:adveg2} the example with devices A and B from Figure \ref{fig:adveg1} is complemented. Now device B has advertised to its peers, which include device A. Upon receiving this message, device A proceeded to store the information in its Routing Table, followed by and advertise from itself, since the new estimate tops the previous one. After this is concluded both devices have the shown Routing Tables, and A knows it routes to B, while B routes to itself, since A provides a poorer estimate.
 
 If A advertises first the result would be the same, since when B is advertising A would still receive a better estimate and would advertise again. When B receives the second advertise from A it will overwrite the previous entry, maintaining the same values.
 
 Now it should be clear how the discovery and advertising process is performed and what is the code executed at each time of the process. This is the basis of the next subsection, since without it the devices would not be able to reach the Internet unless they already had the connection.
 
-By giving each device a full view of its vicinity it is possible to establish a network in which every device knows the best path instantly. This is done by what was described above, from discovery to advertisement. The next subsection will refer to the next step, where the devices already have their routing tables populated and are ready to exchange web pages. 
+By giving each device a full view of its vicinity it is possible to establish a network in which every device knows the best path instantly. This is done by what was described above, from discovery to advertisement. The next subsection will refer to the next step, where the devices already have their Routing Tables populated and are ready to exchange web pages. 
 
 \subsection{Exchange of Web Pages}
 \label{subsec:exch}
 
-In this subsection the logic created and implemented to exchange the web pages will be explained in detail, also an example, similar to the previous one, Figures \ref{fig:adveg1} and \ref{fig:adveg2}, will be shown to better demonstrate the processes. Before describing the web page exchange process, it is necessary to explain the routing table related to the exchange of web pages, previously mentioned in Subsection \ref{subsec:disandadv} and referred to as response table.
+In this subsection the logic created and implemented to exchange the web pages will be explained in detail, also an example, similar to the previous one, Figures \ref{fig:adveg1} and \ref{fig:adveg2}, will be shown to better demonstrate the processes. Before describing the web page exchange process, it is necessary to explain the routing table related to the exchange of web pages, previously mentioned in Subsection \ref{subsec:disandadv} and referred to as Response Table.
 
-The main purpose of the response table is to provide a destination for a response message. Once a device has received a request and it has an Internet connection, it should know where to send back the response. This would be easy if only this case applied, it would simply send back the response from where it received the request. But, in the case this device is a "bridge" node, \textit{i.e.}, a node that forwarded a request, it may have received requests from different devices and it still needs to be able to differentiate each message and decide which device to send back the response to.
+The main purpose of the Response Table is to provide a destination for a response message. Once a device has received a request and it has an Internet connection, it should know where to send back the response. This would be easy if only this case applied, it would simply send back the response from where it received the request. But, in the case this device is a "bridge" node, \textit{i.e.}, a node that forwarded a request, it may have received requests from different devices and it still needs to be able to differentiate each message and decide which device to send back the response to.
 
-The response table has a similar structure to the routing table but it serves a different purpose. In Table \ref{tab:rspTables} it is possible to see the structure of the response table.
+The Response Table has a similar structure to the Routing Table but it serves a different purpose. In Table \ref{tab:rspTables} it is possible to see the structure of the Response Table.
 
 \begin{table}[ht]
 \centering
@@ -319,11 +321,11 @@ Message ID \#9 & Device X's MAC \\ \hline
 \label{tab:rspTables}
 \end{table}
 
-Despite having similar structures the two tables store different information: routing table maps a \gls{MAC} address to an estimate whereas the response table maps a message identifier to a \gls{MAC} address. Hence, the necessity of having two distinct tables.
+Despite having similar structures the two tables store different information: Routing Table maps a \gls{MAC} address to an estimate whereas the Response Table maps a message identifier to a \gls{MAC} address. Hence, the necessity of having two distinct tables.
 
-Two main actions must be allowed to be performed in a response table: it must be possible to add new rows, each referring to a specific request and it must be possible to retrieve the next hop's \gls{MAC} address for a certain message identifier. Since the message identifiers are unique, there is no need to update response table rows as there will be no duplicates.
+Two main actions must be allowed to be performed in a Response Table: it must be possible to add new rows, each referring to a specific request and it must be possible to retrieve the next hop's \gls{MAC} address for a certain message identifier. Since the message identifiers are unique, there is no need to update Response Table rows as there will be no duplicates.
 
-The second action employs a simple logic, given a message identifier the \gls{MAC} address should be returned. Since to a message identifier corresponds a single \gls{MAC} address there should be no problems in the response path. However, in case the requested message identifier is not found in the response table, the application is notified that the response can not be routed due to the lack of a next hop \gls{MAC} address.
+The second action employs a simple logic, given a message identifier the \gls{MAC} address should be returned. Since to a message identifier corresponds a single \gls{MAC} address there should be no problems in the response path. However, in case the requested message identifier is not found in the Response Table, the application is notified that the response can not be routed due to the lack of a next hop \gls{MAC} address.
 
 
 \begin{figure}[ht]
@@ -338,7 +340,7 @@ For the example three devices are used: A, B and C. Where device C has an active
 \subsubsection{Sending a Request Message}
 \label{subsubsec:sendrqt}
 
-Now that the logic and implementation behind the response table is understood it is possible to explain the mechanism behind the exchange of web pages. This process counts with a number of features that need to be mentioned before further explanation:
+Now that the logic and implementation behind the Response Table is understood it is possible to explain the mechanism behind the exchange of web pages. This process counts with a number of features that need to be mentioned before further explanation:
 
 \begin{itemize}
 	\item  A text area must be defined to enable the input of a \gls{URL} from the application user. This text must be retrievable to form the web page request with the specified \gls{URL}.
@@ -390,11 +392,11 @@ If the connection is successfully performed, the application may proceed to the 
 	\item Finally, the \textit{\gls{URL} to request} is populated with the text retrieved from the user input, seen in Figure \ref{fig:initScreen}.
 \end{itemize}
 
-Once the request message is sent the application updates its response table with the generated message identifier and the \gls{MAC} address of the sending device, \textit{i.e.}, its own, as a key-value pair. With this mechanism the device is able to assess if it is the destination of a certain response or if it is a "bridge" node and needs to forward the response to the next hop. This assessment will be presented and explained in \ref{subsubsec:rcvrqt}.
+Once the request message is sent the application updates its Response Table with the generated message identifier and the \gls{MAC} address of the sending device, \textit{i.e.}, its own, as a key-value pair. With this mechanism the device is able to assess if it is the destination of a certain response or if it is a "bridge" node and needs to forward the response to the next hop. This assessment will be presented and explained in \ref{subsubsec:rcvrqt}.
 
-If the device is not deemed as the owner, there is no random identifier generation, since the value will be retrieved from the received request message. Also, the response table is not updated because this will be done during the receiving process, the next focus. Despite that, the connection is attempted, same as before.
+If the device is not deemed as the owner, there is no random identifier generation, since the value will be retrieved from the received request message. Also, the Response Table is not updated because this will be done during the receiving process, the next focus. Despite that, the connection is attempted, same as before.
 
-However, if the connection establishment fails the user is not notified, since this request was not originated by him/her. In this case, the device queries the response table for the \gls{MAC} address mapped by the request message identifier, corresponding to the device that sent/forwarded the request to this node. A failure notice is then sent to that device, with the intent of notifying the request originator of the inability to forward the request until it reaches the Internet.
+However, if the connection establishment fails the user is not notified, since this request was not originated by him/her. In this case, the device queries the Response Table for the \gls{MAC} address mapped by the request message identifier, corresponding to the device that sent/forwarded the request to this node. A failure notice is then sent to that device, with the intent of notifying the request originator of the inability to forward the request until it reaches the Internet.
 
 If the connection is successfully established, the message is sent as before with the slight difference that the message identifier and the \gls{URL} to be requested are retrieved from the values encapsulated in the received request message, see Figure \ref{fig:rqtmsg}.
 
@@ -413,7 +415,7 @@ The request receiving process similar to the advertise receiving. The device rec
 
 As in the advertisement receiving process, see Figure \ref{fig:recvadvflux}, the received bytes are converted into a text message and the message is compared with the possible types: an advertisement, a request, a response or a failure, as mentioned before. The \textit{BluetoothService} is also restarted.
 
-Once the message is correctly categorized, as an advertisement, the message identifier and sender's \gls{MAC} address are retrieved from the message, see Figure \ref{fig:advmsg}. In the request sending process it was mentioned that in case the device was not the owner of request, it would not update the response table. For devices that receive a request message but are not its owners, the table updating process is done here. Thus, the routing table is updated with the retrieved message parts.
+Once the message is correctly categorized, as an advertisement, the message identifier and sender's \gls{MAC} address are retrieved from the message, see Figure \ref{fig:advmsg}. In the request sending process it was mentioned that in case the device was not the owner of request, it would not update the Response Table. For devices that receive a request message but are not its owners, the table updating process is done here. Thus, the routing table is updated with the retrieved message parts.
 
 At this point, two different workflows can be executed: one regarding the devices with Internet connection and other the devices without one. To define which approach is taken by the device a quick check of the Internet connection status is performed. If the check returns false, meaning the device has no active Internet connection, the request will be forwarded to the next hop, retrieved from the routing table, to reach a device with an Internet connection. To do this the application proceeds as described in \ref{subsubsec:sendrqt} for a device who is not the owner of the request, where the sent \gls{URL} and message identifier are the ones that were previously retrieved from the received message and the \gls{MAC} address is the device's own.
 
@@ -441,20 +443,20 @@ In Figure \ref{fig:rqtrcvflux} it is possible to see a fluxogram of this process
 	\caption{\label{fig:example1.1} Example 2: Request sending and receiving process}
 \end{figure}
 
-Resuming the example in Figure \ref{fig:example1.0} and supposing the user from device A wants to request a \gls{URL} and inputs it correctly, the device will follow the steps explained in Subsection \ref{subsubsec:sendrqt} and check the routing table to establish the next hop. Also its response table will be filled during this action, since it is the owner of the request.
+Resuming the example in Figure \ref{fig:example1.0} and supposing the user from device A wants to request a \gls{URL} and inputs it correctly, the device will follow the steps explained in Subsection \ref{subsubsec:sendrqt} and check the routing table to establish the next hop. Also its Response Table will be filled during this action, since it is the owner of the request.
 
 Once that process is completed and the message reaches device B it will update its routing table with the newly received request. After that it checks its own routing table and assesses if it should forward the request or download the page. Since the device does not have an active connection the first option will chosen and the request forwarded to C.
 
-Finally, upon receiving the request, device C will update its own response table with the received message identifier and B's \gls{MAC} address. Having an Internet connection the device will download the web page.
+Finally, upon receiving the request, device C will update its own Response Table with the received message identifier and B's \gls{MAC} address. Having an Internet connection the device will download the web page.
 
-In Figure \ref{fig:example1.1} it is shown the above described, as well as the three response tables from the devices once the requests are all sent and the web page downloaded.
+In Figure \ref{fig:example1.1} it is shown the above described, as well as the three Response Tables from the devices once the requests are all sent and the web page downloaded.
 
 \subsubsection{Sending a Response Message and Web Page}
 \label{subsubsec:sendrsp}
 
 In this subsection the process of sending a response and a web page will be covered. The response will be routed back until it reaches the owner of the request that originated this response. In the previous section the process of receiving a request and downloading and saving the web page are explained, so it is assumed these mechanisms are understood and completed when the application enters this stage.
 
-To send the response message to the correct destination the device queries the response table for the \gls{MAC} address of the next hop mapped by the message identifier received in the request message. If a valid \gls{MAC} address is returned a connection is attempted, as seen in the other sending processes \ref{subsubsec:sendadv} and \ref{subsubsec:sendrqt}.
+To send the response message to the correct destination the device queries the Response Table for the \gls{MAC} address of the next hop mapped by the message identifier received in the request message. If a valid \gls{MAC} address is returned a connection is attempted, as seen in the other sending processes \ref{subsubsec:sendadv} and \ref{subsubsec:sendrqt}.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -491,17 +493,17 @@ At this point, the device knows it will be receiving a web page archive so the c
 
 The \textit{BluetoothService} is notified that the next received bytes will correspond to a web page archive. Since the connection is still up, new incoming connections will be blocked not allowing other device to interfere with this exchange until it is completed.
 
-Once the message is identified and passed onto the main thread it will be analysed, \textit{i.e.}, the message identifier will be extracted, see Figure \ref{fig:advmsg}. This is done to retrieve the next hop from the response table. Two options are presented: either the device is the destination of that response or it isn't and the message must forwarded to the next hop.
+Once the message is identified and passed onto the main thread it will be analysed, \textit{i.e.}, the message identifier will be extracted, see Figure \ref{fig:advmsg}. This is done to retrieve the next hop from the Response Table. Two options are presented: either the device is the destination of that response or it isn't and the message must forwarded to the next hop.
 
 The sender will then proceed with the transfer of the web page archive bytes. At this point this device is aware that it will be receiving a web archive and not a text message, using the implemented logic in \textit{BluetoothService} for the reception of this data type. The device receives the different partitions of the web page archive and then joins them into a single byte array, that is transferred to the main thread, through the handler. 
 
 Once the main thread is notified of the received web archive the device saves it in the application's directory. The service is restarted and is now able to receive new connections, changing the receiving logic to the reception of text messages, since it is not expecting to receive more partitions for the time being.
 
-The device now has received both the response and the web page and it has all the necessary parts to decide which of the two options to pursue. To achieve that, the response table is queried with the retrieved message identifier, from the response message. This query returns a \gls{MAC} address and the application verifies if it is valid or not.
+The device now has received both the response and the web page and it has all the necessary parts to decide which of the two options to pursue. To achieve that, the Response Table is queried with the retrieved message identifier, from the response message. This query returns a \gls{MAC} address and the application verifies if it is valid or not.
 
 If the \gls{MAC} address is deemed valid a new check is performed, this time with the purpose of assessing if the device is the final destination of the response. If the retrieved \gls{MAC} address does not correspond to the device's, meaning this device is not the destination, it attempts to establish a connection with the next hop, identified by the retrieved \gls{MAC} address. If the connection is accepted and establish the response and web page sending process is repeated, see \ref{subsubsec:sendrsp}.
 
-On the other hand, if the device is deemed the owner of the request that originated this response, \textit{i.e.}, its \gls{MAC} address corresponds to the one retrieved from the response table, it means the web page archive must be unpacked and displayed to the user.
+On the other hand, if the device is deemed the owner of the request that originated this response, \textit{i.e.}, its \gls{MAC} address corresponds to the one retrieved from the Response Table, it means the web page archive must be unpacked and displayed to the user.
 
 As mentioned before, the \textit{WebView} class is used to manage the actions performed with web page and these ones are no exception. So, the \textit{WebView} is initialized and made visible to the user. The web archive is then unpacked and displayed to the user using methods inherent to this class, see \cite{webview} to learn which ones may be useful for this purpose.
 
@@ -519,9 +521,9 @@ With this mechanism when the requested web page is loaded and displayed to user,
 
 In Figure \ref{fig:rsprcvflux} a simplified fluxogram of the response and web page receiving process is shown. It is possible to visualize the file receiving workflow as well as the different possibilities for the receiver of the response: forwarding the response or displaying the web page. It is also shown the mechanism behind the multi-page request. With the shown implementation the user is capable of seeing the requested web pages and navigate through those pages without having to manually send each request.
 
-To finalize the example from Figures \ref{fig:example1.0} and \ref{fig:example1.1}, device C, after finishing the download of the web page, will check its response table and send a response message to device B, which is the next hop retrieved for that specific message identifier \textit{MsgID \#1}. The response is followed by the web page archive, previously downloaded, as described in Subsection \ref{subsubsec:sendrsp}.
+To finalize the example from Figures \ref{fig:example1.0} and \ref{fig:example1.1}, device C, after finishing the download of the web page, will check its Response Table and send a response message to device B, which is the next hop retrieved for that specific message identifier \textit{MsgID \#1}. The response is followed by the web page archive, previously downloaded, as described in Subsection \ref{subsubsec:sendrsp}.
 
-Device B receives the response and the web page following the steps previously explained in Subsection \ref{subsubsec:rcvrsp} and checks its response table for that message identifier. Device A's \gls{MAC} is returned from that query and that's the destination for B's response, so device B sends the response and web page to A.
+Device B receives the response and the web page following the steps previously explained in Subsection \ref{subsubsec:rcvrsp} and checks its Response Table for that message identifier. Device A's \gls{MAC} is returned from that query and that's the destination for B's response, so device B sends the response and web page to A.
 
 A receives the response and web page following the same steps as B. However, when checking the next hop for that message identifier device A gets its own \gls{MAC} address and concludes it is the final destination for that response, proceeding to display the web page requested by the user, as described this subsection.
 
@@ -531,7 +533,7 @@ A receives the response and web page following the same steps as B. However, whe
 	\caption{\label{fig:example1.2} Example 2: Sending and receiving of response messages and web pages}
 \end{figure}
 
-Figure \ref{fig:example1.2} illustrates this example and messages exchanged between the three devices, as well as the response tables, previously established in Figure \ref{fig:example1.1}.
+Figure \ref{fig:example1.2} illustrates this example and messages exchanged between the three devices, as well as the Response Tables, previously established in Figure \ref{fig:example1.1}.
 
 
 
