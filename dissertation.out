@@ -41,8 +41,8 @@
 \BOOKMARK [3][-]{subsubsection.3.2.1.3}{Connected}{subsection.3.2.1}% 41
 \BOOKMARK [2][-]{subsection.3.2.2}{Discovery and Advertising}{section.3.2}% 42
 \BOOKMARK [3][-]{subsubsection.3.2.2.1}{Discovering Peers}{subsection.3.2.2}% 43
-\BOOKMARK [3][-]{subsubsection.3.2.2.2}{Sending an Advertising Message}{subsection.3.2.2}% 44
-\BOOKMARK [3][-]{subsubsection.3.2.2.3}{Receiving an Advertising Message}{subsection.3.2.2}% 45
+\BOOKMARK [3][-]{subsubsection.3.2.2.2}{Sending an Advertisement Message}{subsection.3.2.2}% 44
+\BOOKMARK [3][-]{subsubsection.3.2.2.3}{Receiving an Advertisement Message}{subsection.3.2.2}% 45
 \BOOKMARK [2][-]{subsection.3.2.3}{Exchange of Web Pages}{section.3.2}% 46
 \BOOKMARK [3][-]{subsubsection.3.2.3.1}{Sending a Request Message}{subsection.3.2.3}% 47
 \BOOKMARK [3][-]{subsubsection.3.2.3.2}{Receiving a Request Message}{subsection.3.2.3}% 48
