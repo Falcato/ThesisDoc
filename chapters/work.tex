@@ -189,14 +189,6 @@ In the scope of this subsection only the Routing Table will be explained - see S
 
 There are three important things that the application needs from this table: to get the absolute minimum hop distance estimate to the Internet access point, in order to retrieve the device's best path. To get the corresponding key to the minimum hop distance estimate to the Internet access point, in order to retrieve the receiver to whom this device should send the message. Finally, to update or add a row with a new key-value pair, in order to add newly received advertisement information.
 
-\begin{figure}[ht]
-	\noindent\makebox[\textwidth]
-	{\includegraphics[width=1\textwidth]{images/nexthoprqt.pdf}}
-	\caption{\label{fig:nexthoprqt} Process of retrieving the next hop from the Routing Table}
-\end{figure}
-
-In Figure \ref{fig:nexthoprqt} it is shown the next hop device's \gls{MAC} address retrieval process.
-
 To be able to get the absolute minimum of the estimated number of hops, it is necessary to compare all the existing values of the table. Since it only contains the information of its immediate peers, this process is fast and does not interfere with the rest of the application. However, if the Routing Table keeps the information from all the devices in the network, as suggested in \gls{DSDV}, see Subsection \ref{subsec:routprot}, this could lead to significant storage consumption and could impact the performance of the application.
 
 Having the minimum hop distance estimate to the Internet access point from the Routing Table, it is now necessary to retrieve the \gls{MAC} address corresponding to the device providing this estimated number of hops. The Routing Table is searched until an entry providing the same hop distance estimate to the Internet access point is found, then the associated \gls{MAC} address is retrieved. In case there are more than one entries providing the desired estimate, only the one that was found first is returned.
@@ -443,9 +435,9 @@ In this subsection the process of sending a response and a web page will be cove
 	\caption{\label{fig:rspsendflux} Flow diagram of the response and web page sending process}
 \end{figure}
 
-In Figure \ref{fig:rspsendflux} a flow diagram of the response and web page sending process is presented. It shows the mechanism from the saving of the web page to its sending. As previously described, the process is finished if no valid next hop for that message identifier is retrieved or by correctly sending the web page as expected.
+In Figure \ref{fig:rspsendflux} a flow diagram of the response and web page sending process is presented. It shows the mechanism from the time the web page is saved, until it is sent. As previously described, the process is finished if no valid next hop for that message identifier is retrieved, or by correctly sending the web page as expected.
 
-To send the response message to the correct destination the device queries the Response Table for the \gls{MAC} address of the next hop mapped by the message identifier received in the request message. If a valid \gls{MAC} address is returned a connection is attempted, as seen in the other sending processes \ref{subsubsec:sendadv} and \ref{subsubsec:sendrqt}.
+To send the response message to the correct destination the device queries the Response Table for the \gls{MAC} address of the next hop mapped by the message identifier received in the request message. If a valid \gls{MAC} address is returned, a connection is attempted, as seen in the other sending processes - see Subsections \ref{subsubsec:sendadv} and \ref{subsubsec:sendrqt}.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -453,15 +445,15 @@ To send the response message to the correct destination the device queries the R
 	\caption{\label{fig:rspmsg} Format of a response message}
 \end{figure}
 
-In Figure \ref{fig:rspmsg} the format of a generic response message is shown. The \textit{Message ID} will have a direct correspondence with the message identifier of the request that originated this response. The response message is used as a notification for the receiving to device to prepare the reception of the web page, hence its simple format.
+In Figure \ref{fig:rspmsg} the format of a generic response message is shown. The \textit{Message ID} will have a direct correspondence with the message identifier of the request that originated this response. The response message is used as a notification, alerting the receiving device of an incoming web page file.
 
-Once the main thread is notified by the \textit{BluetoothService} that the response message was correctly sent and received it must send the requested web page archive to the next hop. This notification is passed from the service to the main thread via the previously mentioned handler.
+Once the main thread is notified by the \textit{BluetoothService} that the response message was correctly sent and received, it must send the requested web page archive to the next hop. This notification is passed from the service to the main thread via the previously mentioned handler.
 
-In this stage, the sending device does not need to attempt a new connection with the receiver, the established connection is maintained open until the web page transfer is complete. To initiate the file transfer the web archive file must be converted into a byte array, due to the Bluetooth transfer mechanism explained in \ref{subsubsec:connected}. The application then retrieves the archive's file size to match the array size.
+In this stage, the sending device does not need to attempt a new connection with the receiver - the established connection is maintained open until the web page transfer is complete. To initiate the file transfer, the web archive file must be converted into a byte array, due to the Bluetooth transfer mechanism explained in \ref{subsubsec:connected}. The application then retrieves the archive's file size to match the array size.
 
-The device checks if the established connected is still open. If it is, the bytes are then written to the input stream as per usual however, in contrast to what happened with the single text messages, the file bytes can be larger than the connection stream buffer. To overcome this problem, it is necessary to implement logic to divide the large files, \textit{i.e.}, the ones larger than the stream buffer, into smaller partitions. These partitions must be sent individually and, during the reception, they must be regrouped into the original file, as will be shown in the next subsection.
+The device checks if the established connection is still open. If this is the case, the bytes are then written to the input stream as usual. However, in contrast to what happened with the single text messages, the file bytes can be larger than the connection stream buffer. To overcome this problem, it is necessary to implement logic to divide the large files, \textit{i.e.}, the ones larger than the stream buffer, into smaller partitions. These partitions must be sent individually and, during the reception, they must be regrouped into the original file, as will be shown in the next subsection.
 
-If the connection was shut down due to unexpected behaviour from one of the parts, such as a forced disconnection due to lost of range, the web archive is not sent, the web page sending process is finished and the device keeps listening to incoming connections.
+If the connection was shut down due to unexpected behaviour from one of the parts, such as a forced disconnection due to moving out of range, the web archive is not sent, the web page sending process is finished and the device keeps listening to incoming connections.
 
 \subsubsection{Receiving a Response Message and Web Page}
 \label{subsubsec:rcvrsp}
@@ -474,39 +466,39 @@ In the receiver side, the web page and response are received and the device must
 	\caption{\label{fig:rsprcvflux} Flow diagram of the response and web page receiving process}
 \end{figure}
 
-In Figure \ref{fig:rsprcvflux} a simplified flow diagram of the response and web page receiving process is shown. It is possible to visualize the file receiving workflow as well as the different possibilities for the receiver of the response: forwarding the response or displaying the web page. It is also shown the mechanism behind the multi-page request. With the shown implementation the user is capable of seeing the requested web pages and navigate through those pages without having to manually send each request.
+In Figure \ref{fig:rsprcvflux} a simplified flow diagram of the response and web page reception process is shown. It is possible to visualize the file receiving workflow as well as the different possibilities for the receiver of the response: forwarding the response or displaying the web page. It is also shown the mechanism behind the multi-page request. With the shown implementation, the user is capable of seeing the requested web pages and navigate through those pages without having to manually send each request.
 
-This process begins when the handler notifies the main thread a message has been received, as the other receiving processes. The message is compared with the possible types and is identified as a response message.
+This process begins when the handler notifies the main thread that a message has been received. The message is compared with the possible types and is identified as a response message.
 
-At this point, the device knows it will be receiving a web page archive so the connection is not shut down as it happens in the other receiving process. This mechanism allows the application to have gains in the overall time consumption of the web page exchange.
+At this point, the device knows it will be receiving a web page archive, so the connection is not shut down as it happens in the advertise and request receiving processes - see Subsections \ref{subsubsec:rcvadv} and \ref{subsubsec:rcvrqt}, respectively. This mechanism allows the application to reduce the duration of the web page exchange.
 
-The \textit{BluetoothService} is notified that the next received bytes will correspond to a web page archive. Since the connection is still up, new incoming connections will be blocked not allowing other device to interfere with this exchange until it is completed.
+The \textit{BluetoothService} is notified that the next reception will correspond to a web page archive. Since the connection is still up, new incoming connections will be blocked not allowing other devices to interfere with this exchange until it is completed.
 
-Once the message is identified and passed onto the main thread it will be analysed, \textit{i.e.}, the message identifier will be extracted, see Figure \ref{fig:advmsg}. This is done to retrieve the next hop from the Response Table. Two options are presented: either the device is the destination of that response or it isn't and the message must forwarded to the next hop.
+Once the message is identified and passed to the main thread, it will be analysed, \textit{i.e.}, the message identifier will be extracted - see Figure \ref{fig:advmsg}. This is done to retrieve the next hop from the Response Table. Two situations are possible: either the device is the destination of that response or it isn't and the message must forwarded to the next hop.
 
-The sender will then proceed with the transfer of the web page archive bytes. At this point this device is aware that it will be receiving a web archive and not a text message, using the implemented logic in \textit{BluetoothService} for the reception of this data type. The device receives the different partitions of the web page archive and then joins them into a single byte array, that is transferred to the main thread, through the handler.
+The sender will then proceed with the transfer of the web page archive. At this point, the receiver of the web page is aware that a web archive is being transferred, as opposed to a text message. Using the implemented logic in \textit{BluetoothService} for the reception of this data type, the web archive is fully received and transferred to the main thread, through the handler.
 
-Once the main thread is notified of the received web archive the device saves it in the application's directory. The service is restarted and is now able to receive new connections, changing the receiving logic to the reception of text messages, since it is not expecting to receive more partitions for the time being.
+Once the main thread is notified about the received web archive, the device saves it in the application's directory. The service is restarted and is now able to receive new connections, changing the receiving logic to the reception of text messages, since it is not expecting to receive more partitions for the time being.
 
-The device now has received both the response and the web page and it has all the necessary parts to decide which of the two options to pursue. To achieve that, the Response Table is queried with the retrieved message identifier, from the response message. This query returns a \gls{MAC} address and the application verifies if it is valid or not.
+The device now has received both the response and the web page and it has all the necessary parts to decide which of the two situations, mentioned above, to act accordingly. That is achieved by querying the Response Table with the retrieved message identifier, from the response message. This query returns a \gls{MAC} address and the application verifies if it is valid or not.
 
-If the \gls{MAC} address is deemed valid a new check is performed, this time with the purpose of assessing if the device is the final destination of the response. If the retrieved \gls{MAC} address does not correspond to the device's, meaning this device is not the destination, it attempts to establish a connection with the next hop, identified by the retrieved \gls{MAC} address. If the connection is accepted and establish the response and web page sending process is repeated, see \ref{subsubsec:sendrsp}.
+If the \gls{MAC} address is deemed valid a new check is performed, this time with the purpose of assessing if the device is the final destination of the response. If the retrieved \gls{MAC} address does not correspond to its own \gls{MAC} address, meaning this device is not the destination, it attempts to establish a connection with the next hop, identified by the retrieved \gls{MAC} address. If the connection is accepted and established, the response and web page sending process is initiated - see \ref{subsubsec:sendrsp}.
 
 On the other hand, if the device is deemed the owner of the request that originated this response, \textit{i.e.}, its \gls{MAC} address corresponds to the one retrieved from the Response Table, it means the web page archive must be unpacked and displayed to the user.
 
-As mentioned before, the \textit{WebView} class is used to manage the actions performed with web page and these ones are no exception. So, the \textit{WebView} is initialized and made visible to the user. The web archive is then unpacked and displayed to the user using methods inherent to this class, see \cite{webview} to learn which ones may be useful for this purpose.
+As mentioned before, the \textit{WebView} class is used to manage the actions performed with web page and these ones are no exception. So, the \textit{WebView} is initialized and made visible to the user. The web archive is then unpacked and displayed to the user using methods inherent to this class - see \cite{webview} to learn which ones may be useful for this purpose.
 
-When the user receives the requested web page, he/she might want to navigate through other pages, originated from the first, for instance in a Google search, where the user requested Google's front page and the performs a search, where a subsequent page is requested. As it stands, the user would be shown a "no Internet connection" error. This lack of continuity severely affects the usability of the application thus, developing a solution to this problem is obligatory.
+When the user receives the requested web page, he/she might want to navigate through other pages, corresponding to web links in the previous one. For instance in a Google search, where the user requested Google's front page and the performs a search, where a subsequent page is requested. With the current \textit{WebView} implementation, once a web link is clicked, the "no Internet connection" error will be displayed, as it would happen in a normal web browser opened in a device without Internet connection. This lack of continuity severely affects the usability of the application thus, a solution to this problem was developed.
 
-A solution that proved to be effective is to create a mechanism to detect web page loading errors, such as the "no Internet connection" error. Once the mechanism is triggered, meaning an error occurred, the application must retrieve the requested \gls{URL} and form a new request message from it, see \ref{subsubsec:sendrqt} for the explanation of this process. This mechanism must overwrite the usual action of simply loading the web page, when requested by the user.
+A solution that proved to be effective is to create a mechanism to detect web page loading errors, such as the "no Internet connection" error. Once the mechanism is triggered, meaning an error occurred, the application must retrieve the requested \gls{URL} and form a new request message from it - see \ref{subsubsec:sendrqt} for the explanation of this process. This mechanism must overwrite the usual action of simply loading the web page, when requested by the user.
 
-With this mechanism when the requested web page is loaded and displayed to user, he/she is free to interact with the web page as in the case of a normal web browser. Once this interaction leads to a new web page being requested and displayed the solution's mechanism is triggered and a new request is formed and sent, being submitted to the web page exchange process.
+With this mechanism, when the requested web page is loaded and displayed to user, he/she is free to interact with the web page as in the case of a normal web browser. Once this interaction leads to a new web page being requested and displayed, the solution's mechanism is triggered and a new request is formed and sent, being submitted to the web page exchange process.
 
 To finalize the example from Figures \ref{fig:example1.0} and \ref{fig:example1.1}, device C, after finishing the download of the web page, will check its Response Table and send a response message to device B, which is the next hop retrieved for that specific message identifier \textit{MsgID \#1}. The response is followed by the web page archive, previously downloaded, as described in Subsection \ref{subsubsec:sendrsp}.
 
-Device B receives the response and the web page following the steps previously explained in Subsection \ref{subsubsec:rcvrsp} and checks its Response Table for that message identifier. Device A's \gls{MAC} is returned from that query and that's the destination for B's response, so device B sends the response and web page to A.
+Device B receives the response and the web page, following the steps previously explained in Subsection \ref{subsubsec:rcvrsp}, and checks its Response Table for that message identifier. Device A's \gls{MAC} is returned from that query and that's the destination for B's response, so device B sends the response and web page to A.
 
-A receives the response and web page following the same steps as B. However, when checking the next hop for that message identifier device A gets its own \gls{MAC} address and concludes it is the final destination for that response, proceeding to display the web page requested by the user, as described this subsection.
+A receives the response and web page following the same steps as B. However, when checking the next hop for that message identifier, device A gets its own \gls{MAC} address and concludes it is the final destination for that response, proceeding to display the web page requested by the user, as described this subsection.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]

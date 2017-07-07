@@ -45,27 +45,27 @@
 \contentsline {subsection}{\numberline {3.2.2}Discovery and Advertising}{35}{subsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.2.1}Discovering Peers}{37}{subsubsection.3.2.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2.2}Sending an Advertisement Message}{39}{subsubsection.3.2.2.2}
-\contentsline {subsubsection}{\numberline {3.2.2.3}Receiving an Advertisement Message}{40}{subsubsection.3.2.2.3}
+\contentsline {subsubsection}{\numberline {3.2.2.3}Receiving an Advertisement Message}{39}{subsubsection.3.2.2.3}
 \contentsline {subsection}{\numberline {3.2.3}Exchange of Web Pages}{41}{subsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.3.1}Sending a Request Message}{43}{subsubsection.3.2.3.1}
-\contentsline {subsubsection}{\numberline {3.2.3.2}Receiving a Request Message}{45}{subsubsection.3.2.3.2}
-\contentsline {subsubsection}{\numberline {3.2.3.3}Sending a Response Message and Web Page}{47}{subsubsection.3.2.3.3}
-\contentsline {subsubsection}{\numberline {3.2.3.4}Receiving a Response Message and Web Page}{49}{subsubsection.3.2.3.4}
-\contentsline {chapter}{\numberline {4}Tests and Results}{53}{chapter.4}
-\contentsline {section}{\numberline {4.1}Bluetooth vs. Wi-Fi Direct}{53}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Ranges of communication}{53}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Battery consumptions}{55}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Discovery times}{55}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}File transfer data rates}{56}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}Testing the developed application}{56}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Battery consumption during use}{56}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Discovery times}{56}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Connection times}{56}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}File transfer data rates}{56}{subsection.4.2.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{57}{chapter.5}
-\contentsline {chapter}{Bibliography}{58}{chapter.5}
-\contentsline {chapter}{\numberline {A}Application code}{61}{appendix.A}
-\contentsline {section}{\numberline {A.1}InitActivity.java}{61}{section.A.1}
-\contentsline {section}{\numberline {A.2}BtActivity.java}{62}{section.A.2}
-\contentsline {section}{\numberline {A.3}RoutingApp.java}{77}{section.A.3}
-\contentsline {section}{\numberline {A.4}BluetoothService.java}{79}{section.A.4}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Sending a Request Message}{42}{subsubsection.3.2.3.1}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Receiving a Request Message}{44}{subsubsection.3.2.3.2}
+\contentsline {subsubsection}{\numberline {3.2.3.3}Sending a Response Message and Web Page}{46}{subsubsection.3.2.3.3}
+\contentsline {subsubsection}{\numberline {3.2.3.4}Receiving a Response Message and Web Page}{47}{subsubsection.3.2.3.4}
+\contentsline {chapter}{\numberline {4}Tests and Results}{51}{chapter.4}
+\contentsline {section}{\numberline {4.1}Bluetooth vs. Wi-Fi Direct}{51}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Ranges of communication}{51}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Battery consumptions}{53}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Discovery times}{53}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}File transfer data rates}{53}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Testing the developed application}{53}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Battery consumption during use}{53}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Discovery times}{53}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Connection times}{53}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}File transfer data rates}{53}{subsection.4.2.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{55}{chapter.5}
+\contentsline {chapter}{Bibliography}{56}{chapter.5}
+\contentsline {chapter}{\numberline {A}Application code}{59}{appendix.A}
+\contentsline {section}{\numberline {A.1}InitActivity.java}{59}{section.A.1}
+\contentsline {section}{\numberline {A.2}BtActivity.java}{60}{section.A.2}
+\contentsline {section}{\numberline {A.3}RoutingApp.java}{75}{section.A.3}
+\contentsline {section}{\numberline {A.4}BluetoothService.java}{77}{section.A.4}
