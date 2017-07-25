@@ -18,29 +18,32 @@
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Application-layer message for content registration, advertisement, request and delivery. (adapted from: \cite {routeMultiGroup})}}{24}{figure.2.12}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Wi-Fi P2P MANET routing table. (source: \cite {manet})}}{25}{figure.2.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the different parts of the application and the communication between the threads running in each part}}{32}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Flow diagram of a Bluetooth connection receiver's performed actions}}{33}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Flow diagram of a Bluetooth connection requester's performed actions}}{34}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Communication channel with input and output streams}}{35}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Advertising message format}}{35}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Flow diagram of the discovery process}}{38}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Example 1: State of the two devices after the initial step is over}}{38}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Flow diagram of the advertisement process from the point of a sender}}{39}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Flow diagram of the advertisement process from the point of a receiver}}{40}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Example 1: State of the two devices after the advertisement process is done}}{41}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Example 2: State of the routing tables of the three devices}}{42}{figure.3.11}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Flow diagram of the request sending process triggered by user input}}{43}{figure.3.12}
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Request message format}}{43}{figure.3.13}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Flow diagram of the request receiving process}}{44}{figure.3.14}
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Example 2: Request sending and receiving process}}{45}{figure.3.15}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Flow diagram of the response and web page sending process}}{46}{figure.3.16}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Format of a response message}}{47}{figure.3.17}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces Flow diagram of the response and web page receiving process}}{48}{figure.3.18}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces Example 2: Sending and receiving of response messages and web pages}}{49}{figure.3.19}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the different parts of the application and the communication between the threads running in each part.}}{32}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Flow diagram of the performed actions of a device listening for incoming connection requests.}}{33}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Flow diagram of a Bluetooth connection initiator's performed actions.}}{34}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Communication channel with input and output streams.}}{34}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Flow diagram of the performed actions of a device reading from a Bluetooth communication socket.}}{35}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Flow diagram of the performed actions of a device writing to a Bluetooth communication socket.}}{35}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Advertising message format.}}{36}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Flow diagram of the discovery process.}}{38}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Example 1: State of the two devices after the initial step of the advertisement process is over.}}{39}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Flow diagram of the advertisement process from the point of a sender.}}{39}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Flow diagram of the advertisement process from the point of a receiver.}}{40}{figure.3.11}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Example 1: State of the two devices after the advertisement process is concluded.}}{41}{figure.3.12}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Example 2: State of the routing tables of the three devices.}}{42}{figure.3.13}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Flow diagram of the request sending process triggered by user input.}}{43}{figure.3.14}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Request message format.}}{44}{figure.3.15}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Flow diagram of the request receiving process.}}{45}{figure.3.16}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Example 2: Request sending and receiving process.}}{46}{figure.3.17}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Flow diagram of the Response message and web page sending process.}}{47}{figure.3.18}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Format of a Response message.}}{47}{figure.3.19}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Flow diagram of the Response message and web page receiving process.}}{48}{figure.3.20}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Example 2: Sending and receiving of Response messages and web pages.}}{50}{figure.3.21}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Max range of Bluetooth communication with line of sight between devices}}{52}{figure.4.1}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Max range of Wi-Fi Direct communication with line of sight between devices}}{52}{figure.4.2}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Max range of Bluetooth communication without line of sight between devices}}{52}{figure.4.3}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Max range of Wi-Fi Direct communication without line of sight between devices}}{53}{figure.4.4}
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Plot of the measured Bluetooth discovery times from the three devices.}}{54}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Plot of the Bluetooth discovery times measured while using the developed application from the three devices.}}{55}{figure.4.6}
 \addvspace {10\p@ }
