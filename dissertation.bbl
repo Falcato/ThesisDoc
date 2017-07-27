@@ -41,12 +41,12 @@ S.~Choudhuri, ``Understanding the difference between wireless encryption
 J.~J. Garcia-Luna-Aceves, ``Content-centric networking.''
   \url{https://www.ietf.org/proceedings/65/slides/DTNRG-12.pdf}.
 
-\bibitem{aodv}
-C.~Perkins, E.~Belding-Royer, and S.~Das, ``Request for comments: 3561,'' 2003.
-
 \bibitem{dsdv}
 C.~Perkins and P.~Bhagwat, ``Highly dynamic destination-sequenced
   distance-vector routing (dsdv) for mobile computers,'' 1994.
+
+\bibitem{aodv}
+C.~Perkins, E.~Belding-Royer, and S.~Das, ``Request for comments: 3561,'' 2003.
 
 \bibitem{threads}
 Oracle, ``Class thread.''
@@ -58,6 +58,10 @@ G.~Malkin, ``Request for comments: 2453,'' 1998.
 \bibitem{webview}
 A.~Developers, ``Webview.''
   \url{https://developer.android.com/reference/android/webkit/WebView.html}.
+
+\bibitem{kitkat}
+A.~Developers, ``Kitkat.''
+  \url{https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#KITKAT}.
 
 \bibitem{bluetooth}
 B.~S.~I. Group, ``How it works | bluetooth technology website.''
@@ -78,5 +82,9 @@ R.~Woodings, D.~Joos, T.~Clifton, and C.~D. Knutson, ``Rapid heterogeneous
 \bibitem{btdisc2}
 B.~S. Peterson, R.~O. Baldwin, and R.~A. Raines, ``Bluetooth discovery time
   with multiple inquirers,'' 2006.
+
+\bibitem{wfddisc}
+A.~Developers, ``Wi-fi peer-to-peer | discovering peers.''
+  \url{https://developer.android.com/guide/topics/connectivity/wifip2p.html#discovering}.
 
 \end{thebibliography}

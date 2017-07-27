@@ -9,7 +9,7 @@ It will begin with a brief summary of the steps taken to reach the developed app
 
 This section will provide the explanation and justification of the choices made for the application type, ad hoc communication technology and ad hoc routing protocol.
 
-In Section \ref{sec:wfd}, developed work on Android applications using Wi-Fi Direct as a mean of communication was introduced. Having the guidelines of these works in mind, the development of this application started. The main structure is:
+In Section \ref{sec:wfd}, related work on Android applications using Wi-Fi Direct as a mean of communication was introduced. Having the guidelines of these works in mind, the development of this application started. The main structure is:
 
 \begin{itemize}
 	\item The application has a routing algorithm that controls the destinations of the packets in each hop.
@@ -20,7 +20,7 @@ In Section \ref{sec:wfd}, developed work on Android applications using Wi-Fi Dir
 
 \subsection{Application Type}
 
-The choice of the target application was mainly based on the innovation criterium. For this purpose, an investigation was made on already existing peer-to-peer applications, see Section \ref{sec:apps}. Most of th existing applications are designed to support text messaging with much of the developed work focusing on recreating popular applications, such as Messenger and WhatsApp, using a peer-to-peer network to route the messages to their destinations. Beaconing and geolocation messages are also not completely innovative, since applications such as Uepaa!, see Subsection \ref{subsec:uepaa}, already implement peer-to-peer applications where these types of messages are exchanged. Given this reasoning it was considered that the most innovative application type would be web browsing, supporting a multi-hop hot spot in an ad hoc network.
+The choice of the target application was mainly based on the innovation criterium. For this purpose, an investigation was made on already existing peer-to-peer applications, see Section \ref{sec:apps}. Most of the existing applications are designed to support text messaging with much of the developed work focusing on recreating popular applications, such as Messenger and WhatsApp, using a peer-to-peer network to route the messages to their destinations. Beaconing and geolocation messages are also not completely innovative, since applications such as Uepaa!, see Subsection \ref{subsec:uepaa}, already implement peer-to-peer applications where these types of messages are exchanged. Given this reasoning it was considered that the most innovative application type would be web browsing, supporting a multi-hop hot spot in an ad hoc network.
 
 \subsection{Ad Hoc Communication Technology}
 
@@ -39,21 +39,21 @@ Given these facts, the application was developed using simple Bluetooth connecti
 
 The last step was to create/modify a routing algorithm to control the destination of each incoming message. The requirements are simple: the algorithm simply needs to save the next hop of the shortest path leading to a device with Internet connection.
 
-\gls{AODV} is a known routing scheme used in ad hoc mobile networks. It establishes paths in a reactive way, \textit{i.e.} only when a device wants to retrieve a web page does this protocol search for a path in which to send the packet - see \cite{aodv} for the full specification of this scheme. This scheme is not the most reliable, since the requesting device should know beforehand if it is capable of reaching the Internet, otherwise users will uselessly experience long periods of path requesting and advertising every time they request a web page.
+\gls{DSDV} is a routing protocol used in ad hoc mobile networks. This protocol uses a routing table where it stores in each entry the destination, next hop, number of hops to reach the destination and a sequence number to avoid routing loops. The devices exchange full routing tables, creating a network where every device has total knowledge of the topology. However, \gls{DSDV} requires the exchange of routing tables and their regular updates, wasting bandwidth - see \cite{dsdv} for more information on \gls{DSDV}.
 
-\gls{DSDV} is also known for its use in ad hoc mobile networks. This protocol uses a routing table where it stores in each entry the destination, next hop, number of hops to reach the destination and a sequence number to avoid routing loops. The devices exchange full routing tables, creating a network where every device has total knowledge of the topology. However, \gls{DSDV} requires the exchange of routing tables and their regular updates, wasting bandwidth - see \cite{dsdv} for more information on \gls{DSDV}.
+\gls{AODV} is also a known routing scheme used in ad hoc mobile networks. It establishes paths in a reactive way, \textit{i.e.} only when a device wants to retrieve a web page does this protocol search for a path in which to send the packet - see \cite{aodv} for the full specification of this scheme. This scheme is not the most reliable, since the requesting device should know beforehand if it is capable of reaching the Internet, otherwise users will uselessly experience long periods of path requesting and advertising every time they request a web page.
 
 The proposed application does not have a specific destination as a goal, \textit{i.e.}, a device A does not want to transmit to B, it only wants to reach a node with network access with the minimum amount of hops. Hence, the sending device will have no need to know the elements of the routing path, other than the next hop node. Thus, in order to accommodate such requirements some modifications were made to \gls{DSDV}. Firstly, to reduce the signalling overhead used by \gls{DSDV}, the developed version will simply exchange the best next hop estimate of the current device. Secondly, instead of a periodic exchange of tables, devices will update their tables every time a new Advertisement message is received and they only exchange routing information when a new best path is received.
 
-After a flexible period of time, each device erases its routing table and proceeds to restart the discovery and advertisement protocol - see Subsection \ref{subsec:discandadv}. This allows devices to adjust their routing tables to the network's changes, such as erasing routes that no longer are available and replacing them with newly created ones. The period of time is flexible and can be changed according the dynamicity of the network.
+After a flexible period of time, each device erases its routing table and proceeds to restart the discovery and advertisement protocol - see Subsection \ref{subsec:disandadv}. This allows devices to adjust their routing tables to the network's changes, such as erasing routes that no longer are available and replacing them with newly created ones. The period is flexible and can be changed according the dynamics of the network.
 
-The proposed protocol provides a loop-free path for every request, since every node only advertises the best hop distance estimate. The downfall is that the requests' paths are not flexible, \textit{i.e.}, a Request message is always sent through the best path and, if a link along that path is broken, the Request message is discarded. New paths are only established periodically, when a new round of advertisements is performed, mentioned in the previous paragraph.
+The proposed protocol provides a loop-free path for every request, since every node only advertises the best hop distance estimate. The downfall is that the requests' paths are not flexible, \textit{i.e.}, a Request message is always sent through the best path and, if a link along that path is broken, the Request message is discarded. New paths are only established periodically, when a new round of advertisements is performed, as mentioned in the previous paragraph.
 
-A different routing protocol could be deployed, one that has more flexibility, regarding the requests' paths. A possible approach could be to use a similar Advertisement message structure as the one used in \textit{DSDV}. The \gls{MAC} address of the advertisement creator would be added, as well as a sequence number. These new message fields would be used to assess if the received advertisement is newer, or was simply delayed, than the previously received, from that node. With this mechanism, it would be possible to establish several secondary path if the best path was inaccessible.
+A different routing protocol could be deployed, one that has more flexibility, regarding the requests' paths. A possible approach could be to use a similar Advertisement message structure as the one used in \gls{DSDV}. The \gls{MAC} address of the advertisement creator would be added, as well as a sequence number. These new message fields would be used to assess if the received advertisement is newer than the previously received advertisement from that node, or was simply delayed. With this mechanism, it would be possible to establish several secondary path if the best path was inaccessible.
 
-However, to establish such protocol, would add complexity and consume time resources during both the advertisement and web page exchange processes. Nevertheless, this option could be implemented, if the application where it would be inserted prioritizes reliability over time of data exchange.
+However, to establish such protocol, would add complexity and consume time resources during both the advertisement and web page exchange processes. Nevertheless, this option could be implemented, in an application for which reliability is more important than delay.
 
-Since this work pretends to develop a peer-to-peer web access, the time of data exchange is crucial, as this application would be useless if the time to access the Internet is too big. Thus, the first, lighter routing protocol was implemented.
+Since this work aims to to develop a peer-to-peer web access, the time of data exchange is crucial, as this application would be useless if the time to access the Internet is too big. Thus, the first, lighter routing protocol was implemented.
 
 \section{Architecture}
 \label{sec:architecture}
@@ -511,7 +511,7 @@ On the other hand, if the device is deemed the owner of the request that origina
 
 As mentioned before, the \textit{WebView} class is used to manage the actions performed with web page and these ones are no exception. So, the \textit{WebView} is initialized and made visible to the user. The web archive is then unpacked and displayed to the user using methods inherent to this class - see \cite{webview} to learn which ones may be useful for this purpose.
 
-When the user receives the requested web page, he/she might want to navigate through other pages, corresponding to web links in the previous one (for instance in a Google search, where the user requested Google's front page and performs a search, where a subsequent page is requested). With the current \textit{WebView} implementation, once a web link is clicked, the "no Internet connection" error will be displayed, as it would happen in a normal web browser opened in a device without Internet connection. This lack of continuity severely affects the usability of the application thus, a solution to this problem was developed.
+When the user receives the requested web page, he/she might want to navigate through other pages, corresponding to web links in the previous one (for instance when a user clicks in a link present in the web page, requesting a subsequent page). With the current \textit{WebView} implementation, once a web link is clicked, the "no Internet connection" error will be displayed, as it would happen in a normal web browser opened in a device without Internet connection. This lack of continuity severely affects the usability of the application thus, a solution to this problem was developed.
 
 A solution that proved to be effective is to create a mechanism to detect web page loading errors, such as the "no Internet connection" error. Once the mechanism is triggered, meaning an error occurred, the application must retrieve the requested \gls{URL} and form a new Request message from it - see \ref{subsubsec:sendrqt} for the explanation of this process. This mechanism must overwrite the usual action of simply loading the web page, when requested by the user.
 
@@ -529,9 +529,30 @@ Figure \ref{fig:example1.2} illustrates this example and messages exchanged betw
 	\caption{\label{fig:example1.2} Example 2: Sending and receiving of Response messages and web pages.}
 \end{figure}
 
-\subsection{Limitations of the Developed Application}
+\section{Limitations of the Developed Framework and Application}
 
-%Limitações no trabalho, justificadas com falhas nas tecnologias
+The developed framework and application accomplish the basic functions, \textit{i.e.}, the foundation, required for a market-ready solution. However, they both have some limitations. In this subsection, these limitations will be analysed.
+
+Starting by the developed framework, it provides a easy to use set of methods with the purpose of establishing an ad hoc network. Its main limitations are the following:
+
+\begin{itemize}
+	\item The technology used is Bluetooth, known for its low energy consumption. A choice suitor for the developed framework would be Wi-Fi Direct, providing (1) a larger range of communication, expanding the network reach; (2) faster data rates, reducing the time of message exchanges and overall application runtimes. Although this technology provides some advantages over Bluetooth, its current Android implementation does not allow the transmission of data without user intervention, invalidating its use in most applications.
+	 
+	\item The implemented routing protocol is simple and light, providing an excellent solution for time sensitive applications. However, it does not support alternative path finding and data retransmission, in case of failure. In Subsection \ref{subsec:routprot}, a possible routing protocol is proposed, that despite being heavier, provides a robust solution to transmission and path failures.
+	
+	\item The discovery and advertisement process is slow and could be improved by using \gls{BLE}'s beacon technology. Devices would periodically send a beacon message, allowing peer devices to capture and store that information. This mechanism would be much more efficient than creating individual connections with each peer device to transmit the Advertisement message. However, although the used devices support \gls{BLE}, its current Android implementation only allows devices to capture the beacon messages, not to send them, thus invalidating the development of this mechanism.
+	
+\end{itemize}
+
+The developed application provides a solid mechanism to provide web access to devices without Internet connection. Its main limitation resides in the capture and transmission of the web pages:
+
+\begin{itemize}
+	
+	\item The mechanism used to store the web pages is to retrieve a web page archive. This archive stores the web page in a single file, easily uncompressed and displayed. Although this appears to be the perfect solution for the web page storage, it has some flaws, inherent to the method used to retrieve the archive, \textit{savewebarchive()}. This method's last major update was in October, 2013, with the introduction of Android API level 19 (see \cite{kitkat}) and, since then, web pages have suffered lots of improvements. Some of the new web page features may not be stored, due to the method's lack of compatibility thus, some web pages' interactive features may not be responsive.
+	
+	\item To successfully implement a full web browser experience, video streaming and file transfers should be possible. However, due to their implementation complexity, these features were left out of the initial development.
+	
+\end{itemize}
 
 
 

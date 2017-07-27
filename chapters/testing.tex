@@ -25,7 +25,7 @@ Wi-Fi Direct on the other hand offers, theoretically, ranges of communication up
 
 In order to verify these claims from both technologies, two mobile devices were taken to an open space, although with some limitations as described above, and several searches were made, until the devices stopped being discovered by one another. After measuring the distance between both devices, the results were taken, and prove what was already to be expected, although with some twists. 
 
-Bluetooth was able to create a connection between devices from a distance up to 42 meters apart, see Figure \ref{fig:btMaxVisib} for the overall scheme of this experiment. This value is a lot more than what was expected judging by the theoretical value of 10 meters, although the health of the connection was not verified, see \ref{subsec:ftdr} for these tests. Using Wi-Fi Direct the devices were able to communicate from a maximum distance of 77 meters, see Figure \ref{fig:wfdMaxVisib} for the overall scheme of this experiment, which is, considerably, smaller than the theoretical value of 200 meters.
+Bluetooth was able to create a connection between devices from a distance up to 42 meters apart, see Figure \ref{fig:btMaxVisib} for the overall scheme of this experiment. This value is a lot more than what was expected judging by the theoretical value of 10 meters, although the health of the connection was not verified - see Subsection \ref{subsec:normalftdr} to see how the distance affects the data rates. Using Wi-Fi Direct the devices were able to communicate from a maximum distance of 77 meters, see Figure \ref{fig:wfdMaxVisib} for the overall scheme of this experiment, which is, considerably, smaller than the theoretical value of 200 meters.
 
 \begin{figure}[ht]
    \noindent\makebox[\textwidth]
@@ -59,7 +59,7 @@ Wi-Fi Direct was also able to communicate from a smaller maximum distance, measu
 
 After these experiments, it is possible to conclude that Wi-Fi Direct is more desirable, since it provides better coverage than Bluetooth to similar areas. Also, there is no evidence that Wi-Fi Direct suffers more losses from obstacles, maintaining its desirability. This was already to expect, both from the theoretical values and from the transmission powers\footnote{Transmission powers impact directly the range of transmission, since they affect the signal strength, a crucial characteristic for receivers to better capture the transmissions. A bigger transmit power, usually, creates a bigger signal strength leading to the signal being capture over bigger distances, as referred in \cite{txpower}, for instance.}, since Bluetooth is mostly known for its lower transmit powers, if compared to Wi-Fi.
 
-\subsection{Battery Consumptions}
+\subsection{Energy Consumption}
 
 \subsection{Discovery Times}
 \label{subsec:normaldisc}
@@ -83,6 +83,10 @@ Samsung Grand Neo (in blue) is constant throughout the measuring, having a Bluet
 None of the three devices approached the theoretical Bluetooth discovery time value of 10.24s, the difference is quite significant in a delay-sensitive application, such as the developed one.
 
 Each device showed a different average Bluetooth discovery time, this difference in the discovery times can be due to the different hardware used in the devices, since each device is produced by a different manufacturer.
+
+Wi-Fi Direct on the other hand does not provide a discovery time limit. This technology is constantly scanning for peer devices, until the user stops the ongoing search - see \cite{wfddisc}. This is also a cause of Wi-Fi Direct's bigger energy consumption, since this process is running in background when the technology is being used.
+
+However, it is possible to program an application limiting the discovery period of Wi-Fi Direct. This provides a more flexible discovery time than Bluetooth's, since it can be tweaked according the application's purpose.
 
 \subsection{File Transfer Data Rates}
 \label{subsec:normalftdr}
@@ -114,9 +118,35 @@ Once again, it is possible to see that all three devices failed to meet the theo
 
 \subsection{Advertisement Times}
 
+In this subsection the advertisement times will be measured and analysed. There will be two sets of tests: one where devices advertise to one peer and another one where devices advertise to two peers. These two sets of tests aim to provide a better understanding on how much time the advertisement process occupies during an application run.
+
+The devices used to test the advertisement process duration are the same used in the previous test: Motorola Moto G2, Samsung Grand Neo and Huawei P8 Lite. Since the application needs to establish a connection per peer device found, it is expected that the advertisement times to one peer will be slightly lower than the advertisement times to two peers, although the difference should not impact the overall application runtime.
+
+In Figure \ref{fig:adv1} it is possible to see a boxplot of the advertisement times of the three devices. Analysing the boxplot it is possible to see that (1) Motorola Moto G2 has the lowest average advertisement time, as well as the lowest standard deviation from the three devices. It provides, approximately, a maximum of 2s and a minimum of 0.75s, having an average advertisement time of 1.333s; (2) Unlike the tests in Subsection \ref{subsec:appdisc}, Samsung Grand Neo has the biggest standard deviation, covering the biggest and smallest advertisement time values from the three devices. It provides, approximately, a maximum advertisement time of 3.5s and a minimum of 0.35s, having an average advertisement time of 1.514s; (3) Huawei P8 Lite has most of its values in the interval between 1.75s and 1s. It provides, approximately, a maximum of 2s and a minimum advertisement time of 0.75s, having an average advertisement time of 1.388s.
+
+\begin{figure}[ht]
+	\noindent\makebox[\textwidth]
+	{\includegraphics[width=1\textwidth]{images/boxplot_adv_1.pdf}}
+	\caption{\label{fig:adv1} Boxplot of the advertisement times to one peer measured while using the developed application from the three devices.}
+\end{figure}
+
+All three tested devices provide a similar average advertisement time. In the next test, these devices will advertise to two distinct peers. In Figure \ref{fig:adv2}, it is possible to see a boxplot of thee advertisement durations of the three tested devices. It is also visible, that the disparity between durations is significantly higher than in the previous experiment, due to the supplementary complexity of advertising to more than one peer and establishing the individual connections.
+
+In the boxplot of Figure \ref{fig:adv2}, it can be seen that (1) Motorola Moto G2's advertisement times range from, approximately, 1.8s to 5.2s, having an average advertisement time of 3.066s. In comparison with the previous test, the amplitude of advertisement durations is now of around 3.4s, compared to the previous 1.25s; (2) Samsung Grand Neo, similarly to the previous test, shows the biggest disparity of results, ranging from 1.7s to 7s, approximately, also having a bigger results amplitude of 6.3s, than previously measured 3.15s. It provides an average advertisement time to two peers of 3.449s; (3) Huawei P8 Lite shows the smallest standard deviation, having measures ranging from 2.2s to 4.1s. This device provides an average advertisement time to two peers of 3.414s.
+
+\begin{figure}[ht]
+	\noindent\makebox[\textwidth]
+	{\includegraphics[width=1\textwidth]{images/boxplot_adv_2.pdf}}
+	\caption{\label{fig:adv2} Boxplot of the advertisement times to two peers measured while using the developed application from the three devices.}
+\end{figure}
+
+Reflecting on the results of these two experiments, it is plausible to say that, despite the different behaviours, a similar average advertisement time was measured in the three devices, in both experiments. The advertisement times between experiments were a bit different, as was expected. Since individual connections must be established between advertiser and its peers, the first experiment sets the base advertisement time, as it reflects a one-to-one advertisement. The second experiment reflects a one-to-two advertisement and, the measured average advertisement times double the base advertisement time, approximately.
+
+A possible, valuable conclusion that may be taken from these tests is that the advertisement time is given by, approximately, the base advertisement time times the number of peers being advertised to. Although this is not confirmed, due to lack of testing equipment.
+
 \subsection{File Transfer Data Rates}
 
-\subsection{Battery Consumption During Use}
+\subsection{Energy Consumption During Use}
 
 
 
