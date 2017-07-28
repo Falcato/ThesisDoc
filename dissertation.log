@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  27 JUL 2017 18:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  28 JUL 2017 01:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1047,13 +1047,13 @@ Package pdftex.def Info: images/context.pdf used on input line 23.
 
 
 ] [2 <./images/context.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 61.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 62.
 
 (e:/Program Files/TexLive/texmf-dist/tex/latex/psnfss/omsphv.fd
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
 ) [3]
 \openout2 = `chapters/cell.aux'.
 
@@ -1264,77 +1264,77 @@ Underfull \vbox (badness 5077) has occurred while \output is active []
 
 ]
 Chapter 3.
-[29] [30] <images/app_sandbox.pdf, id=1403, 570.13pt x 402.50375pt>
+[29] [30] <images/app_sandbox.pdf, id=1402, 570.13pt x 402.50375pt>
 File: images/app_sandbox.pdf Graphic file (type pdf)
 
 <use images/app_sandbox.pdf>
 Package pdftex.def Info: images/app_sandbox.pdf used on input line 67.
 (pdftex.def)             Requested size: 455.24411pt x 321.3954pt.
  [31] [32 <./images/app_sandbox.pdf>]
-<images/btreceiver.pdf, id=1432, 761.84625pt x 239.89626pt>
+<images/btreceiver.pdf, id=1431, 761.84625pt x 239.89626pt>
 File: images/btreceiver.pdf Graphic file (type pdf)
 
 <use images/btreceiver.pdf>
 Package pdftex.def Info: images/btreceiver.pdf used on input line 109.
 (pdftex.def)             Requested size: 455.24411pt x 143.3495pt.
  [33 <./images/btreceiver.pdf>]
-<images/btrequester.pdf, id=1441, 793.96625pt x 167.62625pt>
+<images/btrequester.pdf, id=1440, 793.96625pt x 167.62625pt>
 File: images/btrequester.pdf Graphic file (type pdf)
 
 <use images/btrequester.pdf>
 Package pdftex.def Info: images/btrequester.pdf used on input line 128.
 (pdftex.def)             Requested size: 455.24411pt x 96.11577pt.
  [34 <./images/btrequester.pdf>]
-<images/inoutstreams.pdf, id=1453, 441.65pt x 82.3075pt>
+<images/inoutstreams.pdf, id=1452, 441.65pt x 82.3075pt>
 File: images/inoutstreams.pdf Graphic file (type pdf)
 
 <use images/inoutstreams.pdf>
 Package pdftex.def Info: images/inoutstreams.pdf used on input line 149.
 (pdftex.def)             Requested size: 364.19667pt x 67.87563pt.
 
-<images/btconnectedr.pdf, id=1456, 763.85374pt x 271.0125pt>
+<images/btconnectedr.pdf, id=1455, 763.85374pt x 271.0125pt>
 File: images/btconnectedr.pdf Graphic file (type pdf)
 
 <use images/btconnectedr.pdf>
 Package pdftex.def Info: images/btconnectedr.pdf used on input line 161.
 (pdftex.def)             Requested size: 455.24411pt x 161.51701pt.
 
-<images/btconnectedw.pdf, id=1457, 763.85374pt x 180.675pt>
+<images/btconnectedw.pdf, id=1456, 763.85374pt x 180.675pt>
 File: images/btconnectedw.pdf Graphic file (type pdf)
 
 <use images/btconnectedw.pdf>
 Package pdftex.def Info: images/btconnectedw.pdf used on input line 167.
 (pdftex.def)             Requested size: 455.24411pt x 107.67801pt.
  [35 <./images/inoutstreams.pdf> <./images/btconnectedr.pdf>] <images/adv_messa
-ge.pdf, id=1476, 412.54124pt x 54.2025pt>
+ge.pdf, id=1475, 412.54124pt x 54.2025pt>
 File: images/adv_message.pdf Graphic file (type pdf)
 
 <use images/adv_message.pdf>
 Package pdftex.def Info: images/adv_message.pdf used on input line 182.
 (pdftex.def)             Requested size: 318.66948pt x 41.8692pt.
  [36 <./images/btconnectedw.pdf> <./images/adv_message.pdf>] [37] <images/disco
-very_flux.pdf, id=1507, 786.94pt x 390.45876pt>
+very_flux.pdf, id=1506, 786.94pt x 390.45876pt>
 File: images/discovery_flux.pdf Graphic file (type pdf)
 
 <use images/discovery_flux.pdf>
 Package pdftex.def Info: images/discovery_flux.pdf used on input line 237.
 (pdftex.def)             Requested size: 455.24411pt x 225.87639pt.
  [38 <./images/discovery_flux.pdf>]
-<images/adv_example_1.pdf, id=1520, 499.8675pt x 183.68625pt>
+<images/adv_example_1.pdf, id=1519, 499.8675pt x 183.68625pt>
 File: images/adv_example_1.pdf Graphic file (type pdf)
 
 <use images/adv_example_1.pdf>
 Package pdftex.def Info: images/adv_example_1.pdf used on input line 251.
 (pdftex.def)             Requested size: 455.24411pt x 167.29486pt.
 
-<images/advertise_flux.pdf, id=1522, 744.7825pt x 326.21875pt>
+<images/advertise_flux.pdf, id=1521, 744.7825pt x 326.21875pt>
 File: images/advertise_flux.pdf Graphic file (type pdf)
 
 <use images/advertise_flux.pdf>
 Package pdftex.def Info: images/advertise_flux.pdf used on input line 266.
 (pdftex.def)             Requested size: 455.24411pt x 199.40628pt.
  [39 <./images/adv_example_1.pdf>]
-<images/recv_advertise_flux.pdf, id=1537, 729.72626pt x 252.945pt>
+<images/recv_advertise_flux.pdf, id=1536, 729.72626pt x 252.945pt>
 File: images/recv_advertise_flux.pdf Graphic file (type pdf)
 
 <use images/recv_advertise_flux.pdf>
@@ -1342,27 +1342,27 @@ Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 283.
 
 (pdftex.def)             Requested size: 455.24411pt x 157.80077pt.
  [40 <./images/advertise_flux.pdf> <./images/recv_advertise_flux.pdf>]
-<images/adv_example_2.pdf, id=1554, 500.87125pt x 221.82875pt>
+<images/adv_example_2.pdf, id=1553, 500.87125pt x 221.82875pt>
 File: images/adv_example_2.pdf Graphic file (type pdf)
 
 <use images/adv_example_2.pdf>
 Package pdftex.def Info: images/adv_example_2.pdf used on input line 303.
 (pdftex.def)             Requested size: 455.24411pt x 201.6309pt.
  [41 <./images/adv_example_2.pdf>] [42]
-<images/example_1_0.pdf, id=1577, 652.4375pt x 243.91125pt>
+<images/example_1_0.pdf, id=1576, 652.4375pt x 243.91125pt>
 File: images/example_1_0.pdf Graphic file (type pdf)
 
 <use images/example_1_0.pdf>
 Package pdftex.def Info: images/example_1_0.pdf used on input line 354.
 (pdftex.def)             Requested size: 455.24411pt x 170.19704pt.
 
-<images/rqtflux.pdf, id=1581, 793.96625pt x 313.17pt>
+<images/rqtflux.pdf, id=1580, 793.96625pt x 313.17pt>
 File: images/rqtflux.pdf Graphic file (type pdf)
  <use images/rqtflux.pdf>
 Package pdftex.def Info: images/rqtflux.pdf used on input line 379.
 (pdftex.def)             Requested size: 455.24411pt x 179.56958pt.
 
-<images/rqtmessage.pdf, id=1586, 553.06625pt x 52.195pt>
+<images/rqtmessage.pdf, id=1585, 553.06625pt x 52.195pt>
 File: images/rqtmessage.pdf Graphic file (type pdf)
 
 <use images/rqtmessage.pdf>
@@ -1370,126 +1370,126 @@ Package pdftex.def Info: images/rqtmessage.pdf used on input line 389.
 (pdftex.def)             Requested size: 409.71692pt x 38.66669pt.
  [43 <./images/example_1_0.pdf>] [44 <./images/rqtflux.pdf> <./images/rqtmessag
 e.pdf>]
-<images/rqt_rcv_flux.pdf, id=1613, 775.89874pt x 333.245pt>
+<images/rqt_rcv_flux.pdf, id=1612, 775.89874pt x 333.245pt>
 File: images/rqt_rcv_flux.pdf Graphic file (type pdf)
 
 <use images/rqt_rcv_flux.pdf>
 Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 418.
 (pdftex.def)             Requested size: 455.24411pt x 195.52975pt.
  [45 <./images/rqt_rcv_flux.pdf>]
-<images/example_1_1.pdf, id=1636, 652.4375pt x 199.74625pt>
+<images/example_1_1.pdf, id=1635, 652.4375pt x 199.74625pt>
 File: images/example_1_1.pdf Graphic file (type pdf)
 
 <use images/example_1_1.pdf>
 Package pdftex.def Info: images/example_1_1.pdf used on input line 446.
 (pdftex.def)             Requested size: 455.24411pt x 139.37947pt.
 
-<images/send_rsp_flux.pdf, id=1638, 801.99625pt x 492.84125pt>
+<images/send_rsp_flux.pdf, id=1637, 801.99625pt x 492.84125pt>
 File: images/send_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/send_rsp_flux.pdf>
 Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 459.
 (pdftex.def)             Requested size: 455.24411pt x 279.76431pt.
  [46]
-<images/rspmessage.pdf, id=1649, 251.94125pt x 53.19875pt>
+<images/rspmessage.pdf, id=1648, 251.94125pt x 53.19875pt>
 File: images/rspmessage.pdf Graphic file (type pdf)
 
 <use images/rspmessage.pdf>
 Package pdftex.def Info: images/rspmessage.pdf used on input line 469.
 (pdftex.def)             Requested size: 182.09486pt x 38.44998pt.
  [47 <./images/example_1_1.pdf> <./images/send_rsp_flux.pdf>] <images/rcv_rsp_f
-lux.pdf, id=1661, 771.88374pt x 483.8075pt>
+lux.pdf, id=1660, 771.88374pt x 483.8075pt>
 File: images/rcv_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/rcv_rsp_flux.pdf>
 Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 490.
 (pdftex.def)             Requested size: 455.24411pt x 285.34059pt.
  [48 <./images/rspmessage.pdf>] [49 <./images/rcv_rsp_flux.pdf>] <images/exampl
-e_1_2.pdf, id=1695, 652.4375pt x 199.74625pt>
+e_1_2.pdf, id=1694, 652.4375pt x 199.74625pt>
 File: images/example_1_2.pdf Graphic file (type pdf)
 
 <use images/example_1_2.pdf>
 Package pdftex.def Info: images/example_1_2.pdf used on input line 528.
 (pdftex.def)             Requested size: 455.24411pt x 139.37947pt.
- [50 <./images/example_1_2.pdf>]) [51]
+) [50 <./images/example_1_2.pdf>]
 \openout2 = `chapters/testing.aux'.
 
 
-(./chapters/testing.tex [52
-
-
-
-]
+(./chapters/testing.tex
 Chapter 4.
-[53] <images/bt_max_visib.pdf, id=1726, 603.25375pt x 82.3075pt>
+[51
+
+
+
+] <images/bt_max_visib.pdf, id=1713, 603.25375pt x 82.3075pt>
 File: images/bt_max_visib.pdf Graphic file (type pdf)
 
 <use images/bt_max_visib.pdf>
 Package pdftex.def Info: images/bt_max_visib.pdf used on input line 32.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/wfd_max_visib.pdf, id=1727, 603.25375pt x 82.3075pt>
+<images/wfd_max_visib.pdf, id=1714, 603.25375pt x 82.3075pt>
 File: images/wfd_max_visib.pdf Graphic file (type pdf)
 
 <use images/wfd_max_visib.pdf>
 Package pdftex.def Info: images/wfd_max_visib.pdf used on input line 38.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/bt_max_inv.pdf, id=1730, 563.10374pt x 82.3075pt>
+<images/bt_max_inv.pdf, id=1717, 563.10374pt x 82.3075pt>
 File: images/bt_max_inv.pdf Graphic file (type pdf)
 
 <use images/bt_max_inv.pdf>
 Package pdftex.def Info: images/bt_max_inv.pdf used on input line 46.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
 
-<images/wfd_max_inv.pdf, id=1731, 563.10374pt x 82.3075pt>
+<images/wfd_max_inv.pdf, id=1718, 563.10374pt x 82.3075pt>
 File: images/wfd_max_inv.pdf Graphic file (type pdf)
 
 <use images/wfd_max_inv.pdf>
 Package pdftex.def Info: images/wfd_max_inv.pdf used on input line 52.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
- [54 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf> <./images/bt_max_
+ [52 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf> <./images/bt_max_
 inv.pdf>]
-<images/plot_normal_disc.pdf, id=1752, 794.97pt x 614.295pt>
+<images/plot_normal_disc.pdf, id=1738, 794.97pt x 614.295pt>
 File: images/plot_normal_disc.pdf Graphic file (type pdf)
 
 <use images/plot_normal_disc.pdf>
 Package pdftex.def Info: images/plot_normal_disc.pdf used on input line 79.
 (pdftex.def)             Requested size: 455.24411pt x 351.79211pt.
- [55 <./images/wfd_max_inv.pdf>]
+ [53 <./images/wfd_max_inv.pdf>]
 Underfull \vbox (badness 2158) has occurred while \output is active []
 
- [56 <./images/plot_normal_disc.pdf>]
-<images/plot_app_disc.pdf, id=1781, 794.97pt x 614.295pt>
+ [54 <./images/plot_normal_disc.pdf>]
+<images/plot_app_disc.pdf, id=1767, 794.97pt x 614.295pt>
 File: images/plot_app_disc.pdf Graphic file (type pdf)
 
 <use images/plot_app_disc.pdf>
 Package pdftex.def Info: images/plot_app_disc.pdf used on input line 111.
 (pdftex.def)             Requested size: 455.24411pt x 351.79211pt.
- [57 <./images/plot_app_disc.pdf>]
-<images/boxplot_adv_1.pdf, id=1797, 794.97pt x 614.295pt>
+ [55 <./images/plot_app_disc.pdf>]
+<images/boxplot_adv_1.pdf, id=1782, 794.97pt x 614.295pt>
 File: images/boxplot_adv_1.pdf Graphic file (type pdf)
 
 <use images/boxplot_adv_1.pdf>
 Package pdftex.def Info: images/boxplot_adv_1.pdf used on input line 129.
 (pdftex.def)             Requested size: 455.24411pt x 351.79211pt.
 
-<images/boxplot_adv_2.pdf, id=1800, 794.97pt x 614.295pt>
+<images/boxplot_adv_2.pdf, id=1785, 794.97pt x 614.295pt>
 File: images/boxplot_adv_2.pdf Graphic file (type pdf)
 
 <use images/boxplot_adv_2.pdf>
 Package pdftex.def Info: images/boxplot_adv_2.pdf used on input line 139.
 (pdftex.def)             Requested size: 455.24411pt x 351.79211pt.
- [58]) [59 <./images/boxplot_adv_1.pdf>] [60 <./images/boxplot_adv_2.pdf>]
+ [56]) [57 <./images/boxplot_adv_1.pdf>] [58 <./images/boxplot_adv_2.pdf>]
 \openout2 = `chapters/conclusion.aux'.
 
  (./chapters/conclusion.tex
 Chapter 5.
-) [61
+[59
 
 
 
-]) (./dissertation.bbl [62
+]) [60] [61]) (./dissertation.bbl [62
 
 
 ]
@@ -1550,19 +1550,22 @@ tract-pt.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 461D5234BBC33EBA7689C718F9FE219E;4751.
+(rerunfilecheck)             Checksum: B7989C57A14E83D7A2ABC72FB5CB1FF7;4704.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
  ) 
 Here is how much of TeX's memory you used:
- 16058 strings out of 492995
- 258862 string characters out of 6132191
- 396160 words of memory out of 5000000
- 18864 multiletter control sequences out of 15000+600000
+ 16091 strings out of 492995
+ 259329 string characters out of 6132191
+ 396641 words of memory out of 5000000
+ 18896 multiletter control sequences out of 15000+600000
  30765 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,8n,39p,1951b,533s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
-st, replaced by a fixed one
+pdfTeX warning (dest): name{glo:AES} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:QoS} has been referenced but does not exist, re
 placed by a fixed one
@@ -1595,10 +1598,10 @@ les/TexLive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><e:/Program Fil
 es/TexLive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><e:/Program Files/Tex
 Live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><e:/Program Files/TexLive/t
 exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (86 pages, 2769692 bytes).
+Output written on dissertation.pdf (86 pages, 2772149 bytes).
 PDF statistics:
- 1952 PDF objects out of 2073 (max. 8388607)
- 1774 compressed objects within 18 object streams
- 298 named destinations out of 1000 (max. 500000)
+ 1957 PDF objects out of 2073 (max. 8388607)
+ 1779 compressed objects within 18 object streams
+ 299 named destinations out of 1000 (max. 500000)
  741 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -40,12 +40,12 @@
 \contentsline {figure}{\numberline {3.20}{\ignorespaces Flow diagram of the Response message and web page receiving process.}}{49}{figure.3.20}
 \contentsline {figure}{\numberline {3.21}{\ignorespaces Example 2: Sending and receiving of Response messages and web pages.}}{50}{figure.3.21}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Max range of Bluetooth communication with line of sight between devices}}{54}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Max range of Wi-Fi Direct communication with line of sight between devices}}{54}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Max range of Bluetooth communication without line of sight between devices}}{54}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Max range of Wi-Fi Direct communication without line of sight between devices}}{55}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Plot of the measured Bluetooth discovery times from the three devices.}}{56}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Plot of the Bluetooth discovery times measured while using the developed application from the three devices.}}{57}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Boxplot of the advertisement times to one peer measured while using the developed application from the three devices.}}{59}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Boxplot of the advertisement times to two peers measured while using the developed application from the three devices.}}{60}{figure.4.8}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Max range of Bluetooth communication with line of sight between devices}}{52}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Max range of Wi-Fi Direct communication with line of sight between devices}}{52}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Max range of Bluetooth communication without line of sight between devices}}{52}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Max range of Wi-Fi Direct communication without line of sight between devices}}{53}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Plot of the measured Bluetooth discovery times from the three devices.}}{54}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Plot of the Bluetooth discovery times measured while using the developed application from the three devices.}}{55}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Boxplot of the advertisement times to one peer measured while using the developed application from the three devices.}}{57}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Boxplot of the advertisement times to two peers measured while using the developed application from the three devices.}}{58}{figure.4.8}
 \addvspace {10\p@ }

@@ -3,9 +3,50 @@
 \chapter{Conclusions}
 \label{chapter:conclusion}
 
-There are also some features that lack implementation, such as video streaming and file downloads.
-
-If this idea is pursued and further thought on its development is given it is my conviction that it can be a valuable asset to Android devices - such as is hot spot nowadays. Ho, to achieve a customer ready solution many problems must be solved, as well as new features added.
+In this chapter the conclusions of the developed work will be stated. It is divided into two sections: the first one, regarding the limitations and possible future work of the developed framework and application. The second will provide a brief summary on what was accomplished with this work.
 
 \section{Future Work}
-%Possíveis alterações às tecnologias e addons ao trabalho.
+\label{sec:futurework}
+
+The developed framework and application accomplish the basic functions, \textit{i.e.}, the foundation, required for a market-ready solution. However, they both have some limitations. In this section, these limitations will be analysed, explaining how future work on the developed items can solve the current limitations.
+
+Starting by the developed framework, it provides a easy to use set of methods with the purpose of establishing an ad hoc network. Its main limitations are the following:
+
+\begin{itemize}
+	\item The technology used is Bluetooth, known for its low energy consumption. A better choice for the developed framework would be Wi-Fi Direct, providing (1) a larger range of communication, expanding the network reach; (2) faster data rates, reducing the time of message exchanges and overall application runtimes. Although this technology provides some advantages over Bluetooth, its current Android implementation does not allow the transmission of data without user intervention, invalidating its use in most applications.
+	
+	\item The implemented routing protocol is simple and light, providing an excellent solution for time sensitive applications. However, it does not support alternative path finding and data retransmission, in case of failure. In Subsection \ref{subsec:routprot}, a possible routing protocol is proposed, that despite being heavier, for reasons mentioned before, provides a robust solution to transmission and path failures.
+	
+	\item The discovery and advertisement process is slow and could be improved by using \gls{BLE}'s beacon technology. Devices would periodically send a beacon message, allowing peer devices to capture and store that information. This mechanism would be much more efficient than creating individual connections with each peer device to transmit the Advertisement message. However, although the used devices support \gls{BLE}, its current Android implementation only allows devices to capture the beacon messages, not to send them, thus invalidating the development of this mechanism.
+	
+	\item In this framework, security is not implemented. Despite that, it is possible to provide a rough overview of how a secure framework could be achieved (1) a central hub would be created, to where Internet connected devices would send the requests; (2) a public/private key mechanism would be implemented, where every device, using an application with the developed framework, would be given the central hub's public key; (3) once a device opened the application, it would encrypt its public key with the central hub's public key, creating a sort of register mechanism; (4) all subsequent sent requests would be encrypted using the central hub's public key; (5) upon receiving a request, the central hub would decrypt the message using its private key. It would then proceed to encrypt the response data with the public key of the request originator, received in the register process; (6) upon receiving a response to a originated request, it would be decrypted, using the device's private key.
+	
+	With this security mechanism, the messages would be safely transferred between devices, without the possibility of a device decrypting data of a request it didn't originate. Furthermore, to improve the central hub's security, every stored response and request would be encrypted with a safe, well-known encryption algorithm, \textit{e.g.} \gls{AES}-256. The central hub's storage system and overall structure is still open to debate, and could provide an interesting work to research and develop, hereafter.
+	
+\end{itemize}
+
+The developed application provides a solid mechanism to provide web access to devices without Internet connection. Its main limitation resides in the capture and transmission of the web pages:
+
+\begin{itemize}
+	
+	\item The mechanism used to store the web pages is to retrieve a web page archive. This archive stores the web page in a single file, easily uncompressed and displayed. Although this appears to be the perfect solution for the web page storage, it has some flaws, inherent to the method used to retrieve the archive, \textit{savewebarchive()}. This method's last major update was in October, 2013, with the introduction of Android API level 19 (see \cite{kitkat}) and, since then, web pages have suffered lots of improvements. Some of the new web page features may not be stored, due to the method's lack of compatibility thus, some web pages' interactive features may not be responsive.
+	
+	\item To successfully implement a full web browser experience, video streaming and file transfers should be possible. However, due to their implementation complexity, these features were left out of the initial development.
+	
+\end{itemize}
+
+
+\section{Summary}
+
+The developed framework accomplishes everything that was stated in Section \ref{sec:objectives}. A decentralized ad hoc network can be successfully established, using mobile devices with unmodified Android system versions. Moreover, although the framework was developed using the Bluetooth technology, it is easily adaptable to other communication technologies. This is achieved due to the division of protocol/communication technology present in the framework, as can be seen in Figure \ref{fig:appsandbox}. By creating the necessary links between the protocol and the communication technology, the framework is easily updated to use a different communication technology, such as Wi-Fi Direct.
+
+The developed application also accomplishes the goals set in Section \ref{sec:objectives}. A mechanism to download, store, transfer and display web pages was implemented. It functions as intended, providing a simple but seamless web browsing experience to the user. This mechanism's limitations can be seen in Section \ref{sec:futurework}. Also, with a few tweaks, the developed application can be adapted to transfer different data formats, such as pictures, videos, or even simple messages. To accomplish this, it is needed to modify the data download and display mechanisms, adjusting them to whatever format is chosen, the remaining mechanisms can remain unchanged, as they are common to every format type.
+
+The second objective of this thesis was to assess the advantages of Wi-Fi Direct over Bluetooth, and what the next Android system versions should be modifying to provide a meaningful Wi-Fi Direct impact, in peer-to-peer applications. 
+
+%Falar no state of the art que serviu para perceber o que fazer
+%Falar nos testes, que provaram que o Wi-Fi Direct é uma excelente alternativa ao Bluetooth em p2p apps.
+%Falar nas alterações que merecem ser implementadas e porquê.
+
+
+
