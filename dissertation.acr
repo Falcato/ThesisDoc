@@ -3,6 +3,8 @@
 \glsgroupheading{A}\relax \glsresetentrylist %
 \glossentry{ACK}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{24}}}%
+\glossentry{AES}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{66}}}%
 \glossentry{AODV}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{31}}}%
@@ -15,7 +17,8 @@
 		\setentrycounter[]{page}\glsnumberformat{14}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{16}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{26}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{30}}}%
+		\setentrycounter[]{page}\glsnumberformat{30}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{65}}}%
 \glossentry{BS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{5\delimR 7}}}%
 \glossentry{BSC}{\glossaryentrynumbers{\relax 
@@ -35,7 +38,7 @@
 		\setentrycounter[]{page}\glsnumberformat{17}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{21}}}%
 \glossentry{DSDV}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{31}}}%
+		\setentrycounter[]{page}\glsnumberformat{30\delimN 31}}}%
 \glossentry{DSSS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}}}%
 \glossentry{DTN}{\glossaryentrynumbers{\relax 
@@ -100,9 +103,10 @@
 		\setentrycounter[]{page}\glsnumberformat{27}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{31}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{34}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{36\delimR 43}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{45\delimR 47}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{49\delimR 52}}}%
+		\setentrycounter[]{page}\glsnumberformat{36\delimN 37}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{39\delimR 42}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{44\delimR 47}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{49\delimN 50}}}%
 \glossentry{MANET}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{22\delimN 23}}}%
 \glossentry{MAP}{\glossaryentrynumbers{\relax 
@@ -130,11 +134,14 @@
 		\setentrycounter[]{page}\glsnumberformat{24}}}%
 \glossentry{PM}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{22}}}\glsgroupskip
+\glsgroupheading{Q}\relax \glsresetentrylist %
+\glossentry{QoS}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{51}}}\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossentry{RFID}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{15}}}%
 \glossentry{RIP}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{37}}}%
+		\setentrycounter[]{page}\glsnumberformat{36}}}%
 \glossentry{RNS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}}}%
 \glossentry{RTS}{\glossaryentrynumbers{\relax 
@@ -153,7 +160,8 @@
 		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}}}\glsgroupskip
 \glsgroupheading{T}\relax \glsresetentrylist %
 \glossentry{TCP}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{20\delimN 21}}}%
+		\setentrycounter[]{page}\glsnumberformat{20\delimN 21}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{55}}}%
 \glossentry{TDD}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{7}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{15}}}%
@@ -165,8 +173,8 @@
 \glossentry{UMTS}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6\delimN 7}}}%
 \glossentry{URL}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{44\delimR 48}\delimN 
-		\setentrycounter[]{page}\glsnumberformat{51}}}%
+		\setentrycounter[]{page}\glsnumberformat{42\delimR 46}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{49}}}%
 \glossentry{UTRA}{\glossaryentrynumbers{\relax 
 		\setentrycounter[]{page}\glsnumberformat{6}}}%
 \glossentry{UTRAN}{\glossaryentrynumbers{\relax 

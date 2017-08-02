@@ -22,6 +22,10 @@ K.~Liu, W.~Shen, B.~Yin, X.~Cao, L.~X. Cai, and Y.~Cheng, ``Development of
   mobile ad-hoc networks over wi-fi direct with off-the-shelf android phones,''
   2016.
 
+\bibitem{throughputpaper}
+A.~Mtibaa, A.~Emam, S.~Tariq, A.~Essameldin, and K.~A. Harras, ``On practical
+  device-to-device wireless communication: A measurement driven study,'' 2017.
+
 \bibitem{dpp}
 Statista, ``Average number of connected devices used per person in selected
   countries in 2014.''
@@ -56,24 +60,25 @@ Oracle, ``Class thread.''
 G.~Malkin, ``Request for comments: 2453,'' 1998.
 
 \bibitem{webview}
-A.~Developers, ``Webview.''
+{Android Developers}, ``Webview.''
   \url{https://developer.android.com/reference/android/webkit/WebView.html}.
 
-\bibitem{kitkat}
-A.~Developers, ``Kitkat.''
-  \url{https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#KITKAT}.
-
 \bibitem{bluetooth}
-B.~S.~I. Group, ``How it works | bluetooth technology website.''
+{Bluetooth Special Interest Group}, ``How it works | bluetooth technology
+  website.''
   \url{https://www.bluetooth.com/what-is-bluetooth-technology/how-it-works}.
 
 \bibitem{wfdrange}
-W.-F. Alliance, ``How far does a wi-fi direct connection travel?.''
+{Wi-Fi Alliance}, ``How far does a wi-fi direct connection travel?.''
   \url{http://www.wi-fi.org/knowledge-center/faq/how-far-does-a-wi-fi-direct-connection-travel}.
 
 \bibitem{txpower}
 A.~Boukerche, ``Algorithms and protocols for wireless, mobile ad hoc
   networks,'' 2009.
+
+\bibitem{bluetoothspec}
+{Bluetooth Special Interest Group}, ``Bluetooth specification version 4.2,''
+  2014.
 
 \bibitem{btdisc1}
 R.~Woodings, D.~Joos, T.~Clifton, and C.~D. Knutson, ``Rapid heterogeneous
@@ -84,7 +89,15 @@ B.~S. Peterson, R.~O. Baldwin, and R.~A. Raines, ``Bluetooth discovery time
   with multiple inquirers,'' 2006.
 
 \bibitem{wfddisc}
-A.~Developers, ``Wi-fi peer-to-peer | discovering peers.''
+{Android Developers}, ``Wi-fi peer-to-peer | discovering peers.''
   \url{https://developer.android.com/guide/topics/connectivity/wifip2p.html#discovering}.
+
+\bibitem{wfdrate}
+{Wi-Fi Alliance}, ``How fast is wi-fi direct?.''
+  \url{http://www.wi-fi.org/knowledge-center/faq/how-fast-is-wi-fi-direct}.
+
+\bibitem{kitkat}
+{Android Developers}, ``Kitkat.''
+  \url{https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#KITKAT}.
 
 \end{thebibliography}
