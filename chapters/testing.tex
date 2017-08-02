@@ -235,7 +235,9 @@ In Figure \ref{fig:boxplotthroughput}, the measured throughputs in the previousl
 	\caption{\label{fig:boxplotthroughput} Boxplot of the measured throughput in the different experiment environments.}
 \end{figure}
 
-The results seen in Figure \ref{fig:boxplotthroughput} are to be expected since, when exchanging smaller web pages, the connection and application specific computation delays have a more significant impact in the overall delay of process than when exchanging larger web pages. Hence, the lower average throughput measured in the first and third environments and bigger average throughput in the remaining environments.
+The results seen in Figure \ref{fig:boxplotthroughput} are to be expected since, when exchanging smaller web pages, the connection and application specific computation delays, such as the queries to the Response Table to retrieve the next hop and the analysis of the received data, have a more significant impact in the overall delay of process than when exchanging larger web pages. Hence, the lower average throughput measured in the first and third environments and bigger average throughput in the remaining environments.
+
+If compared to the results shown in Subsection \ref{subsec:normalftdr}, the measured throughputs are smaller, than the Bluetooth indoor line-of-sight throughput measured at a distance of \textit{0m}. In this experiment, the maximum average throughput obtained was of, approximately, \textit{0.75Mbps}, a value lower than the \textit{2Mbps}, seen in Figure \ref{fig:btin}. This difference is again justified with the delays introduced by the connections and application specific computations during the exchange of web pages.
 
 To measure the percentage of time spent by each of the processes, described above, during a web page exchange, the duration of that process was divided by the total duration of the web page exchange, since the initial request is sent until the final web page is received by the destination.
 
