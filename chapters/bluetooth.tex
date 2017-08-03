@@ -5,7 +5,7 @@ A \gls{WPAN} is type of network where devices are connected wirelessly to each o
 
 Bluetooth is one of the main technologies to implement a \gls{WPAN}, described above. It uses the 2.4GHz \gls{ISM} band, it was invented by phone company Ericsson, and is used to connect devices in a short range network.
 
-Devices connect to each other forming \textit{piconets}, which is the term assigned to designate an ad hoc network formed by devices using Bluetooth. Each \textit{piconet} has a master, the device that controls the network, similarly to an \gls{AP} without providing access to the infrastructured network. Associated to each master there can be up to seven slaves, which are devices that take part in the same \textit{piconet}. Multiple \textit{piconets} can connect between themselves and form a \textit{scatternet}, as seen in Figure \ref{fig:bluetooth}:
+Devices connect to each other forming \textit{piconets}, which is the term assigned to designate an ad hoc network formed by devices using Bluetooth. Each \textit{piconet} has a master, the device that controls the network, similarly to an \gls{AP} without providing access to the infrastructured network. Associated to each master there can be up to seven slaves, which are devices that take part in the same \textit{piconet}. Multiple \textit{piconets} can connect between themselves and form a \textit{scatternet}, as seen in Figure \ref{fig:bluetooth}.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
@@ -13,7 +13,7 @@ Devices connect to each other forming \textit{piconets}, which is the term assig
 	\caption{\label{fig:bluetooth} Scatternet Layout (adapted from: www.summitdata.com)}
 \end{figure}
 
-Each master is associated with a certain number of slaves, that can participate in more than one piconet, as seen above. These slaves are responsible for coordinating both \textit{piconets}, so that no interference exists.
+Each master is associated with a certain number of slaves, that can participate in more than one piconet, as seen above. These slaves are responsible for coordinating both \textit{piconets}, so that no interference exists. A device can only be a master at one \textit{piconet} at a time thus, the connections between \textit{piconets} must be done at a slave device or at a device assuming both roles, slave in one \textit{piconet} and master in the other one.
 
 Bluetooth uses slow \gls{FHSS} to control the frequency of transmission of each slave, this is done by creating a hopping sequence partially based on the master device's \gls{MAC} address, and then distributing the sequence to each slave on the \textit{piconet}. Devices connect to the \textit{piconet} by pairing with the master, forming a secure link, the master then controls the access to the medium by deciding which slave will transmit at a certain moment in time. In the \textit{scatternet} case, the data to be transmitted from \textit{piconet} to \textit{piconet} is relayed by the node participating in both networks. The pairing of both \textit{piconets} is similar to the pairing of a master and a new member of the network.
 

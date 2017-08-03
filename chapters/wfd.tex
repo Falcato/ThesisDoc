@@ -3,14 +3,14 @@
 \section{Wi-Fi Direct in Android}
 \label{sec:wfd}
 
-For the scope of this work we are specifically interested in the way Wi-Fi Direct is implemented in Android devices. There are small differences depending on the operating systems in which Wi-Fi Direct is being implemented, thus it is not possible to universally describe Wi-Fi Direct with more detail than the one used in Subsection \ref{subsection:wfd}.
+In this section, the current Wi-Fi Direct Android implementation will be described and analysed. There are small differences depending on the operating systems in which Wi-Fi Direct is being implemented, thus it is not possible to universally describe Wi-Fi Direct with more detail than the one used in Subsection \ref{subsection:wfd}.
 
-In the next section the details intrinsic to the Android operating system will be introduced and explained, followed by an in-depth description of various works on how to improve and expand the functionalities of this implementation.
+In the next subsections, the details intrinsic to the Android operating system will be introduced and explained, followed by an in-depth description of various works on how to improve and expand the functionalities of this implementation.
 
 \subsection{Wi-Fi Direct Star Formation}
 \label{subsection:wfdstar}
 
-As previously mentioned in Subsection \ref{subsection:wfd}, a peer-to-peer network is implemented in Wi-Fi Direct, by using a protocol for discovery and connection of the \gls{GO} with the \glspl{GM}. The \gls{GO} functions as a typical Wi-Fi \gls{AP}, managing the different communications of the \glspl{GM}.
+As previously mentioned in Subsection \ref{subsection:wfd}, an ad hoc network is implemented in Wi-Fi Direct, by using a protocol for discovery and connection of the \gls{GO} with the \glspl{GM}. The \gls{GO} functions as a typical Wi-Fi \gls{AP}, managing the different communications of the \glspl{GM}.
 
 \glspl{GO} are not predefined. It is during the group creation that the actual \gls{GO} is chosen, according to the specified parameters of the protocol, \textit{e.g.} battery percentage. This feature is relevant to manage the vitality of the network as a mesh of groups, since the \glspl{GO} can be chosen dynamically extending the life of the network.
 
@@ -18,11 +18,11 @@ After the process of the group creation, the \gls{GO} periodically sends a beaco
 
 In Android devices, \gls{IP} addresses are predefined according to the function the device performs within the network. The \glspl{GO} are automatically assigned the following \gls{IP} address: 192.168.49.1/24, using \gls{DHCP}. Whenever a P2P or legacy client connects to the group, \gls{DHCP} is run again and the clients take an \gls{IP} address ranging from 192.168.49.2/24 to 192.168.49.254/24, chosen randomly to minimize the chance of conflicts. The \glspl{GO} are always assigned the same \gls{IP} addresses, unless they participate in another group as a \gls{GM} taking the same \gls{IP} as a regular client - see \cite{routeMultiGroup} for a more detailed explanation on this topic.
 
-This technology is still not implemented to the best of its capacity in Android devices. The lack of a routing protocol that can establish multi-group communication, establishing a meshed network is an essential tool to achieve ad-hoc networks. The current state of this technology in Android devices is a single group network with one-to-many links established from the \gls{GO} to the \glspl{GM}, which limits both the range and scalability of the network. Wi-Fi Alliance states that it is possible to overcome these limitations using stock devices, by creating software to allow for multi-group formation, although it is not standardized in Android's current version 7.0 "Nougat".
+This technology is still not implemented to the best of its capacity in Android devices. The lack of a routing protocol that can establish multi-group communication, establishing a meshed network is an essential tool to achieve ad hoc networks. The current state of this technology in Android devices is a single group network with one-to-many links established from the \gls{GO} to the \glspl{GM}, which limits both the range and scalability of the network. Wi-Fi Alliance states that it is possible to overcome these limitations using stock devices, by creating software to allow for multi-group formation, although it is not standardized in Android's current version 7.0 "Nougat".
 
 In the next section, a collection of developed work will be presented where the different authors propose different methodologies to overcome the lack of this feature in Android devices.
 
-\subsection{Ad hoc Networking}
+\subsection{Ad Hoc Networking}
 \label{subsection:adhocnet}
 
 C. Casetti \textit{et al.} propose in \cite{routeMultiGroup} a process to successfully form a meshed network, by allowing multiple groups to communicate. This proposition is based on stock Android, not requiring any "root" to be made to the devices, meaning all the actions will be performed in application layer, not envolving any changes in \gls{IP} addresses or \gls{MAC} interfaces.

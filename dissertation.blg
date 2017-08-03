@@ -10,6 +10,7 @@ A level-1 auxiliary file: chapters/wifi.aux
 A level-1 auxiliary file: chapters/bluetooth.aux
 A level-1 auxiliary file: chapters/nfc.aux
 A level-1 auxiliary file: chapters/teconc.aux
+A level-1 auxiliary file: chapters/btandroid.aux
 A level-1 auxiliary file: chapters/wfd.aux
 A level-1 auxiliary file: chapters/apps.aux
 A level-1 auxiliary file: chapters/work.aux
@@ -18,36 +19,36 @@ A level-1 auxiliary file: chapters/conclusion.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: appendix/appendixa.aux
 Database file #1: bibliography/dissertation.bib
-You've used 24 entries,
+You've used 29 entries,
             1876 wiz_defined-function locations,
-            585 strings with 6976 characters,
-and the built_in function-call counts, 3346 in all, are:
-= -- 251
-> -- 190
+            605 strings with 7690 characters,
+and the built_in function-call counts, 4073 in all, are:
+= -- 305
+> -- 236
 < -- 0
-+ -- 76
-- -- 52
-* -- 163
-:= -- 506
-add.period$ -- 24
-call.type$ -- 24
-change.case$ -- 24
++ -- 94
+- -- 65
+* -- 203
+:= -- 617
+add.period$ -- 29
+call.type$ -- 29
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 96
-empty$ -- 433
-format.name$ -- 52
-if$ -- 822
+cite$ -- 29
+duplicate$ -- 116
+empty$ -- 523
+format.name$ -- 65
+if$ -- 999
 int.to.chr$ -- 0
-int.to.str$ -- 24
+int.to.str$ -- 29
 missing$ -- 0
-newline$ -- 75
-num.names$ -- 24
-pop$ -- 147
+newline$ -- 90
+num.names$ -- 29
+pop$ -- 180
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 117
+skip$ -- 137
 stack$ -- 0
 substring$ -- 0
 swap$ -- 0
@@ -56,6 +57,6 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 24
-width$ -- 26
-write$ -- 171
+while$ -- 29
+width$ -- 31
+write$ -- 208

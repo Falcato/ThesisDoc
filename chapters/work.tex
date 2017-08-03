@@ -7,16 +7,7 @@ It will begin with a brief summary of the steps taken to reach the developed app
 
 \section{Design Choices}
 
-This section will provide the explanation and justification of the choices made for the application type, ad hoc communication technology and ad hoc routing protocol.
-
-The developed application's main structure is:
-
-\begin{itemize}
-	\item The application has a routing algorithm that controls the destinations of the packets in each hop.
-	\item A communication technology, \textit{e.g.} Bluetooth or Wi-Fi Direct, handler, for both discovering nearby devices and to establish communication sockets with peers.
-	\item A set of functions capable of analysing incoming messages and deciding which is the next step to perform, in order to complete the requests/advertises.
-	\item Finally, a user interface where the incoming messages can be seen and analysed (for debug purposes), also providing a text area for the user to enter the requested data.
-\end{itemize}
+This section will provide the explanation and justification of the choices made for the application type, ad hoc communication technology, ad hoc network topology and ad hoc routing protocol.
 
 \subsection{Application Type}
 
@@ -33,6 +24,8 @@ The advertisement was also a topic of debate. Two possibilities were presented: 
 The beacon advertisement is a tempting mechanism to implement, given all its advantages. It comprises two components: transmission and ranging. Transmission occurs when a device wants to issue an advertisement to a certain region\footnote{A beacon region is the physical space reached by the advertisement.}. Ranging is the act of listening to beacon transmissions in a certain region. During the implementation of these two components it was possible to verify that the current Android implementations - tested with Android versions 6.0 and 7.0 - are not able to reproduce \gls{BLE}'s transmission mechanism, being only able to use the ranging.
 
 Given these facts, the application was developed using simple Bluetooth connections for both advertisement of the devices and data transfer. Although this is not the best technology for communication in an ad hoc network, it is the only one that currently meets all the requirements for this work. In the end of this section, a brief discussion on the changes that need to be made to Wi-Fi Direct's implementation in Android will be presented, and why developers could benefit from these changes.
+
+\subsection{Ad Hoc Network Topology}
 
 \subsection{Ad Hoc Routing Protocol}
 \label{subsec:routprot}
@@ -60,7 +53,16 @@ Since this work aims to to develop a peer-to-peer web access, the time of data e
 
 In this section the architectures of both framework and application are presented.
 
-In Figure \ref{fig:appsandbox} an overview of the application is shown. It can be seen that there are two main parts of the application: the main activity and the \textit{BluetoothService}.
+The developed framework and application's main structure are similar and consist of:
+
+\begin{itemize}
+	\item A routing algorithm that controls the destinations of the packets in each hop.
+	\item A communication technology, \textit{e.g.} Bluetooth or Wi-Fi Direct, handler, for both discovering nearby devices and to establish communication sockets with peers.
+	\item A set of functions capable of analysing incoming messages and deciding which is the next step to perform, in order to complete the requests/advertises.
+	\item Finally, in the application, a user interface is necessary, where the incoming messages can be seen and analysed (for debug purposes), also providing a text area for the user to enter the requested data.
+\end{itemize}
+
+In Figure \ref{fig:appsandbox} an overview of the developed application is shown. It can be seen that there are two main parts of the application: the main activity and the \textit{BluetoothService}.
 
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]

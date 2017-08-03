@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  2 AUG 2017 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.6.12)  3 AUG 2017 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,9 +835,9 @@ Package glossaries Info: Writing glossary file dissertation.acn on input line 2
 (./dissertation.aux (./cover.aux) (./abstract/abstract-en.aux)
 (./abstract/abstract-pt.aux) (./chapters/introduction.aux) (./chapters/cell.aux
 ) (./chapters/wifi.aux) (./chapters/bluetooth.aux) (./chapters/nfc.aux)
-(./chapters/teconc.aux) (./chapters/wfd.aux) (./chapters/apps.aux)
-(./chapters/work.aux) (./chapters/testing.aux) (./chapters/conclusion.aux)
-(./appendix/appendixa.aux))
+(./chapters/teconc.aux) (./chapters/btandroid.aux) (./chapters/wfd.aux)
+(./chapters/apps.aux) (./chapters/work.aux) (./chapters/testing.aux)
+(./chapters/conclusion.aux) (./appendix/appendixa.aux))
 \openout1 = `dissertation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -959,7 +959,7 @@ ted-to.pdf images/ist_logo.eps>
 (epstopdf)             \includegraphics on input line 10.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/ist_logo-eps-converted-to.pdf, id=256, 500.87125pt x 193.72375pt>
+<images/ist_logo-eps-converted-to.pdf, id=276, 500.87125pt x 193.72375pt>
 File: images/ist_logo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/ist_logo-eps-converted-to.pdf>
@@ -1045,6 +1045,8 @@ Overfull \hbox (7.72112pt too wide) in paragraph at lines 10--10
 ) network layouts (source: info.tvsideview.sony.net)[] []  
  []
 
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 14.
 [13
 
 
@@ -1065,9 +1067,7 @@ Overfull \hbox (7.72112pt too wide) in paragraph at lines 10--10
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 3.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 7.
-<images/context.pdf, id=805, 472.76625pt x 323.2075pt>
+<images/context.pdf, id=844, 472.76625pt x 323.2075pt>
 File: images/context.pdf Graphic file (type pdf)
 
 <use images/context.pdf>
@@ -1116,14 +1116,14 @@ ed re-quire-ments in In-ter-na-tional Mo-bile Telecommunications-
 
 
 ]
-<images/infranet.png, id=989, 436.5108pt x 204.765pt>
+<images/infranet.png, id=1027, 436.5108pt x 204.765pt>
 File: images/infranet.png Graphic file (type png)
 
 <use images/infranet.png>
 Package pdftex.def Info: images/infranet.png used on input line 30.
 (pdftex.def)             Requested size: 455.24411pt x 213.5567pt.
  [9 <./images/infranet.png>]
-<images/adhocnet.jpg, id=1008, 450.18187pt x 336.50719pt>
+<images/adhocnet.jpg, id=1046, 450.18187pt x 336.50719pt>
 File: images/adhocnet.jpg Graphic file (type jpg)
 
 <use images/adhocnet.jpg>
@@ -1136,14 +1136,14 @@ l-ized point of fail-ure, peer-to-peer file/packet
  []
 
 [10 <./images/adhocnet.jpg>]
-<images/ieee80211s.pdf, id=1032, 293.31984pt x 172.25755pt>
+<images/ieee80211s.pdf, id=1070, 293.31984pt x 172.25755pt>
 File: images/ieee80211s.pdf Graphic file (type pdf)
 
 <use images/ieee80211s.pdf>
 Package pdftex.def Info: images/ieee80211s.pdf used on input line 68.
 (pdftex.def)             Requested size: 318.66948pt x 187.14719pt.
 
-<images/wifidirnet.pdf, id=1039, 386.07436pt x 97.57263pt>
+<images/wifidirnet.pdf, id=1077, 386.07436pt x 97.57263pt>
 File: images/wifidirnet.pdf Graphic file (type pdf)
 
 <use images/wifidirnet.pdf>
@@ -1159,7 +1159,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--86
 \openout2 = `chapters/bluetooth.aux'.
 
 
-(./chapters/bluetooth.tex <images/bluetooth.pdf, id=1074, 642.4pt x 401.5pt>
+(./chapters/bluetooth.tex <images/bluetooth.pdf, id=1112, 642.4pt x 401.5pt>
 File: images/bluetooth.pdf Graphic file (type pdf)
 
 <use images/bluetooth.pdf>
@@ -1182,23 +1182,53 @@ Package pdftex.def Info: images/bluetooth.pdf used on input line 12.
 
 
 ]
+\openout2 = `chapters/btandroid.aux'.
+
+
+(./chapters/btandroid.tex
+<images/btstack.pdf, id=1172, 494.59781pt x 387.69844pt>
+File: images/btstack.pdf Graphic file (type pdf)
+
+<use images/btstack.pdf>
+Package pdftex.def Info: images/btstack.pdf used on input line 18.
+(pdftex.def)             Requested size: 455.24411pt x 356.8466pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 22.
+ [17
+
+
+]
+<images/basanet.pdf, id=1195, 470.50781pt x 333.49594pt>
+File: images/basanet.pdf Graphic file (type pdf)
+
+<use images/basanet.pdf>
+Package pdftex.def Info: images/basanet.pdf used on input line 38.
+(pdftex.def)             Requested size: 455.24411pt x 322.68155pt.
+ [18 <./images/btstack.pdf>]
+<images/bluehocnet.pdf, id=1211, 498.36188pt x 356.0803pt>
+File: images/bluehocnet.pdf Graphic file (type pdf)
+
+<use images/bluehocnet.pdf>
+Package pdftex.def Info: images/bluehocnet.pdf used on input line 52.
+(pdftex.def)             Requested size: 455.24411pt x 325.28325pt.
+ [19 <./images/basanet.pdf>]) [20 <./images/bluehocnet.pdf>]
 \openout2 = `chapters/wfd.aux'.
 
  (./chapters/wfd.tex
 Underfull \vbox (badness 7186) has occurred while \output is active []
 
- [17
+ [21
 
 
 ]
-<images/mgrouprouting.pdf, id=1169, 596.27768pt x 319.2196pt>
+<images/mgrouprouting.pdf, id=1271, 596.27768pt x 319.2196pt>
 File: images/mgrouprouting.pdf Graphic file (type pdf)
 
 <use images/mgrouprouting.pdf>
 Package pdftex.def Info: images/mgrouprouting.pdf used on input line 44.
 (pdftex.def)             Requested size: 455.24411pt x 243.72485pt.
- [18 <./images/mgrouprouting.pdf>]
-<images/1o1routingMGroup.pdf, id=1200, 524.00168pt x 270.43233pt>
+ [22 <./images/mgrouprouting.pdf>]
+<images/1o1routingMGroup.pdf, id=1303, 524.00168pt x 270.43233pt>
 File: images/1o1routingMGroup.pdf Graphic file (type pdf)
 
 <use images/1o1routingMGroup.pdf>
@@ -1209,26 +1239,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-[19 <./images/1o1routingMGroup.pdf>]
-<images/mhop2d2GM.pdf, id=1222, 342.10611pt x 210.80557pt>
+[23 <./images/1o1routingMGroup.pdf>]
+<images/mhop2d2GM.pdf, id=1325, 342.10611pt x 210.80557pt>
 File: images/mhop2d2GM.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GM.pdf>
 Package pdftex.def Info: images/mhop2d2GM.pdf used on input line 78.
 (pdftex.def)             Requested size: 273.14923pt x 168.3198pt.
 
-<images/mhop2d2GO.pdf, id=1225, 344.51611pt x 269.83008pt>
+<images/mhop2d2GO.pdf, id=1328, 344.51611pt x 269.83008pt>
 File: images/mhop2d2GO.pdf Graphic file (type pdf)
 
 <use images/mhop2d2GO.pdf>
 Package pdftex.def Info: images/mhop2d2GO.pdf used on input line 83.
 (pdftex.def)             Requested size: 273.14923pt x 213.94157pt.
- [20 <./images/mhop2d2GM.pdf> <./images/mhop2d2GO.pdf>]
+ [24 <./images/mhop2d2GM.pdf> <./images/mhop2d2GO.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-[21] <images/emc.pdf, id=1273, 587.24295pt x 361.38011pt>
+[25] <images/emc.pdf, id=1374, 587.24295pt x 361.38011pt>
 File: images/emc.pdf Graphic file (type pdf)
  <use images/emc.pdf>
 Package pdftex.def Info: images/emc.pdf used on input line 109.
@@ -1238,8 +1268,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
-[22 <./images/emc.pdf>]
-<images/manettop.pdf, id=1297, 599.23875pt x 183.68625pt>
+[26 <./images/emc.pdf>]
+<images/manettop.pdf, id=1399, 599.23875pt x 183.68625pt>
 File: images/manettop.pdf Graphic file (type pdf)
 
 <use images/manettop.pdf>
@@ -1251,8 +1281,8 @@ Overfull \hbox (5.10506pt too wide) in paragraph at lines 139--140
  de-vices, as pre-vi-ously men-tioned, and presents
  []
 
-[23 <./images/manettop.pdf>]
-<images/packet.pdf, id=1344, 359.3425pt x 90.3375pt>
+[27 <./images/manettop.pdf>]
+<images/packet.pdf, id=1447, 359.3425pt x 90.3375pt>
 File: images/packet.pdf Graphic file (type pdf)
  <use images/packet.pdf>
 Package pdftex.def Info: images/packet.pdf used on input line 165.
@@ -1262,257 +1292,264 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-[24 <./images/packet.pdf>]
-<images/routeTables.pdf, id=1367, 402.33614pt x 144.55203pt>
+[28 <./images/packet.pdf>]
+<images/routeTables.pdf, id=1471, 402.33614pt x 144.55203pt>
 File: images/routeTables.pdf Graphic file (type pdf)
 
 <use images/routeTables.pdf>
 Package pdftex.def Info: images/routeTables.pdf used on input line 179.
 (pdftex.def)             Requested size: 455.24411pt x 163.56906pt.
-) [25 <./images/routeTables.pdf>]
+) [29 <./images/routeTables.pdf>]
 \openout2 = `chapters/apps.aux'.
 
 
 (./chapters/apps.tex
 Underfull \vbox (badness 5077) has occurred while \output is active []
 
- [26
+ [30
 
 
 ])
-[27]
+[31]
 \openout2 = `chapters/work.aux'.
 
- (./chapters/work.tex [28
+ (./chapters/work.tex [32
 
 
 
 ]
 Chapter 3.
-[29] [30] <images/app_sandbox.pdf, id=1423, 570.13pt x 402.50375pt>
+[33] [34] <images/app_sandbox.pdf, id=1529, 570.13pt x 402.50375pt>
 File: images/app_sandbox.pdf Graphic file (type pdf)
 
 <use images/app_sandbox.pdf>
-Package pdftex.def Info: images/app_sandbox.pdf used on input line 67.
+Package pdftex.def Info: images/app_sandbox.pdf used on input line 69.
 (pdftex.def)             Requested size: 455.24411pt x 321.3954pt.
- [31] [32 <./images/app_sandbox.pdf>]
-<images/btreceiver.pdf, id=1452, 761.84625pt x 239.89626pt>
+ [35] [36 <./images/app_sandbox.pdf>]
+<images/btreceiver.pdf, id=1556, 761.84625pt x 239.89626pt>
 File: images/btreceiver.pdf Graphic file (type pdf)
 
 <use images/btreceiver.pdf>
-Package pdftex.def Info: images/btreceiver.pdf used on input line 109.
+Package pdftex.def Info: images/btreceiver.pdf used on input line 111.
 (pdftex.def)             Requested size: 455.24411pt x 143.3495pt.
- [33 <./images/btreceiver.pdf>]
-<images/btrequester.pdf, id=1461, 793.96625pt x 167.62625pt>
+ [37 <./images/btreceiver.pdf>]
+<images/btrequester.pdf, id=1564, 793.96625pt x 167.62625pt>
 File: images/btrequester.pdf Graphic file (type pdf)
 
 <use images/btrequester.pdf>
-Package pdftex.def Info: images/btrequester.pdf used on input line 128.
+Package pdftex.def Info: images/btrequester.pdf used on input line 130.
 (pdftex.def)             Requested size: 455.24411pt x 96.11577pt.
- [34 <./images/btrequester.pdf>]
-<images/inoutstreams.pdf, id=1473, 441.65pt x 82.3075pt>
+
+Underfull \vbox (badness 3679) has occurred while \output is active []
+
+ [38 <./images/btrequester.pdf>] <images/inoutstreams.pdf, id=1577, 441.65pt x 
+82.3075pt>
 File: images/inoutstreams.pdf Graphic file (type pdf)
 
 <use images/inoutstreams.pdf>
-Package pdftex.def Info: images/inoutstreams.pdf used on input line 149.
+Package pdftex.def Info: images/inoutstreams.pdf used on input line 151.
 (pdftex.def)             Requested size: 364.19667pt x 67.87563pt.
 
-<images/btconnectedr.pdf, id=1476, 763.85374pt x 271.0125pt>
+<images/btconnectedr.pdf, id=1580, 763.85374pt x 271.0125pt>
 File: images/btconnectedr.pdf Graphic file (type pdf)
 
 <use images/btconnectedr.pdf>
-Package pdftex.def Info: images/btconnectedr.pdf used on input line 161.
+Package pdftex.def Info: images/btconnectedr.pdf used on input line 163.
 (pdftex.def)             Requested size: 455.24411pt x 161.51701pt.
 
-<images/btconnectedw.pdf, id=1477, 763.85374pt x 180.675pt>
+<images/btconnectedw.pdf, id=1581, 763.85374pt x 180.675pt>
 File: images/btconnectedw.pdf Graphic file (type pdf)
 
 <use images/btconnectedw.pdf>
-Package pdftex.def Info: images/btconnectedw.pdf used on input line 167.
+Package pdftex.def Info: images/btconnectedw.pdf used on input line 169.
 (pdftex.def)             Requested size: 455.24411pt x 107.67801pt.
- [35 <./images/inoutstreams.pdf> <./images/btconnectedr.pdf>] <images/adv_messa
-ge.pdf, id=1496, 412.54124pt x 54.2025pt>
+ [39 <./images/inoutstreams.pdf>]
+<images/adv_message.pdf, id=1598, 412.54124pt x 54.2025pt>
 File: images/adv_message.pdf Graphic file (type pdf)
 
 <use images/adv_message.pdf>
-Package pdftex.def Info: images/adv_message.pdf used on input line 182.
+Package pdftex.def Info: images/adv_message.pdf used on input line 184.
 (pdftex.def)             Requested size: 318.66948pt x 41.8692pt.
- [36 <./images/btconnectedw.pdf> <./images/adv_message.pdf>] [37] <images/disco
-very_flux.pdf, id=1527, 786.94pt x 390.45876pt>
+
+Underfull \vbox (badness 2326) has occurred while \output is active []
+
+ [40 <./images/btconnectedr.pdf> <./images/btconnectedw.pdf> <./images/adv_mess
+age.pdf>]
+[41] <images/discovery_flux.pdf, id=1633, 786.94pt x 390.45876pt>
 File: images/discovery_flux.pdf Graphic file (type pdf)
 
 <use images/discovery_flux.pdf>
-Package pdftex.def Info: images/discovery_flux.pdf used on input line 237.
+Package pdftex.def Info: images/discovery_flux.pdf used on input line 239.
 (pdftex.def)             Requested size: 455.24411pt x 225.87639pt.
- [38 <./images/discovery_flux.pdf>]
-<images/adv_example_1.pdf, id=1540, 499.8675pt x 183.68625pt>
+ [42 <./images/discovery_flux.pdf>]
+<images/adv_example_1.pdf, id=1645, 499.8675pt x 183.68625pt>
 File: images/adv_example_1.pdf Graphic file (type pdf)
 
 <use images/adv_example_1.pdf>
-Package pdftex.def Info: images/adv_example_1.pdf used on input line 251.
+Package pdftex.def Info: images/adv_example_1.pdf used on input line 253.
 (pdftex.def)             Requested size: 455.24411pt x 167.29486pt.
 
-<images/advertise_flux.pdf, id=1542, 744.7825pt x 326.21875pt>
+<images/advertise_flux.pdf, id=1647, 744.7825pt x 326.21875pt>
 File: images/advertise_flux.pdf Graphic file (type pdf)
 
 <use images/advertise_flux.pdf>
-Package pdftex.def Info: images/advertise_flux.pdf used on input line 266.
+Package pdftex.def Info: images/advertise_flux.pdf used on input line 268.
 (pdftex.def)             Requested size: 455.24411pt x 199.40628pt.
- [39 <./images/adv_example_1.pdf>]
-<images/recv_advertise_flux.pdf, id=1556, 729.72626pt x 252.945pt>
+ [43 <./images/adv_example_1.pdf>]
+<images/recv_advertise_flux.pdf, id=1661, 729.72626pt x 252.945pt>
 File: images/recv_advertise_flux.pdf Graphic file (type pdf)
 
 <use images/recv_advertise_flux.pdf>
-Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 283.
+Package pdftex.def Info: images/recv_advertise_flux.pdf used on input line 285.
 
 (pdftex.def)             Requested size: 455.24411pt x 157.80077pt.
- [40 <./images/advertise_flux.pdf> <./images/recv_advertise_flux.pdf>]
-<images/adv_example_2.pdf, id=1573, 500.87125pt x 221.82875pt>
+ [44 <./images/advertise_flux.pdf>]
+<images/adv_example_2.pdf, id=1674, 500.87125pt x 221.82875pt>
 File: images/adv_example_2.pdf Graphic file (type pdf)
 
 <use images/adv_example_2.pdf>
-Package pdftex.def Info: images/adv_example_2.pdf used on input line 303.
+Package pdftex.def Info: images/adv_example_2.pdf used on input line 305.
 (pdftex.def)             Requested size: 455.24411pt x 201.6309pt.
- [41 <./images/adv_example_2.pdf>] [42]
-<images/example_1_0.pdf, id=1595, 652.4375pt x 243.91125pt>
+ [45 <./images/recv_advertise_flux.pdf> <./images/adv_example_2.pdf>] [46]
+<images/example_1_0.pdf, id=1699, 652.4375pt x 243.91125pt>
 File: images/example_1_0.pdf Graphic file (type pdf)
 
 <use images/example_1_0.pdf>
-Package pdftex.def Info: images/example_1_0.pdf used on input line 354.
+Package pdftex.def Info: images/example_1_0.pdf used on input line 356.
 (pdftex.def)             Requested size: 455.24411pt x 170.19704pt.
 
-<images/rqtflux.pdf, id=1599, 793.96625pt x 313.17pt>
+<images/rqtflux.pdf, id=1703, 793.96625pt x 313.17pt>
 File: images/rqtflux.pdf Graphic file (type pdf)
  <use images/rqtflux.pdf>
-Package pdftex.def Info: images/rqtflux.pdf used on input line 379.
+Package pdftex.def Info: images/rqtflux.pdf used on input line 381.
 (pdftex.def)             Requested size: 455.24411pt x 179.56958pt.
 
-<images/rqtmessage.pdf, id=1604, 553.06625pt x 52.195pt>
+[47 <./images/example_1_0.pdf>]
+<images/rqtmessage.pdf, id=1715, 553.06625pt x 52.195pt>
 File: images/rqtmessage.pdf Graphic file (type pdf)
 
 <use images/rqtmessage.pdf>
-Package pdftex.def Info: images/rqtmessage.pdf used on input line 389.
+Package pdftex.def Info: images/rqtmessage.pdf used on input line 391.
 (pdftex.def)             Requested size: 409.71692pt x 38.66669pt.
- [43 <./images/example_1_0.pdf>] [44 <./images/rqtflux.pdf> <./images/rqtmessag
-e.pdf>]
-<images/rqt_rcv_flux.pdf, id=1632, 775.89874pt x 333.245pt>
+ [48 <./images/rqtflux.pdf> <./images/rqtmessage.pdf>] <images/rqt_rcv_flux.pdf
+, id=1737, 775.89874pt x 333.245pt>
 File: images/rqt_rcv_flux.pdf Graphic file (type pdf)
 
 <use images/rqt_rcv_flux.pdf>
-Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 418.
+Package pdftex.def Info: images/rqt_rcv_flux.pdf used on input line 420.
 (pdftex.def)             Requested size: 455.24411pt x 195.52975pt.
- [45 <./images/rqt_rcv_flux.pdf>]
-<images/example_1_1.pdf, id=1656, 652.4375pt x 199.74625pt>
+ [49 <./images/rqt_rcv_flux.pdf>]
+<images/example_1_1.pdf, id=1759, 652.4375pt x 199.74625pt>
 File: images/example_1_1.pdf Graphic file (type pdf)
 
 <use images/example_1_1.pdf>
-Package pdftex.def Info: images/example_1_1.pdf used on input line 446.
+Package pdftex.def Info: images/example_1_1.pdf used on input line 448.
 (pdftex.def)             Requested size: 455.24411pt x 139.37947pt.
- [46 <./images/example_1_1.pdf>]
-<images/send_rsp_flux.pdf, id=1665, 801.99625pt x 492.84125pt>
+ [50]
+<images/send_rsp_flux.pdf, id=1765, 801.99625pt x 492.84125pt>
 File: images/send_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/send_rsp_flux.pdf>
-Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 459.
+Package pdftex.def Info: images/send_rsp_flux.pdf used on input line 461.
 (pdftex.def)             Requested size: 455.24411pt x 279.76431pt.
 
-<images/rspmessage.pdf, id=1671, 251.94125pt x 53.19875pt>
+<images/rspmessage.pdf, id=1771, 251.94125pt x 53.19875pt>
 File: images/rspmessage.pdf Graphic file (type pdf)
 
 <use images/rspmessage.pdf>
-Package pdftex.def Info: images/rspmessage.pdf used on input line 469.
+Package pdftex.def Info: images/rspmessage.pdf used on input line 471.
 (pdftex.def)             Requested size: 182.09486pt x 38.44998pt.
- [47 <./images/send_rsp_flux.pdf> <./images/rspmessage.pdf>] <images/rcv_rsp_fl
-ux.pdf, id=1684, 771.88374pt x 483.8075pt>
+ [51 <./images/example_1_1.pdf> <./images/send_rsp_flux.pdf>] <images/rcv_rsp_f
+lux.pdf, id=1784, 771.88374pt x 483.8075pt>
 File: images/rcv_rsp_flux.pdf Graphic file (type pdf)
 
 <use images/rcv_rsp_flux.pdf>
-Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 490.
+Package pdftex.def Info: images/rcv_rsp_flux.pdf used on input line 492.
 (pdftex.def)             Requested size: 455.24411pt x 285.34059pt.
- [48 <./images/rcv_rsp_flux.pdf>] [49]
-<images/example_1_2.pdf, id=1715, 652.4375pt x 199.74625pt>
+ [52 <./images/rspmessage.pdf>] [53 <./images/rcv_rsp_flux.pdf>] <images/exampl
+e_1_2.pdf, id=1820, 652.4375pt x 199.74625pt>
 File: images/example_1_2.pdf Graphic file (type pdf)
 
 <use images/example_1_2.pdf>
-Package pdftex.def Info: images/example_1_2.pdf used on input line 528.
+Package pdftex.def Info: images/example_1_2.pdf used on input line 530.
 (pdftex.def)             Requested size: 455.24411pt x 139.37947pt.
-) [50 <./images/example_1_2.pdf>]
+) [54 <./images/example_1_2.pdf>]
 \openout2 = `chapters/testing.aux'.
 
 
 (./chapters/testing.tex
 Chapter 4.
-[51
+[55
 
 
 
-] <images/bt_max_visib.pdf, id=1732, 603.25375pt x 82.3075pt>
+] <images/bt_max_visib.pdf, id=1837, 603.25375pt x 82.3075pt>
 File: images/bt_max_visib.pdf Graphic file (type pdf)
 
 <use images/bt_max_visib.pdf>
 Package pdftex.def Info: images/bt_max_visib.pdf used on input line 35.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/wfd_max_visib.pdf, id=1733, 603.25375pt x 82.3075pt>
+<images/wfd_max_visib.pdf, id=1838, 603.25375pt x 82.3075pt>
 File: images/wfd_max_visib.pdf Graphic file (type pdf)
 
 <use images/wfd_max_visib.pdf>
 Package pdftex.def Info: images/wfd_max_visib.pdf used on input line 41.
 (pdftex.def)             Requested size: 364.19667pt x 49.69005pt.
 
-<images/bt_max_inv.pdf, id=1736, 563.10374pt x 82.3075pt>
+<images/bt_max_inv.pdf, id=1841, 563.10374pt x 82.3075pt>
 File: images/bt_max_inv.pdf Graphic file (type pdf)
 
 <use images/bt_max_inv.pdf>
 Package pdftex.def Info: images/bt_max_inv.pdf used on input line 49.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
 
-<images/wfd_max_inv.pdf, id=1737, 563.10374pt x 82.3075pt>
+<images/wfd_max_inv.pdf, id=1842, 563.10374pt x 82.3075pt>
 File: images/wfd_max_inv.pdf Graphic file (type pdf)
 
 <use images/wfd_max_inv.pdf>
 Package pdftex.def Info: images/wfd_max_inv.pdf used on input line 55.
 (pdftex.def)             Requested size: 364.19667pt x 53.23422pt.
- [52 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf>] <images/plot_nor
-mal_disc.pdf, id=1756, 794.97pt x 614.295pt>
+ [56 <./images/bt_max_visib.pdf> <./images/wfd_max_visib.pdf>] <images/plot_nor
+mal_disc.pdf, id=1861, 794.97pt x 614.295pt>
 File: images/plot_normal_disc.pdf Graphic file (type pdf)
 
 <use images/plot_normal_disc.pdf>
 Package pdftex.def Info: images/plot_normal_disc.pdf used on input line 80.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
- [53 <./images/bt_max_inv.pdf> <./images/wfd_max_inv.pdf>] [54 <./images/plot_n
+ [57 <./images/bt_max_inv.pdf> <./images/wfd_max_inv.pdf>] [58 <./images/plot_n
 ormal_disc.pdf>]
-<images/btin.pdf, id=1791, 685.05937pt x 278.54062pt>
+<images/btin.pdf, id=1897, 685.05937pt x 278.54062pt>
 File: images/btin.pdf Graphic file (type pdf)
  <use images/btin.pdf>
 Package pdftex.def Info: images/btin.pdf used on input line 115.
 (pdftex.def)             Requested size: 318.66948pt x 129.57104pt.
 
-<images/btobs.pdf, id=1792, 700.11563pt x 289.83281pt>
+<images/btobs.pdf, id=1898, 700.11563pt x 289.83281pt>
 File: images/btobs.pdf Graphic file (type pdf)
  <use images/btobs.pdf>
 Package pdftex.def Info: images/btobs.pdf used on input line 118.
 (pdftex.def)             Requested size: 318.66948pt x 131.92278pt.
 
-<images/btout.pdf, id=1793, 703.12688pt x 261.22594pt>
+<images/btout.pdf, id=1899, 703.12688pt x 261.22594pt>
 File: images/btout.pdf Graphic file (type pdf)
  <use images/btout.pdf>
 Package pdftex.def Info: images/btout.pdf used on input line 121.
 (pdftex.def)             Requested size: 318.66948pt x 118.39162pt.
 
-[55] <images/wfin.pdf, id=1811, 674.52pt x 265.74281pt>
+[59] <images/wfin.pdf, id=1917, 674.52pt x 265.74281pt>
 File: images/wfin.pdf Graphic file (type pdf)
  <use images/wfin.pdf>
 Package pdftex.def Info: images/wfin.pdf used on input line 142.
 (pdftex.def)             Requested size: 318.66948pt x 125.54791pt.
 
-<images/wfobs.pdf, id=1812, 674.52pt x 268.75406pt>
+<images/wfobs.pdf, id=1918, 674.52pt x 268.75406pt>
 File: images/wfobs.pdf Graphic file (type pdf)
  <use images/wfobs.pdf>
 Package pdftex.def Info: images/wfobs.pdf used on input line 145.
 (pdftex.def)             Requested size: 318.66948pt x 126.97055pt.
 
-<images/wfout.pdf, id=1813, 685.05937pt x 265.74281pt>
+<images/wfout.pdf, id=1919, 685.05937pt x 265.74281pt>
 File: images/wfout.pdf Graphic file (type pdf)
  <use images/wfout.pdf>
 Package pdftex.def Info: images/wfout.pdf used on input line 148.
@@ -1520,45 +1557,45 @@ Package pdftex.def Info: images/wfout.pdf used on input line 148.
 
 Underfull \vbox (badness 4181) has occurred while \output is active []
 
- [56 <./images/btin.pdf> <./images/btobs.pdf> <./images/btout.pdf>] [57 <./imag
+ [60 <./images/btin.pdf> <./images/btobs.pdf> <./images/btout.pdf>] [61 <./imag
 es/wfin.pdf> <./images/wfobs.pdf> <./images/wfout.pdf>]
-<images/plot_app_disc.pdf, id=1856, 794.97pt x 614.295pt>
+<images/plot_app_disc.pdf, id=1962, 794.97pt x 614.295pt>
 File: images/plot_app_disc.pdf Graphic file (type pdf)
 
 <use images/plot_app_disc.pdf>
 Package pdftex.def Info: images/plot_app_disc.pdf used on input line 176.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
- [58]
-<images/boxplot_adv_1.pdf, id=1865, 794.97pt x 614.295pt>
+ [62]
+<images/boxplot_adv_1.pdf, id=1971, 794.97pt x 614.295pt>
 File: images/boxplot_adv_1.pdf Graphic file (type pdf)
 
 <use images/boxplot_adv_1.pdf>
 Package pdftex.def Info: images/boxplot_adv_1.pdf used on input line 194.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
 
-<images/boxplot_adv_2.pdf, id=1868, 794.97pt x 614.295pt>
+<images/boxplot_adv_2.pdf, id=1974, 794.97pt x 614.295pt>
 File: images/boxplot_adv_2.pdf Graphic file (type pdf)
 
 <use images/boxplot_adv_2.pdf>
 Package pdftex.def Info: images/boxplot_adv_2.pdf used on input line 204.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
- [59 <./images/plot_app_disc.pdf>] [60 <./images/boxplot_adv_1.pdf>] [61 <./ima
+ [63 <./images/plot_app_disc.pdf>] [64 <./images/boxplot_adv_1.pdf>] [65 <./ima
 ges/boxplot_adv_2.pdf>]
-<images/boxplot_throughput.pdf, id=1904, 794.97pt x 614.295pt>
+<images/boxplot_throughput.pdf, id=2010, 794.97pt x 614.295pt>
 File: images/boxplot_throughput.pdf Graphic file (type pdf)
 
 <use images/boxplot_throughput.pdf>
 Package pdftex.def Info: images/boxplot_throughput.pdf used on input line 234.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
- [62]
-<images/barplot_perc_time.pdf, id=1915, 794.97pt x 614.295pt>
+ [66]
+<images/barplot_perc_time.pdf, id=2019, 794.97pt x 614.295pt>
 File: images/barplot_perc_time.pdf Graphic file (type pdf)
 
 <use images/barplot_perc_time.pdf>
 Package pdftex.def Info: images/barplot_perc_time.pdf used on input line 250.
 (pdftex.def)             Requested size: 546.29153pt x 422.14867pt.
- [63 <./images/boxplot_throughput.pdf>])
-[64 <./images/barplot_perc_time.pdf>]
+ [67 <./images/boxplot_throughput.pdf>])
+[68 <./images/barplot_perc_time.pdf>]
 \openout2 = `chapters/conclusion.aux'.
 
  (./chapters/conclusion.tex
@@ -1570,50 +1607,68 @@ e-ment: []$\OT1/cmtt/m/n/8 http : / / altbeacon . github . io / android-[]beaco
 n-[]library /
  []
 
-[65
+[69
 
 
 
-] [66]) [67]) (./dissertation.bbl [68
+] [70]) [71]) (./dissertation.bbl [72
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
 []\OT1/phv/m/n/10 Statista, ``Av-er-age num-ber of con-nected de-vices used per
  per-son in se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
 \OT1/phv/m/n/10 lected coun-tries in 2014.'' []$\OT1/cmtt/m/n/10 https : / / ww
 w . statista . com / statistics / 333861 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--43
+Underfull \hbox (badness 10000) in paragraph at lines 47--50
 []\OT1/phv/m/n/10 S. Choud-huri, ``Un-der-stand-ing the dif-fer-ence be-tween w
 ire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--43
+Underfull \hbox (badness 10000) in paragraph at lines 47--50
 \OT1/phv/m/n/10 less en-cryp-tion pro-to-cols.'' []$\OT1/cmtt/m/n/10 http : / /
  blogs . cisco . com / smallbusiness /
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 72--74
+Underfull \hbox (badness 2717) in paragraph at lines 52--55
+[]\OT1/phv/m/n/10 M. Slob, ``Mul-ti-ple blue-tooth con-nec-tions on an-droid.''
+ []$\OT1/cmtt/m/n/10 http : / / profandroid . com / network /
+ []
+
+
+Underfull \hbox (badness 5460) in paragraph at lines 57--60
+[]\OT1/phv/m/n/10 A. Inc., ``Blue-tooth tech-nol-ogy ba-sics.'' []$\OT1/cmtt/m/
+n/10 https : / / developer . apple . com / library / content /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--60
+\OT1/cmtt/m/n/10 documentation / DeviceDrivers / Conceptual / Bluetooth / BT _ 
+Bluetooth _ Basics / BT _ Bluetooth _
+ []
+
+[73]
+Underfull \hbox (badness 2119) in paragraph at lines 93--95
 []\OT1/phv/m/n/10 Wi-Fi Al-liance, ``How far does a wi-fi di-rect con-nec-tion 
 travel?.'' []$\OT1/cmtt/m/n/10 http : / / www . wi-[]fi . org /
  []
 
-[69]
-Underfull \hbox (badness 1975) in paragraph at lines 96--98
+
+Underfull \hbox (badness 1975) in paragraph at lines 117--119
 []\OT1/phv/m/n/10 Wi-Fi Al-liance, ``How fast is wi-fi di-rect?.'' []$\OT1/cmtt
 /m/n/10 http : / / www . wi-[]fi . org / knowledge-[]center / faq /
  []
 
-) (./appendix/main.tex [70]
+) (./appendix/main.tex [74]
 \openout2 = `appendix/appendixa.aux'.
 
  (./appendix/appendixa.tex))
@@ -1623,25 +1678,28 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
 (./cover.aux) (./abstract/abstract-en.aux) (./abstract/abstract-pt.aux)
 (./chapters/introduction.aux) (./chapters/cell.aux) (./chapters/wifi.aux)
 (./chapters/bluetooth.aux) (./chapters/nfc.aux) (./chapters/teconc.aux)
-(./chapters/wfd.aux) (./chapters/apps.aux) (./chapters/work.aux)
-(./chapters/testing.aux) (./chapters/conclusion.aux) (./appendix/appendixa.aux)
-)
+(./chapters/btandroid.aux) (./chapters/wfd.aux) (./chapters/apps.aux)
+(./chapters/work.aux) (./chapters/testing.aux) (./chapters/conclusion.aux)
+(./appendix/appendixa.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 70FBDE1C87FB54D404639D5596697A2D;4558.
+(rerunfilecheck)             Checksum: 70408462A7FCC03367318BB92B08ED72;4922.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
- 17345 strings out of 492995
- 282284 string characters out of 6132191
- 421267 words of memory out of 5000000
- 20117 multiletter control sequences out of 15000+600000
- 32525 words of font info for 57 fonts, out of 8000000 for 9000
+ 17403 strings out of 492995
+ 283257 string characters out of 6132191
+ 423318 words of memory out of 5000000
+ 20146 multiletter control sequences out of 15000+600000
+ 34411 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,8n,94p,1951b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exi
-st, replaced by a fixed one
+pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
 , replaced by a fixed one
@@ -1674,10 +1732,10 @@ les/TexLive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><e:/Program Fil
 es/TexLive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><e:/Program Files/Tex
 Live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><e:/Program Files/TexLive/t
 exmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (92 pages, 2989783 bytes).
+Output written on dissertation.pdf (96 pages, 3262185 bytes).
 PDF statistics:
- 2088 PDF objects out of 2487 (max. 8388607)
- 1879 compressed objects within 19 object streams
- 311 named destinations out of 1000 (max. 500000)
- 765 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2203 PDF objects out of 2487 (max. 8388607)
+ 1979 compressed objects within 20 object streams
+ 329 named destinations out of 1000 (max. 500000)
+ 820 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,6 +4,13 @@
 W.~S. Conner, J.~Kruys, K.~J. Kim, and J.~C. Zuniga, ``Overview of the
   amendment for wireless local area mesh networking,'' 2006.
 
+\bibitem{androidbtintro}
+E.~Yueh, ``Android bluetooth introduction,'' 2009.
+
+\bibitem{basa}
+D.~Zhang, D.~Zhang, H.~Xiong, C.-H. Hsu, and A.~V. Vasilakos, ``Basa: Building
+  mobile ad-hoc social networks on top of android,'' 2014.
+
 \bibitem{routeMultiGroup}
 C.~Casetti, C.~F. Chiasserini, L.~C. Pelle, C.~D. Valle, Y.~Duan, and
   P.~Giaccone, ``Content-centric routing in wi-fi direct multi-group
@@ -40,6 +47,20 @@ I.~Poole, ``Ieee 802.11n standard.''
 S.~Choudhuri, ``Understanding the difference between wireless encryption
   protocols.''
   \url{http://blogs.cisco.com/smallbusiness/understanding-the-difference-between-wireless-encryption-protocols}.
+
+\bibitem{btmultipleconn}
+M.~Slob, ``Multiple bluetooth connections on android.''
+  \url{http://profandroid.com/network/bluetooth/multiple-bluetooth-connections.html},
+  2016.
+
+\bibitem{btmasterchoice}
+A.~Inc., ``Bluetooth technology basics.''
+  \url{https://developer.apple.com/library/content/documentation/DeviceDrivers/Conceptual/Bluetooth/BT_Bluetooth_Basics/BT_Bluetooth_Basics.html},
+  2012.
+
+\bibitem{bluehoc}
+G.~Hinojos, C.~Tade, S.~Park, D.~Shires, and D.~Bruno, ``Bluehoc: Bluetooth
+  ad-hoc network android distributed computing,'' 2011.
 
 \bibitem{contentcentric}
 J.~J. Garcia-Luna-Aceves, ``Content-centric networking.''
