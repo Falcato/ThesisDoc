@@ -63,8 +63,42 @@ In the previous subsection, the presented works focus on the creation of ad hoc 
 
 Bluetooth in Android, naturally and implements multi-hop. As seen in the previous subsection, mobile devices can connected in a linear network topology, where each mobile device has up to two concurrent connections. However, routing data through these communication links requires additional logic, to ensure the information reaches the correct destination.
 
+In \cite{bwmesh}, Y. Wang \textit{et al.}, propose a multi-hop connectivity framework on Android, using Bluetooth and Wi-Fi Direct as communication technologies, called \textit{BWMesh}. This framework discovers and connects neighbour users, using both Bluetooth and Wi-Fi Direct, transmits messages and provides network status to applications using the framework.
 
+\textit{BWMesh} uses Bluetooth and Wi-Fi Direct's discovery processes to scan for nearby devices. Once two devices are connected, \textit{BWMesh} attempt to maintain their connection as long as possible, for instance by enabling Wi-Fi Direct when a current Bluetooth connection is broken, due to devices being out of Bluetooth communication range.
 
+To communicate between themselves, devices may use Bluetooth or Wi-Fi Direct, depending on the radio interface enabled by the user. However, connection and message transmission may only occur between two Bluetooth or Wi-Fi Direct terminals, not being possible cross-technology communication.
 
+A preliminary simple flooding-based forwarding mechanism is implemented, where a received message is disseminated by the receiver to its nearby peer devices. Also, to unequivocally distinguish devices in a network, the authors proposed a device identifier to be an integration of a user-defined semantic name with the intrinsic device serial number. This identification is technology independent, as both Bluetooth and Wi-Fi have different \gls{MAC} addresses, in an Android device.
+
+In Figure \ref{fig:bwmsg}, the \textit{BWMesh} message formate is shown. The exchanged messages are divided in four segments, each segment being parsed through the corresponding prefix. Prefix (1) \textit{HOP\_NUM} denotes the number of experienced hops transferred from the message originator, each time the message is forwarded a unit is added to this segment; (2) \textit{USER\_NAME} corresponds to the user-defined semantic name, it is used to associate a device with an easily human readable identifier; (3) \textit{DEVICE\_TAG} is the unique identifier of the device in the network; (4) \textit{PAYLOAD\_TXT} is the message content to be transmitted.
+
+\begin{figure}[ht]
+	\noindent\makebox[\textwidth]
+	{\includegraphics[width=0.8\textwidth]{images/bwmsg.pdf}}
+	\caption{\label{fig:bwmsg} \textit{BWMesh} message format.}
+\end{figure}
+
+Similarly to what is proposed for this work in Section \ref{sec:objectives}, in \cite{bwmesh} the authors designed and implemented a \textit{BWMesh} based prototype Android application, named \textit{MultiChat}.
+
+\textit{MultiChat} enables users to exchange real-time text messages with nearby people in a multi-hop manner, when they are beyond single-hop Wi-Fi Direct range or without an active Internet connection.
+
+In Figure \ref{fig:bwmeshnet}, a possible network of \textit{MultiChat} is shown. Four users are presented: A, B, C and D. Between A and B, and C and D, a Bluetooth connection is established. Between users B and C a Wi-Fi Direct connection is established.
+
+Once the devices are all connected, as shown in Figure \ref{fig:bwmeshnet}, the four users are able to exchange text messages in a broadcast manner, similarly to a community chat. Also, although user A is not in communication range of user D, they are able to communicate. Using \textit{MultiChat}, every user has knowledge on the unique identifier and number of hops separating him/her from the remaining users of the network.
+
+\begin{figure}[ht]
+	\noindent\makebox[\textwidth]
+	{\includegraphics[width=0.8\textwidth]{images/bwmeshnet.pdf}}
+	\caption{\label{fig:bwmeshnet} Overview of a preliminary network model of \textit{MultiChat}. (source: \cite{bwmesh})}
+\end{figure}
+
+The authors state that \textit{BWMesh} may be further improved in the future by:
+
+\begin{itemize}
+	\item Possibly, utilizing Bluetooth insecure communications to avoid the manual pairing of devices in the created network.
+	\item Seeing Wi-Fi Direct's current Android implementation being boosted to the point where no user interaction is necessary, to transfer files between devices.
+	\item Incorporating a more complex, realistic network topology. Allowing the existence of multiple multi-hop routes and destination-specific routing, for instance to allow private messaging.
+\end{itemize}
 
 

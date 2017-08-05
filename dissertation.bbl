@@ -11,6 +11,10 @@ E.~Yueh, ``Android bluetooth introduction,'' 2009.
 D.~Zhang, D.~Zhang, H.~Xiong, C.-H. Hsu, and A.~V. Vasilakos, ``Basa: Building
   mobile ad-hoc social networks on top of android,'' 2014.
 
+\bibitem{bluehoc}
+G.~Hinojos, C.~Tade, S.~Park, D.~Shires, and D.~Bruno, ``Bluehoc: Bluetooth
+  ad-hoc network android distributed computing,'' 2011.
+
 \bibitem{routeMultiGroup}
 C.~Casetti, C.~F. Chiasserini, L.~C. Pelle, C.~D. Valle, Y.~Duan, and
   P.~Giaccone, ``Content-centric routing in wi-fi direct multi-group
@@ -58,13 +62,13 @@ A.~Inc., ``Bluetooth technology basics.''
   \url{https://developer.apple.com/library/content/documentation/DeviceDrivers/Conceptual/Bluetooth/BT_Bluetooth_Basics/BT_Bluetooth_Basics.html},
   2012.
 
-\bibitem{bluehoc}
-G.~Hinojos, C.~Tade, S.~Park, D.~Shires, and D.~Bruno, ``Bluehoc: Bluetooth
-  ad-hoc network android distributed computing,'' 2011.
-
 \bibitem{contentcentric}
 J.~J. Garcia-Luna-Aceves, ``Content-centric networking.''
   \url{https://www.ietf.org/proceedings/65/slides/DTNRG-12.pdf}.
+
+\bibitem{bwmesh}
+Y.~Wang, J.~Tang, Q.~Jin, and J.~Ma, ``Bwmesh: a multi-hop connectivity
+  framework on android for proximity service,'' 2015.
 
 \bibitem{dsdv}
 C.~Perkins and P.~Bhagwat, ``Highly dynamic destination-sequenced

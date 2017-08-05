@@ -15,7 +15,7 @@ The choice of the target application was mainly based on the innovation criteriu
 
 \subsection{Ad Hoc Communication Technology}
 
-The choice of ad hoc network technology was another important step. The first and most obvious choice would be to use Wi-Fi Direct in both advertising and communication between devices, since this technology offers the best features to transfer files around \textit{1KB}, in both range and data rate of transmission. However, during the development it proved to be impossible to continue with this approach, as Wi-Fi Direct's current Android implementation does not allow for devices to transfer files without active user participation.
+The choice of ad hoc network technology was another important step. The first and most obvious choice would be to use Wi-Fi Direct in both advertising and communication between devices, since this technology offers the best features to transfer files around \textit{1KB}, in both range and data rate of transmission. However, during the development it proved to be impossible to continue with this approach, as Wi-Fi Direct's current Android implementation does not allow for devices to transfer files without active user participation, also mentioned in \cite{bwmesh}.
 
 Given this drawback a shift to Bluetooth was made, and a hybrid version of the application was created, where the advertisement would be done via Wi-Fi Direct and the actual transfer of the web pages would be made via Bluetooth. This method also proved to be infeasible, due to security issues, since the the devices would have to display their Bluetooth MAC addresses in their Bluetooth name, making them much more vulnerable to possible attacks.
 
@@ -24,8 +24,6 @@ The advertisement was also a topic of debate. Two possibilities were presented: 
 The beacon advertisement is a tempting mechanism to implement, given all its advantages. It comprises two components: transmission and ranging. Transmission occurs when a device wants to issue an advertisement to a certain region\footnote{A beacon region is the physical space reached by the advertisement.}. Ranging is the act of listening to beacon transmissions in a certain region. During the implementation of these two components it was possible to verify that the current Android implementations - tested with Android versions 6.0 and 7.0 - are not able to reproduce \gls{BLE}'s transmission mechanism, being only able to use the ranging.
 
 Given these facts, the application was developed using simple Bluetooth connections for both advertisement of the devices and data transfer. Although this is not the best technology for communication in an ad hoc network, it is the only one that currently meets all the requirements for this work. In the end of this section, a brief discussion on the changes that need to be made to Wi-Fi Direct's implementation in Android will be presented, and why developers could benefit from these changes.
-
-\subsection{Ad Hoc Network Topology}
 
 \subsection{Ad Hoc Routing Protocol}
 \label{subsec:routprot}
@@ -85,7 +83,7 @@ Inside the main activity the different threads communicate with each other, main
 
 In this subsection, the Bluetooth connections between devices and their possible stages will be described and analysed.
 
-Since the communication technology is Bluetooth, the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system. See \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class. It creates and listens to insecure communication sockets allowing devices to exchange data without user intervention.
+Since the communication technology is Bluetooth, the application must have a thread\footnote{Thread is a sequence of instructions managed independently, usually by a scheduler from the operating system. See \cite{threads} for more documentation on threads.} that handles the listening and acceptance of connections and the data transfer between devices. This corresponds to the \textit{BluetoothService.java} class. It creates and listens to insecure communication sockets, allowing devices to exchange data without user intervention.
 
 The service has three different threads within it: a thread for the acceptance of incoming communications - \textit{AcceptThread}; a thread for the initial exchange of vital information before the connection - \textit{ConnectThread}; and a thread for the actual exchange of data between devices - \textit{ConnectedThread}. The connection of devices goes through each of these stages, allowing the \textit{Main} thread to get information on the connection status of the device at a given time.
 
