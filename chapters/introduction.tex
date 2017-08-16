@@ -18,13 +18,13 @@ Due to the reasons just stated, ad hoc communication between devices has been la
 
 Given the context above, the main question is: where can the creation of an ad hoc network be of use to the everyday tasks people perform on their mobile devices. There are many answers to this question, thus the difficulty of choosing a relevant topic. Much of the work currently being done focus on chat applications, where messages are transmitted via an ad hoc network. Bearing this in mind, this thesis takes a further step and creates a framework to form an ad hoc network capable of transmitting packets between devices.
 
+A solution is proposed to solve the inability of devices to access web pages, through a peer-to-peer application, even where there is the possibility of indirect Internet access, via communication with other devices and not directly with the infrastructure. The Android hotspot is an existing service that allows devices to share their Internet with the surrounding peers. However, this only works if a device is within immediate range of the hotspotting device, reducing the size and reach of the created network. In the solution proposed, the devices are able to reach the Internet by sending their requests to their immediate peers, who will forward them to their neighbors until the destination is reached, travelling more than one hop\footnote{One hop is the distance of the communication between a device and its immediate peers. Each time the message travels between a device and its peers a hop is added to the message path.}, see the example of Figure \ref{fig:context}.
+
 \begin{figure}[ht]
 	\noindent\makebox[\textwidth]
 	{\includegraphics[width=0.8\textwidth]{images/context.pdf}}
-	\caption{\label{fig:context} Example of a created ad hoc network}
+	\caption{\label{fig:context} Example of an ad hoc network.}
 \end{figure}
-
-A solution is proposed to solve the inability of devices to access web pages, through a peer-to-peer application, even where there is the possibility of indirect Internet access, via communication with other devices and not directly with the infrastructure. The Android hotspot is an existing service that allows devices to share their Internet with the surrounding peers. However, this only works if a device is within immediate range of the hotspotting device, reducing the size and reach of the created network. In the solution proposed in this thesis, the devices are able to reach the Internet by sending their requests to their immediate peers, who will forward them to their neighbors until the destination is reached, travelling more than one hop\footnote{One hop is the distance of the communication between a device and its immediate peers. Each time the message travels between a device and its peers a hop is added to the message path.}, see the example of Figure \ref{fig:context}.
 
 It is important to note that this work does not have the purpose of replacing the existing communication infrastructure, but is, in fact, trying to complement it.
 

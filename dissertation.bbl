@@ -15,6 +15,10 @@ D.~Zhang, D.~Zhang, H.~Xiong, C.-H. Hsu, and A.~V. Vasilakos, ``Basa: Building
 G.~Hinojos, C.~Tade, S.~Park, D.~Shires, and D.~Bruno, ``Bluehoc: Bluetooth
   ad-hoc network android distributed computing,'' 2011.
 
+\bibitem{bwmesh}
+Y.~Wang, J.~Tang, Q.~Jin, and J.~Ma, ``Bwmesh: a multi-hop connectivity
+  framework on android for proximity service,'' 2015.
+
 \bibitem{routeMultiGroup}
 C.~Casetti, C.~F. Chiasserini, L.~C. Pelle, C.~D. Valle, Y.~Duan, and
   P.~Giaccone, ``Content-centric routing in wi-fi direct multi-group
@@ -66,9 +70,13 @@ A.~Inc., ``Bluetooth technology basics.''
 J.~J. Garcia-Luna-Aceves, ``Content-centric networking.''
   \url{https://www.ietf.org/proceedings/65/slides/DTNRG-12.pdf}.
 
-\bibitem{bwmesh}
-Y.~Wang, J.~Tang, Q.~Jin, and J.~Ma, ``Bwmesh: a multi-hop connectivity
-  framework on android for proximity service,'' 2015.
+\bibitem{bluetoothspec}
+{Bluetooth Special Interest Group}, ``Bluetooth specification version 4.2,''
+  2014.
+
+\bibitem{wfdrate}
+{Wi-Fi Alliance}, ``How fast is wi-fi direct?.''
+  \url{http://www.wi-fi.org/knowledge-center/faq/how-fast-is-wi-fi-direct}.
 
 \bibitem{dsdv}
 C.~Perkins and P.~Bhagwat, ``Highly dynamic destination-sequenced
@@ -101,10 +109,6 @@ G.~Malkin, ``Request for comments: 2453,'' 1998.
 A.~Boukerche, ``Algorithms and protocols for wireless, mobile ad hoc
   networks,'' 2009.
 
-\bibitem{bluetoothspec}
-{Bluetooth Special Interest Group}, ``Bluetooth specification version 4.2,''
-  2014.
-
 \bibitem{btdisc1}
 R.~Woodings, D.~Joos, T.~Clifton, and C.~D. Knutson, ``Rapid heterogeneous
   connection establishment: Accelerating bluetooth inquiry using irda,'' 2002.
@@ -116,10 +120,6 @@ B.~S. Peterson, R.~O. Baldwin, and R.~A. Raines, ``Bluetooth discovery time
 \bibitem{wfddisc}
 {Android Developers}, ``Wi-fi peer-to-peer | discovering peers.''
   \url{https://developer.android.com/guide/topics/connectivity/wifip2p.html#discovering}.
-
-\bibitem{wfdrate}
-{Wi-Fi Alliance}, ``How fast is wi-fi direct?.''
-  \url{http://www.wi-fi.org/knowledge-center/faq/how-fast-is-wi-fi-direct}.
 
 \bibitem{kitkat}
 {Android Developers}, ``Kitkat.''

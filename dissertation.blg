@@ -12,6 +12,7 @@ A level-1 auxiliary file: chapters/nfc.aux
 A level-1 auxiliary file: chapters/teconc.aux
 A level-1 auxiliary file: chapters/btandroid.aux
 A level-1 auxiliary file: chapters/wfd.aux
+A level-1 auxiliary file: chapters/btvswifi.aux
 A level-1 auxiliary file: chapters/apps.aux
 A level-1 auxiliary file: chapters/work.aux
 A level-1 auxiliary file: chapters/testing.aux
@@ -21,7 +22,7 @@ A level-1 auxiliary file: appendix/appendixa.aux
 Database file #1: bibliography/dissertation.bib
 You've used 30 entries,
             1876 wiz_defined-function locations,
-            608 strings with 7823 characters,
+            609 strings with 7844 characters,
 and the built_in function-call counts, 4238 in all, are:
 = -- 316
 > -- 250
