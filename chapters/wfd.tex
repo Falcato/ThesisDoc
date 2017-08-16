@@ -33,8 +33,8 @@ This said, upon experimentation, the following scenarios are not feasible in sto
 
 \begin{itemize}
 \item a device is the \gls{GO} of one group and \gls{GM} in another,
-\item a devices is the \gls{GO} of two or more groups,
-\item a devices is a \gls{GM} in two or more groups (non-legacy).
+\item a device is the \gls{GO} of two or more groups,
+\item a device is a \gls{GM} in two or more groups (non-legacy).
 \end{itemize}
 
 Due to these limitations, the authors propose that a \gls{GO} be a legacy client in a different group, seen in Figure \ref{fig:mgrouprouting}:
@@ -92,7 +92,7 @@ These limitation result in the failure of direct implementation of the test scen
 
 Although it is possible to use both interfaces concurrently and the connection between the groups is successfully established, the experiments from the authors suggest that it is not possible to create a unicast communication to and from the gateway node. For scenario \textit{b)} of Figure \ref{fig:mhopd2dgm} the gateway node was able to receive data from both groups but was not able to send. For scenario \textit{a)} and \textit{d)} of Figure \ref{fig:mhopd2dgo} the gateway node was able to communicate with node A but there was no communication with node B. The authors believe this is due to the fact that the \gls{DHCP} protocol assigns the same \gls{IP} address to multiple \glspl{GO}, creating a routing problem, also referred by C. Casetti \textit{et al.} in \cite{routeMultiGroup}.
 
-Three solutions to this problem are presented: the first is time sharing, which will allow the implementation of any scenario in the figures above. In this solution, the gateway node is alternatively connecting between groups, \textit{i.e.} disconnecting from the current group, scanning for active devices and request to connect to the new group. In the scenarios of Figure \ref{fig:mhopd2dgm} the gateway node acts as client in both groups, thus neither group has to be destroyed for this switch to occur. Alternatively, in the scenarios of Figure \ref{fig:mhopd2dgo} one of the groups has to be destroyed, since the gateway node acts as owner for one group and client for the other. The main difference between the different scenarios within each figure is the protocols used to connect and disconnect to a group, \textit{i.e.} Wi-Fi Direct, classic Wi-Fi or a hybrid combination of the two.
+Three solutions to this problem are presented. The first is time sharing, which will allow the implementation of any scenario in the figures above. In this solution, the gateway node is alternatively connecting between groups, \textit{i.e.} disconnecting from the current group, scanning for active devices and request to connect to the new group. In the scenarios of Figure \ref{fig:mhopd2dgm} the gateway node acts as client in both groups, thus neither group has to be destroyed for this switch to occur. Alternatively, in the scenarios of Figure \ref{fig:mhopd2dgo} one of the groups has to be destroyed, since the gateway node acts as owner for one group and client for the other. The main difference between the different scenarios within each figure is the protocol used to connect and disconnect to a group, \textit{i.e.} Wi-Fi Direct, classic Wi-Fi or a hybrid combination of the two.
 
 A different solution proposed by the authors would allow simultaneous connections between groups. This can only be achieved by using a hybrid combination of the protocol, as already discussed, so only some scenarios will be tested. The authors tested the different topologies with different network sockets, \textit{e.g.} stream, datagram and multicast sockets. These tests showed that when combining a LC/GM, or \textit{vice-versa}, with a multicast socket, the gateway node is able to communicate with both groups simultaneously. Although the multicast socket only encapsulates one-to-many unicast communication, underutilizing the bandwidth of both protocols.
 
@@ -117,7 +117,7 @@ In order to overcome the limitations of stock Android already discussed, the aut
 Finally, in order to validate the protocol the authors created a chat application, which runs autonomously without any user interaction, apart from the messages to be sent. Manual override buttons are also present in the application for users to manually control the group creation and teardown.\newline
 
 K. Liu \textit{et al.} propose a new implementation of \gls{MANET}
- using Wi-Fi Direct in stock Android, in \cite{manet}. It is the authors' belief that \glspl{MANET} using this technology can be used in \gls{LTE} offloading systems. This implementation has the following properties:
+using Wi-Fi Direct in stock Android, in \cite{manet}. It is the authors' belief that \glspl{MANET} using this technology can be used in \gls{LTE} offloading systems. This implementation has the following properties:
 
 \begin{itemize}
 \item All devices must have the same setup, \textit{i.e.} same functionalities.
